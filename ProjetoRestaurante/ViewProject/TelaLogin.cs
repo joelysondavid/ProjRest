@@ -1,12 +1,5 @@
 ﻿using ControllerProject;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ViewProject
@@ -29,6 +22,9 @@ namespace ViewProject
             if(usrController.GetLogin(login, senha) == true)
             {
                 MessageBox.Show("Login realizado com sucesso!");
+            } else
+            {
+                MessageBox.Show("Falha ao realizar login!");
             }
         }
     }
