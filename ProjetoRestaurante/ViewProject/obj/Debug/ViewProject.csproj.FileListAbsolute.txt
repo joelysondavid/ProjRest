@@ -1,0 +1,14 @@
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\ViewProject.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\ViewProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.csprojAssemblyReference.cache
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\ControllerProject.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\PersistenceProject.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\ModelProject.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\ControllerProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\PersistenceProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\ModelProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaLogin.resources
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.csproj.GenerateResource.cache
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.csproj.CopyComplete

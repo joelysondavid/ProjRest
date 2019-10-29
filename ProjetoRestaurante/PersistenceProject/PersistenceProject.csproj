@@ -41,7 +41,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connection\DBConnection.cs" />
+    <Compile Include="DAO\DAO_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelProject\ModelProject.csproj">
+      <Project>{F0EE3A5B-1124-4E66-ABC4-E127B90E12D5}</Project>
+      <Name>ModelProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

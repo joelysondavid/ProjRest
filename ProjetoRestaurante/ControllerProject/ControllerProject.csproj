@@ -42,6 +42,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UsuarioController.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ModelProject\ModelProject.csproj">
+      <Project>{F0EE3A5B-1124-4E66-ABC4-E127B90E12D5}</Project>
+      <Name>ModelProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\PersistenceProject\PersistenceProject.csproj">
+      <Project>{DE9402A2-3FC4-413B-9225-29C79C6A03F4}</Project>
+      <Name>PersistenceProject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
