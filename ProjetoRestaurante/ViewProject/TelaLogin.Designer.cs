@@ -28,11 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaLogin));
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
             this.btnLogin = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.btnEncerrar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtLogin
@@ -78,17 +80,31 @@
             this.label2.TabIndex = 4;
             this.label2.Text = "Senha:";
             // 
+            // btnEncerrar
+            // 
+            this.btnEncerrar.Location = new System.Drawing.Point(194, 238);
+            this.btnEncerrar.Name = "btnEncerrar";
+            this.btnEncerrar.Size = new System.Drawing.Size(75, 23);
+            this.btnEncerrar.TabIndex = 5;
+            this.btnEncerrar.Text = "Encerrar";
+            this.btnEncerrar.UseVisualStyleBackColor = true;
+            this.btnEncerrar.Click += new System.EventHandler(this.btnEncerrar_Click);
+            // 
             // TelaLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnEncerrar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtSenha);
             this.Controls.Add(this.txtLogin);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TelaLogin";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaLogin";
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -102,5 +118,6 @@
         private System.Windows.Forms.Button btnLogin;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnEncerrar;
     }
 }

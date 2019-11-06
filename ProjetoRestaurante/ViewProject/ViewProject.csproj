@@ -48,11 +48,29 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TelaCadastroUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaCadastroUsuario.Designer.cs">
+      <DependentUpon>TelaCadastroUsuario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TelaHome.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaHome.Designer.cs">
+      <DependentUpon>TelaHome.cs</DependentUpon>
+    </Compile>
     <Compile Include="TelaLogin.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TelaLogin.Designer.cs">
       <DependentUpon>TelaLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TelaNovoPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaNovoPedido.Designer.cs">
+      <DependentUpon>TelaNovoPedido.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -63,8 +81,17 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="TelaCadastroUsuario.resx">
+      <DependentUpon>TelaCadastroUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaHome.resx">
+      <DependentUpon>TelaHome.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TelaLogin.resx">
       <DependentUpon>TelaLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaNovoPedido.resx">
+      <DependentUpon>TelaNovoPedido.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -84,6 +111,16 @@
       <Project>{D356CA4D-3376-4E25-8B07-E431C302B873}</Project>
       <Name>ControllerProject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ModelProject\ModelProject.csproj">
+      <Project>{F0EE3A5B-1124-4E66-ABC4-E127B90E12D5}</Project>
+      <Name>ModelProject</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="img\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

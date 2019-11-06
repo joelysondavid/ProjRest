@@ -14,11 +14,23 @@ namespace ControllerProject
         private DAO_Usuario daoUser = new DAO_Usuario();
         // Lista de usuários
         IList<Usuario> usuarios;
-        
+
         // get login
-        public bool GetLogin(string login, string senha)
+        public Usuario GetLogin(string login, string senha)
         {
             return this.daoUser.GetLogin(login, senha);
+        }
+
+        // get all users
+        public IList<Usuario> GetAll()
+        {
+            return this.daoUser.GetAll();
+        }
+
+        public void Salvar(Usuario user, string login, string senha)
+        {
+            if (user != null)
+                this.daoUser.Salvar(user, login, senha);
         }
     }
 }

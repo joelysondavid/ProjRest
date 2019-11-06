@@ -6,3 +6,5 @@ C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceP
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\obj\Debug\PersistenceProject.csproj.CopyComplete
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\obj\Debug\PersistenceProject.dll
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\obj\Debug\PersistenceProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\System.Data.SqlClient.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\System.Data.SqlClient.xml

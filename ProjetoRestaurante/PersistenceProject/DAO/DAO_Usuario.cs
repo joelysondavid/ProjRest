@@ -18,7 +18,7 @@ namespace PersistenceProject.DAO
         // método save
         public void Salvar(Usuario usuario, string loginA, string senhaA)
         {
-            if (usuario.Id != null)
+            if (usuario.Id != null && loginA != null && senhaA != null)
                 this.Atualizar(usuario, loginA, senhaA);
             else
                 this.Inserir(usuario);
@@ -75,7 +75,7 @@ namespace PersistenceProject.DAO
             return usuario; // retorna o usuário
         }
         // método login
-        public bool GetLogin(string login, string senha)
+        public Usuario GetLogin(string login, string senha)
         {
             // cria um objeto
             Usuario usuario = new Usuario();
@@ -97,33 +97,45 @@ namespace PersistenceProject.DAO
                 }
             }
             conn.Close(); // encerra a conexão (toda conexão aberta tem que ser encerrada!!!)
-            if (usuario.Id != null)
-                return true; ; // usuario encontrado
-            return false; // usuário não encontrado
+            return usuario; // retorna o usuario
+            /* if (usuario.Id != null)
+                return usuario; ; // usuario encontrado
+            return usuario; // usuário não encontrado */ 
         }
         // método Insert
-        private void Inserir(Usuario usr)
+        private Usuario Inserir(Usuario usr)
         {
+            Usuario usuario= new Usuario();
             // 1- fazer validação verificar se o login já existe
-
-            // 2- realizar o try e tentar pegar uam exeção
-            // query
-            cmd = new SqlCommand("INSERT INTO Usuario(Nome, Cpf, Login, Senha, Tipo) VALUES(@Nome, @Cpf, @Login, @Senha, @Tipo)", conn);
-            // referenciando os parametros da query
-            cmd.Parameters.AddWithValue("@Nome", usr.Nome);
-            cmd.Parameters.AddWithValue("@Cpf", usr.Cpf);
-            cmd.Parameters.AddWithValue("@Login", usr.Login);
-            cmd.Parameters.AddWithValue("@Senha", usr.Senha);
-            cmd.Parameters.AddWithValue("@Tipo", usr.TipoUsr);
-            conn.Open(); // abre a conexão
-            cmd.ExecuteNonQuery(); // executa o comando
-            conn.Close(); // encerra a conexão
+            if (VerificaUsuario(usr) == false)
+            {
+                // 2- realizar o try e tentar pegar uam exeção
+                try
+                {
+                    // query
+                    cmd = new SqlCommand("INSERT INTO Usuario(Nome, Cpf, Login, Senha, Tipo) VALUES(@Nome, @Cpf, @Login, @Senha, @Tipo)", conn);
+                    // referenciando os parametros da query
+                    cmd.Parameters.AddWithValue("@Nome", usr.Nome);
+                    cmd.Parameters.AddWithValue("@Cpf", usr.Cpf);
+                    cmd.Parameters.AddWithValue("@Login", usr.Login);
+                    cmd.Parameters.AddWithValue("@Senha", usr.Senha);
+                    cmd.Parameters.AddWithValue("@Tipo", usr.TipoUsr);
+                    conn.Open(); // abre a conexão
+                    cmd.ExecuteNonQuery(); // executa o comando
+                    conn.Close(); // encerra a conexão
+                    usuario = GetLogin(usr.Login, usr.Senha);
+                }catch(Exception e)
+                {
+                    Console.WriteLine("Falha ao tentar inserir novo usuário!\n Erro: " + e);
+                }
+            }
+            return usuario;
         }
         // método update
         private bool Atualizar(Usuario usr, string loginA, string senhaA)
         {
-            if (GetLogin(loginA, senhaA) == false) // usuario não encontrado
-                return false;
+            // 1° procurar pelo usuario
+            
             try
             {
                 // essa query funcionara como se o objeto passado fosse um novo login e uam nova senha
@@ -148,6 +160,19 @@ namespace PersistenceProject.DAO
                 Console.WriteLine("Erro: " + err);
                 return false;
             }
+        }
+
+        // método auxiliar para verificação de usuário já existente
+        private bool VerificaUsuario(Usuario user)
+        {
+            IList<Usuario> usuarios = this.GetAll(); // obtem uma lista com todos os usuário já cadastrados
+            foreach (Usuario usuario in usuarios) // faz um foreach para cada elemento dessa lista
+            {
+                // se o usuario passado pelo parâmetro já tiver sido cadastrado com login (em maiusculo) ou cpf
+                if ((usuario.Login.ToUpper() == user.Login.ToUpper()) || (usuario.Cpf == user.Cpf))
+                    return true; // retorna true
+            }
+            return false; // caso não tenha nenhum login ou cpf retorna false
         }
     }
 }

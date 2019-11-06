@@ -14,3 +14,6 @@ C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.csproj.CopyComplete
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.exe
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaCadastroUsuario.resources
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaHome.resources
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaNovoPedido.resources

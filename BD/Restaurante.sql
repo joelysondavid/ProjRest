@@ -56,6 +56,11 @@ CREATE TABLE Mesas(
 	ReservaInicio DATETIME NOT NULL,
 );
 
+SELECT * FROM Mesas;
+INSERT INTO MESAS VALUES ('G5A3', 'Teste', '30-11-2019');
+INSERT INTO MESAS VALUES ('G5A1', 'Ao lado da janela', '15-10-2019');
+INSERT INTO MESAS VALUES ('G5A2', 'De frente ao Aquário', '10-09-2019');
+
 CREATE TABLE Reservas(
 	Id INT PRIMARY KEY IDENTITY,
 	NomeCliente VARCHAR(50) NOT NULL,
@@ -64,3 +69,5 @@ CREATE TABLE Reservas(
 
 	FOREIGN KEY (NumMesa) REFERENCES Mesas(Numero)
 );
+
+
