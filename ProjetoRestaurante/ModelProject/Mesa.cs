@@ -10,7 +10,6 @@ namespace ModelProject
     {
         public string NumMesa { get; set; }
         public string Descricao { get; set; }
-        public DateTime DataReserva { get; set; }
 
         // sobrescrevendo método tostring
         public override string ToString()

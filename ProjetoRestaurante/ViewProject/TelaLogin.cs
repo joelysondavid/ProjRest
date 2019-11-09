@@ -21,7 +21,7 @@ namespace ViewProject
             string login = txtLogin.Text;
             string senha = txtSenha.Text;
             Usuario user = usrController.GetLogin(login, senha);
-            if (user.Id != null)
+            if (user != null)
             {
                 this.Hide(); // esconde a tela de login
                 TelaHome home = new TelaHome(); // instancia a tela home

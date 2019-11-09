@@ -16,36 +16,43 @@ namespace PersistenceProject.DAO
         private SqlCommand cmd;
 
         // método save
-        public void Salvar(Usuario usuario, string loginA, string senhaA)
+        public Usuario Salvar(Usuario usuario, string loginA, string senhaA)
         {
             if (usuario.Id != null && loginA != null && senhaA != null)
-                this.Atualizar(usuario, loginA, senhaA);
+                return this.Atualizar(usuario, loginA, senhaA);
             else
-                this.Inserir(usuario);
+                return this.Inserir(usuario);
         }
         // método getall
         public IList<Usuario> GetAll()
         {
             // Lista de usuarios
             IList<Usuario> usuarios = new List<Usuario>();
-            cmd = new SqlCommand("SELECT Id, Nome, Cpf, Login, Senha, Tipo FROM Usuario", conn);
-            conn.Open();
-            using (SqlDataReader reader = cmd.ExecuteReader())
+            try
             {
-                while (reader.Read()) // enquanto esta query estiver lendo
+                cmd = new SqlCommand("SELECT Id, Nome, Cpf, Login, Senha, Tipo FROM Usuario", conn);
+                conn.Open();
+                using (SqlDataReader reader = cmd.ExecuteReader())
                 {
-                    usuarios.Add(new Usuario
+                    while (reader.Read()) // enquanto esta query estiver lendo
                     {
-                        Id = reader.GetInt32(0),
-                        Nome = reader.GetString(1),
-                        Cpf = reader.GetString(2),
-                        Login = reader.GetString(3),
-                        Senha = reader.GetString(4),
-                        TipoUsr = reader.GetString(5)
-                    }); // adicionando cada usuario na lista
+                        usuarios.Add(new Usuario
+                        {
+                            Id = reader.GetInt32(0),
+                            Nome = reader.GetString(1),
+                            Cpf = reader.GetString(2),
+                            Login = reader.GetString(3),
+                            Senha = reader.GetString(4),
+                            TipoUsr = reader.GetString(5)
+                        }); // adicionando cada usuario na lista
+                    }
                 }
+                conn.Close();
             }
-            conn.Close();
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao buscar todos os usuários!\nErro: " + e);
+            }
             return usuarios;
         }
 
@@ -78,7 +85,7 @@ namespace PersistenceProject.DAO
         public Usuario GetLogin(string login, string senha)
         {
             // cria um objeto
-            Usuario usuario = new Usuario();
+            Usuario usuario = null;
             // comando sql para execução da query
             cmd = new SqlCommand("SELECT Id, Nome, Cpf, Login, Senha, Tipo FROM Usuario WHERE Login = @Login AND Senha = @Senha", conn);
             cmd.Parameters.AddWithValue("@Login", login); // referenciando o parametro da query
@@ -88,24 +95,27 @@ namespace PersistenceProject.DAO
             {
                 while (reader.Read())
                 {
-                    usuario.Id = reader.GetInt32(0);
-                    usuario.Nome = reader.GetString(1);
-                    usuario.Cpf = reader.GetString(2);
-                    usuario.Login = reader.GetString(3);
-                    usuario.Senha = reader.GetString(4);
-                    usuario.TipoUsr = reader.GetString(5);
+                    usuario = new Usuario
+                    {
+                        Id = reader.GetInt32(0),
+                        Nome = reader.GetString(1),
+                        Cpf = reader.GetString(2),
+                        Login = reader.GetString(3),
+                        Senha = reader.GetString(4),
+                        TipoUsr = reader.GetString(5)
+                    };
                 }
             }
             conn.Close(); // encerra a conexão (toda conexão aberta tem que ser encerrada!!!)
             return usuario; // retorna o usuario
-            /* if (usuario.Id != null)
-                return usuario; ; // usuario encontrado
-            return usuario; // usuário não encontrado */ 
+                            /* if (usuario.Id != null)
+                                return usuario; ; // usuario encontrado
+                            return usuario; // usuário não encontrado */
         }
         // método Insert
         private Usuario Inserir(Usuario usr)
         {
-            Usuario usuario= new Usuario();
+            Usuario usuario = null;
             // 1- fazer validação verificar se o login já existe
             if (VerificaUsuario(usr) == false)
             {
@@ -113,7 +123,7 @@ namespace PersistenceProject.DAO
                 try
                 {
                     // query
-                    cmd = new SqlCommand("INSERT INTO Usuario(Nome, Cpf, Login, Senha, Tipo) VALUES(@Nome, @Cpf, @Login, @Senha, @Tipo)", conn);
+                    cmd = new SqlCommand("INSERT INTO Usuario1(Nome, Cpf, Login, Senha, Tipo) VALUES(@Nome, @Cpf, @Login, @Senha, @Tipo)", conn);
                     // referenciando os parametros da query
                     cmd.Parameters.AddWithValue("@Nome", usr.Nome);
                     cmd.Parameters.AddWithValue("@Cpf", usr.Cpf);
@@ -124,7 +134,8 @@ namespace PersistenceProject.DAO
                     cmd.ExecuteNonQuery(); // executa o comando
                     conn.Close(); // encerra a conexão
                     usuario = GetLogin(usr.Login, usr.Senha);
-                }catch(Exception e)
+                }
+                catch (Exception e)
                 {
                     Console.WriteLine("Falha ao tentar inserir novo usuário!\n Erro: " + e);
                 }
@@ -132,10 +143,10 @@ namespace PersistenceProject.DAO
             return usuario;
         }
         // método update
-        private bool Atualizar(Usuario usr, string loginA, string senhaA)
+        private Usuario Atualizar(Usuario usr, string loginA, string senhaA)
         {
+            Usuario usuario = null;
             // 1° procurar pelo usuario
-            
             try
             {
                 // essa query funcionara como se o objeto passado fosse um novo login e uam nova senha
@@ -152,13 +163,31 @@ namespace PersistenceProject.DAO
                 conn.Open(); // abertura da conxão
                 cmd.ExecuteNonQuery(); // executar comando
                 conn.Close(); // encerra conexão
-                return true; // retorna true para atualização realizada
+                usuario = GetLogin(usr.Login, usr.Senha);
             }
             catch (Exception err)
             {
                 // mostra o erro ocorrido
                 Console.WriteLine("Erro: " + err);
-                return false;
+            }
+            return usuario;
+        }
+
+        // método para apagar user
+        public void Delete(int id)
+        {
+            try
+            {
+                // query para deletar usuario apartir do id
+                cmd = new SqlCommand("DELETE Usuario WHERE Id = @Id", conn);
+                cmd.Parameters.AddWithValue("@Id", id); // referenciado o parametro
+                conn.Open(); // abertura da conex
+                cmd.ExecuteNonQuery(); // execução do comando
+                conn.Close(); // encerrando a conexão
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao deletar usuário!\nErro: " + e);
             }
         }
 

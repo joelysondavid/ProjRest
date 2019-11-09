@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewProject.Itens;
 
 namespace ViewProject
 {
@@ -16,7 +17,7 @@ namespace ViewProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TelaLogin());
+            Application.Run(new Cardapio());
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelProject
 {
-    class Itens
+    public class Item
     {
         public int? Id { get; set; }
         public string Descricao { get; set; }
@@ -16,7 +16,7 @@ namespace ModelProject
         public string URLImagem { get; set; }
 
         // contrutor recebendo nulo
-        public Itens()
+        public Item()
         {
             this.Id = null;
         }

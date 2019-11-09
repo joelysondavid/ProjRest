@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ModelProject
 {
-    class ItenPedido
+    public class ItemPedido
     {
         public int? Id { get; set; }
         public int PedidoId { get; set; }
@@ -15,7 +15,7 @@ namespace ModelProject
         public decimal ValorItens { get; set; }
         public string Status { get; set; }
 
-        public ItenPedido()
+        public ItemPedido()
         {
             this.Id = null;
         }

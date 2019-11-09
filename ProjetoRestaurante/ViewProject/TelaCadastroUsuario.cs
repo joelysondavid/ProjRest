@@ -37,7 +37,20 @@ namespace ViewProject
                     ,
                     TipoUsr = cbxTipo.SelectedItem.ToString()
                 };
-                controller.Salvar(user, null, null);
+                Usuario usuario = controller.Salvar(user, null, null);
+                if (usuario.Id != null)
+                {
+                    MessageBox.Show("Usuario cadastrado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao inserir Usuário!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Todos os Campos com asterisco devem ser preenchidos!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 

@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Itens\Cardapio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Itens\Cardapio.Designer.cs">
+      <DependentUpon>Cardapio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Itens\TelaCadastroItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Itens\TelaCadastroItem.Designer.cs">
+      <DependentUpon>TelaCadastroItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TelaCadastroUsuario.cs">
@@ -72,6 +84,12 @@
     <Compile Include="TelaNovoPedido.Designer.cs">
       <DependentUpon>TelaNovoPedido.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Itens\Cardapio.resx">
+      <DependentUpon>Cardapio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Itens\TelaCadastroItem.resx">
+      <DependentUpon>TelaCadastroItem.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>

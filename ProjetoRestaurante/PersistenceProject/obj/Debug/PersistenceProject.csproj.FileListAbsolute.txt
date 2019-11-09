@@ -1,10 +1,10 @@
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\PersistenceProject.dll
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\PersistenceProject.pdb
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\ModelProject.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\System.Data.SqlClient.dll
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\ModelProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\System.Data.SqlClient.xml
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\obj\Debug\PersistenceProject.csprojAssemblyReference.cache
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\obj\Debug\PersistenceProject.csproj.CopyComplete
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\obj\Debug\PersistenceProject.dll
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\obj\Debug\PersistenceProject.pdb
-C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\System.Data.SqlClient.dll
-C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\PersistenceProject\bin\Debug\System.Data.SqlClient.xml

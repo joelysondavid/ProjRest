@@ -14,6 +14,8 @@ CREATE TABLE Usuario(
 INSERT INTO Usuario(Nome, CPF, Login, Senha, Tipo) VALUES ('Joelyson', '1234', 'Joe123', 'senha', 'Atendimento');
 SELECT * FROM Usuario;
 
+SELECT TOP 1 * FROM Usuario order by id desc;
+
 -- A tabela cardápio será usada para cadastro de produtos e devera ser constantemente atualizada pois esta tabela alimentará o menu de itens do sitema
 CREATE TABLE Cardapio (
 	Id INT PRIMARY KEY IDENTITY,
@@ -23,6 +25,12 @@ CREATE TABLE Cardapio (
 	Preco DECIMAL(10,2) NOT NULL,
 	URLImagem VARCHAR(250)
 );
+
+ 
+
+select top 1 Id, Descr from Cardapio order by Id desc;
+SELECT TOP 1 Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio ORDER BY Id DESC;
+
 
 -- Tabela de pedidos será utilizada para cadastro de pedidos de clientes
 CREATE TABLE Pedidos(
@@ -53,21 +61,28 @@ CREATE TABLE ItensPedido(
 CREATE TABLE Mesas(
 	Numero VARCHAR(5) PRIMARY KEY NOT NULL,
 	Descricao VARCHAR(50),
-	ReservaInicio DATETIME NOT NULL,
 );
 
-SELECT * FROM Mesas;
-INSERT INTO MESAS VALUES ('G5A3', 'Teste', '30-11-2019');
-INSERT INTO MESAS VALUES ('G5A1', 'Ao lado da janela', '15-10-2019');
-INSERT INTO MESAS VALUES ('G5A2', 'De frente ao Aquário', '10-09-2019');
+
+SELECT GETDATE()
+
+INSERT INTO MESAS VALUES ('G5A3', 'Teste');
+INSERT INTO MESAS VALUES ('G5A1', 'Ao lado da janela');
+INSERT INTO MESAS VALUES ('G5A2', 'De frente ao Aquário');
+INSERT INTO MESAS VALUES ('B5A2', 'De frente ao Aquário');
+
 
 CREATE TABLE Reservas(
 	Id INT PRIMARY KEY IDENTITY,
 	NomeCliente VARCHAR(50) NOT NULL,
 	CpfCliente VARCHAR(15),
-	NumMesa VARCHAR(5) NOT NULL,
+	NumMesa VARCHAR(5) NOT NULL,	
+	ReservaInicio DATETIME NOT NULL,
 
 	FOREIGN KEY (NumMesa) REFERENCES Mesas(Numero)
 );
 
+
+
+SELECT * FROM Reservas WHERE ReservaInicio < DATEADD(HOUR, -2, getdate());
 

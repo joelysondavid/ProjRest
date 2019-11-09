@@ -1,10 +1,10 @@
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\bin\Debug\ControllerProject.dll
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\bin\Debug\ControllerProject.pdb
-C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\obj\Debug\ControllerProject.csprojAssemblyReference.cache
-C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\obj\Debug\ControllerProject.dll
-C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\obj\Debug\ControllerProject.pdb
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\bin\Debug\ModelProject.dll
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\bin\Debug\PersistenceProject.dll
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\bin\Debug\ModelProject.pdb
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\bin\Debug\PersistenceProject.pdb
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\obj\Debug\ControllerProject.csprojAssemblyReference.cache
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\obj\Debug\ControllerProject.csproj.CopyComplete
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\obj\Debug\ControllerProject.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ControllerProject\obj\Debug\ControllerProject.pdb
