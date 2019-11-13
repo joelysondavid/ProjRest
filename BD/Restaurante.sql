@@ -10,6 +10,7 @@ CREATE TABLE Usuario(
 	Senha VARCHAR(10) NOT NULL,
 	Tipo VARCHAR(15) NOT NULL CHECK(Tipo IN ('Cozinha', 'Atendimento'))
 );
+
 -- check funciona como um enum a gente passa o campo que será do tipo ou atendimento ou cozinha no login do user
 INSERT INTO Usuario(Nome, CPF, Login, Senha, Tipo) VALUES ('Joelyson', '1234', 'Joe123', 'senha', 'Atendimento');
 SELECT * FROM Usuario;
@@ -23,12 +24,15 @@ CREATE TABLE Cardapio (
 	Detalhes VARCHAR(100),
 	TempoPrep INT NOT NULL,
 	Preco DECIMAL(10,2) NOT NULL,
+	-- Disponivel  NOT NULL, -- campo que verifica se o produco está disponivel
 	URLImagem VARCHAR(250)
-);
+); 
 
- 
+select * from Cardapio;
+nome
+delete cardapio where id=11
 
-select top 1 Id, Descr from Cardapio order by Id desc;
+select top 1 Id, Descricao from Cardapio order by Id desc;
 SELECT TOP 1 Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio ORDER BY Id DESC;
 
 
@@ -43,6 +47,8 @@ CREATE TABLE Pedidos(
 	FOREIGN KEY (NumMesa) REFERENCES Mesas(Numero)
 );
 
+SELECT * FROM Pedidos;
+
 CREATE TABLE ItensPedido(
 	Id INT IDENTITY, -- caso haja um novo pedido do mesmo item ele entrará no ciclo novamente
 	PedidoId INT NOT NULL,
@@ -56,6 +62,8 @@ CREATE TABLE ItensPedido(
 	FOREIGN KEY (PedidoId) REFERENCES Pedidos(Id),
 	FOREIGN KEY (ItemId) REFERENCES Cardapio(Id)
 );
+
+select * from ItensPedido;
 
 -- TABELA MESA Que será usada para gerenciamento de mesas e reservas de mesas
 CREATE TABLE Mesas(

@@ -49,6 +49,7 @@
     <Compile Include="DAO\DAO_ItensDePedido.cs" />
     <Compile Include="DAO\DAO_Mesa.cs" />
     <Compile Include="DAO\DAO_Pedido.cs" />
+    <Compile Include="DAO\DAO_Reserva.cs" />
     <Compile Include="DAO\DAO_Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

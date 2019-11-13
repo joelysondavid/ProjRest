@@ -18,6 +18,10 @@ namespace ControllerProject
             return daoMesa.GetAll();
         }
         // getMesaByNum
+        public Mesa GetByNum(string num)
+        {
+            return daoMesa.GetByNum(num);
+        }
         // cadastro nova mesa
 
     }

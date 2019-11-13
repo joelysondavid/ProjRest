@@ -60,11 +60,12 @@ namespace PersistenceProject.DAO
                 foreach (ItemPedido item in itensPed) // cada pedido realizara o comando
                 {
                     // comando
-                    cmd = new SqlCommand("INSERT INTO ItensPedido (PedidoId, ItemId, Quantidade, ValorItens, Status) VALUES (@PedidoId, @ItemId, @Quantidade, @ValorItens, Aguardando)", conn);
+                    cmd = new SqlCommand("INSERT INTO ItensPedido (PedidoId, ItemId, Quantidade, ValorItens, Status) VALUES (@PedidoId, @ItemId, @Quantidade, @ValorItens, @Status)", conn);
                     cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
                     cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
                     cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
                     cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
+                    cmd.Parameters.AddWithValue("@Status", item.Status);
                     // O status do pedido sempre iniciará em "Aguardando"
                     conn.Open(); // abre a conexão
                     cmd.ExecuteNonQuery(); // executa o comando

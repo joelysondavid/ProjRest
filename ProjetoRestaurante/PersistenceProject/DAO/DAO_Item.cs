@@ -38,6 +38,7 @@ namespace PersistenceProject.DAO
                 conn.Open(); // abertura da connec
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa a query
                 {
+                    itens.Clear();
                     while (reader.Read()) // enquanto tiver leitura
                     {
                         itens.Add(new Item
@@ -157,7 +158,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query
-                cmd = new SqlCommand("Update Cardapio (Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem) VALUES (@Descricao, @Detalhes, @TempoPrep, @Preco, @URLImagem)");
+                cmd = new SqlCommand("Update Cardapio SET Descricao=@Descricao, Detalhes=@Detalhes, TempoPrep=@TempoPrep, Preco= @Preco, URLImagem=@URLImagem WHERE Id = @Id", conn);
                 // SqlParameters
                 cmd.Parameters.AddWithValue("@Id", item.Id);
                 cmd.Parameters.AddWithValue("@Descricao", item.Descricao);
@@ -171,11 +172,30 @@ namespace PersistenceProject.DAO
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro ao incluir item!\nErro: " + e);
+                Console.WriteLine("Erro ao atualizar item!\nErro: " + e);
             }
             return GetById(item.Id);
         }
 
         // método deletebyid
+        public void Delete(int id)
+        {
+            // se o item for nulo é pq não encontrou o item referente ao id buscado
+            if (GetById(id) != null)
+            {
+                try
+                {
+                    // quert para deletar item
+                    cmd = new SqlCommand("DELETE Cardapio WHERE Id = @Id", conn);
+                    cmd.Parameters.AddWithValue("@Id", id); // referencia os sqlparameter com id solicitado no param do metodo
+                    conn.Open(); // abre a conexão
+                    cmd.ExecuteNonQuery(); // executa o comando de deleção
+                    conn.Close(); // encerra a conexão
+                } catch(Exception e)
+                {
+                    Console.WriteLine("Erro ao deletar por Id!\nErro: "+e);
+                }
+            }
+        }
     }
 }

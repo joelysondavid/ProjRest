@@ -157,7 +157,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // comando
-                cmd = new SqlCommand("UPDATE Pedidos (Id, NumMesa, NomeCliente, CpfCliente, ValorTotal) VALUES (@NumMesa, @NomeCli, @CpfCli, @ValorTotal)", conn);
+                cmd = new SqlCommand("UPDATE Pedidos SET NumMesa=@NumMesa, NomeCliente=@NomeCli, CpfCliente=@CpfCli, ValorTotal=@ValorTotal WHERE Id=@Id", conn);
                 // referenciando os sqlparameters com os parametros do pedido
                 cmd.Parameters.AddWithValue("@Id", pedido.Id);
                 cmd.Parameters.AddWithValue("@NumMesa", pedido.NumMesa);
@@ -168,7 +168,7 @@ namespace PersistenceProject.DAO
                 cmd.ExecuteNonQuery(); // executa o comando para salvar o pedido
                 conn.Close(); // encerra a conexão
                               // após a inserção do novo pedido é necessário também cadastrar os pedidos deste pedido pois estão em tableas separadas
-                daoItensPed.Update(pedido.ItensDePedido);
+                daoItensPed.Insert(pedido.ItensDePedido);
             }
             catch (Exception e)
             {

@@ -26,7 +26,7 @@ namespace ViewProject
 
         private void cadastroDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new TelaNovoPedido().ShowDialog();
+            new TelaPedidos().ShowDialog();
         }
     }
 }

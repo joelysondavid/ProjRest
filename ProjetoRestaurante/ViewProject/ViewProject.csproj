@@ -46,17 +46,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Itens\Cardapio.cs">
+    <Compile Include="Itens\TelaGerenciamentoMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Itens\Cardapio.Designer.cs">
-      <DependentUpon>Cardapio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Itens\TelaCadastroItem.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Itens\TelaCadastroItem.Designer.cs">
-      <DependentUpon>TelaCadastroItem.cs</DependentUpon>
+    <Compile Include="Itens\TelaGerenciamentoMenu.Designer.cs">
+      <DependentUpon>TelaGerenciamentoMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -78,17 +72,14 @@
     <Compile Include="TelaLogin.Designer.cs">
       <DependentUpon>TelaLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="TelaNovoPedido.cs">
+    <Compile Include="TelaPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="TelaNovoPedido.Designer.cs">
-      <DependentUpon>TelaNovoPedido.cs</DependentUpon>
+    <Compile Include="TelaPedidos.Designer.cs">
+      <DependentUpon>TelaPedidos.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="Itens\Cardapio.resx">
-      <DependentUpon>Cardapio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Itens\TelaCadastroItem.resx">
-      <DependentUpon>TelaCadastroItem.cs</DependentUpon>
+    <EmbeddedResource Include="Itens\TelaGerenciamentoMenu.resx">
+      <DependentUpon>TelaGerenciamentoMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -108,8 +99,8 @@
     <EmbeddedResource Include="TelaLogin.resx">
       <DependentUpon>TelaLogin.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="TelaNovoPedido.resx">
-      <DependentUpon>TelaNovoPedido.cs</DependentUpon>
+    <EmbeddedResource Include="TelaPedidos.resx">
+      <DependentUpon>TelaPedidos.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

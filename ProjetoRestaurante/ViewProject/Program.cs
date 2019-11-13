@@ -17,7 +17,7 @@ namespace ViewProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Cardapio());
+            Application.Run(new TelaPedidos());
         }
     }
 }

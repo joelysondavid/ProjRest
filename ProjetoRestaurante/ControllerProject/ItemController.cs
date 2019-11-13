@@ -31,5 +31,9 @@ namespace ControllerProject
         }
 
         // método delete
+        public void Delete(int id)
+        {
+            daoItem.Delete(id);
+        }
     }
 }

@@ -21,7 +21,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query selecionar a mesa referente ao numero passado no param
-                command = new SqlCommand("SELECT Numero, Descricao, ReservaInicio FROM Mesas WHERE Numero = @Num", conn);
+                command = new SqlCommand("SELECT Numero, Descricao FROM Mesas WHERE Numero = @Num", conn);
                 // atribuindo o numero ao parametro '@Num'
                 command.Parameters.AddWithValue("@Num", num);
                 conn.Open(); // abre a conexão
