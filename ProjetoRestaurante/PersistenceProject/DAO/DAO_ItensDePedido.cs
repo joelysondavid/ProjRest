@@ -59,6 +59,8 @@ namespace PersistenceProject.DAO
 
                 foreach (ItemPedido item in itensPed) // cada pedido realizara o comando
                 {
+                    // verificar se tem id
+                    if (item.Id == null) { 
                     // comando
                     cmd = new SqlCommand("INSERT INTO ItensPedido (PedidoId, ItemId, Quantidade, ValorItens, Status) VALUES (@PedidoId, @ItemId, @Quantidade, @ValorItens, @Status)", conn);
                     cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
@@ -70,6 +72,21 @@ namespace PersistenceProject.DAO
                     conn.Open(); // abre a conexão
                     cmd.ExecuteNonQuery(); // executa o comando
                     conn.Close(); // encerra a conexão
+                    }
+                    else
+                    {
+                        cmd = new SqlCommand("UPDATE ItensPedido SET PedidoId=@PedidoId, ItemId=@ItemId, Quantidade=@Quantidade, ValorItens=@ValorItens, Status=@Status WHERE Id=@Id", conn);
+                        cmd.Parameters.AddWithValue("Id", item.Id);
+                        cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
+                        cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
+                        cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
+                        cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
+                        cmd.Parameters.AddWithValue("@Status", item.Status);
+                        // O status do pedido sempre iniciará em "Aguardando"
+                        conn.Open(); // abre a conexão
+                        cmd.ExecuteNonQuery(); // executa o comando
+                        conn.Close(); // encerra a conexão
+                    }
                 } // após a inserção dos itens                 
             }
             catch (Exception e)
@@ -108,6 +125,18 @@ namespace PersistenceProject.DAO
             }
             return GetByPed(itensPed[0].PedidoId); // todos os itens deverão ser do mesmo pedido 
                                                    // então não importa o indice da lista todos tem o mesmo PedidoId
+        }
+
+        // delete itens pedido
+        public void DeleteByIdPed(int idPed)
+        {
+            // query para deletar todos os itnes de um pedido
+            cmd = new SqlCommand("DELETE ItensPedido WHERE PedidoId = @IdPed", conn);
+            // parametros
+            cmd.Parameters.AddWithValue("@IdPed", idPed);
+            conn.Open(); // abertura da conexão
+            cmd.ExecuteNonQuery(); // execução do comando
+            conn.Close();
         }
     }
 }

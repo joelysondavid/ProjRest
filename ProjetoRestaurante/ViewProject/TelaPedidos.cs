@@ -18,7 +18,7 @@ namespace ViewProject
         PedidoController pedidoController;
         ItemController itemController;
         Pedido pedidoAtual;
-        IList<ItemPedido> itensPed=new List<ItemPedido>();
+        IList<ItemPedido> itensPed = new List<ItemPedido>();
         public TelaPedidos()
         {
             InitializeComponent();
@@ -52,6 +52,7 @@ namespace ViewProject
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
+            ClearControls();
             AlterControls(true);
         }
 
@@ -67,8 +68,13 @@ namespace ViewProject
             // passa o id do item selecionado
             int pedId = Convert.ToInt32(dgvPedidos.Rows[e.RowIndex].Cells[0].Value);
 
+            // chamando antes do set campos
+            // quando eu clicar recebo todos os itens deste pedido
+            itensPed = pedidoController.GetAllItensPedido(pedId);
+
             // chama o metodo para setar os campos
             SetCamposPed(pedId);
+
 
             // chama o metodo alter controls
             AlterControls(true);
@@ -84,7 +90,23 @@ namespace ViewProject
                 ControlsItem(true);
             }
         }
+               
+        // excluir pedido
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (pedidoAtual.Id != null)
+            {
+                if(DialogResult.Yes == MessageBox.Show("Deseja realmente excluir o pedido?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
+                {
+                    int idPed = (int)pedidoAtual.Id;
+                    pedidoController.DeleteById(idPed);
+                    GetAll();
+                }              
 
+            }
+        }
+
+        // itens ped 
         private void dgvItensPed_CellClick(object sender, DataGridViewCellEventArgs e)
         {
         }
@@ -96,6 +118,7 @@ namespace ViewProject
         private void GetAll()
         {
             dgvPedidos.DataSource = 0;
+            dgvItens.DataSource = null;
             dgvPedidos.DataSource = pedidoController.GetAll();
             dgvItens.DataSource = 0;
             dgvItens.DataSource = itemController.GetAll();
@@ -155,7 +178,7 @@ namespace ViewProject
         private void ControlsBasicos(bool chav)
         {
             btnNovoItem.Enabled = chav;
-            btnCancelarItem.Enabled = chav;           
+            btnCancelarItem.Enabled = chav;
         }
 
         // Seta os campos
@@ -171,7 +194,7 @@ namespace ViewProject
                 txtValorTotal.Text = pedidoAtual.ValorTotal.ToString();
                 ControlsBasicos(true);
                 txtIdPedido.Text = pedidoAtual.Id.ToString();
-                dgvItensPed.DataSource = pedidoController.GetAllItensPedido(idPed);
+                dgvItensPed.DataSource = itensPed;
             }
         }
 
@@ -197,25 +220,26 @@ namespace ViewProject
         {
             bool valido = false;
             int inteiro = 0;
-            if ((txtIdPedido.Text != string.Empty & txtIdPedido.Text != string.Empty & txtQtd.Text != string.Empty) & (int.TryParse(txtQtd.Text, out inteiro) & cbxStatus.SelectedIndex!=-1) )
+            if ((txtIdPedido.Text != string.Empty & txtIdPedido.Text != string.Empty & txtQtd.Text != string.Empty) & (int.TryParse(txtQtd.Text, out inteiro) & cbxStatus.SelectedIndex != -1))
                 valido = true;
             else
-                MessageBox.Show("Preeecha os valores corretamente!","Aviso!", MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                MessageBox.Show("Preeecha os valores corretamente!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
             return valido;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (CamposItensValidos()==true)
+            if (CamposItensValidos() == true)
             {
                 Item item = itemController.GetById(Convert.ToInt32(txtIdItem.Text));
 
-                ItemPedido itemPed = new ItemPedido {
+                ItemPedido itemPed = new ItemPedido
+                {
                     PedidoId = Convert.ToInt32(txtIdPedido.Text),
                     ItemId = Convert.ToInt32(txtIdItem.Text),
                     Quantidade = Convert.ToInt32(txtQtd.Text),
-                    ValorItens = Convert.ToInt32(txtQtd.Text)*item.Preco,
+                    ValorItens = Convert.ToInt32(txtQtd.Text) * item.Preco,
                     Status = cbxStatus.SelectedItem.ToString()
                 };
                 itensPed.Add(itemPed);
@@ -236,6 +260,7 @@ namespace ViewProject
             pedidoAtual.ItensDePedido = itensPed;
             pedidoController.Save(pedidoAtual);
             GetAll();
+            ClearControls();
         }
     }
 }

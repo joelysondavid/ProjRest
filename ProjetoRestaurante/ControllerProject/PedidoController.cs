@@ -36,9 +36,21 @@ namespace ControllerProject
         public Pedido Save(Pedido pedido)
         {
             if (pedido.Id != null)
+            {
+                /*
+                    int idPed = (int)pedido.Id;
+                    daoItensPed.DeleteByIdPed(idPed);
+                */
                 return daoPedido.Update(pedido);
+            }
             // else
             return daoPedido.Insert(pedido);
+        }
+
+        // DELETE: ById
+        public void DeleteById(int idPed)
+        {
+            daoPedido.DeleteById(idPed);
         }
     }
 }

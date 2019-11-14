@@ -58,6 +58,7 @@ namespace PersistenceProject.DAO
         {
             try
             {
+                pedidos.Clear();
                 // query com comando para buscar todos os pedidos
                 cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, ValorTotal FROM Pedidos", conn);
                 conn.Open(); // abre a conexão
@@ -168,13 +169,30 @@ namespace PersistenceProject.DAO
                 cmd.ExecuteNonQuery(); // executa o comando para salvar o pedido
                 conn.Close(); // encerra a conexão
                               // após a inserção do novo pedido é necessário também cadastrar os pedidos deste pedido pois estão em tableas separadas
+                // é necessário verificar se já existem pedidos
+                // if(ped)
                 daoItensPed.Insert(pedido.ItensDePedido);
             }
             catch (Exception e)
             {
                 Console.WriteLine("Erro ao inserir Pedido!" + e);
             }
-            return GetLastPed();
+            int idPed = (int)pedido.Id;
+            return GetById(idPed);
+        }
+
+        // método delete By id
+        public void DeleteById(int idPed)
+        {
+            // 1º try
+            // query
+            cmd = new SqlCommand("DELETE Pedidos WHERE Id = @Id", conn);
+            daoItensPed.DeleteByIdPed(idPed); // antes de executar o comando de deletar 
+                                              //// o pedido é necessário deletar os itens dele
+            cmd.Parameters.AddWithValue("@Id", idPed); // referencia do id
+            conn.Open();
+            cmd.ExecuteNonQuery();
+            conn.Close();
         }
     }
 }

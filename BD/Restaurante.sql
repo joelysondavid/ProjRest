@@ -57,11 +57,13 @@ CREATE TABLE ItensPedido(
 	ValorItens DECIMAL(10,2) NOT NULL,
 	Status VARCHAR(20) NOT NULL CHECK(Status IN('Preparando', 'Pronto', 'Entregue', 'Aguardando')),
 	-- chave primaria composta
-	PRIMARY KEY (/*Id,*/ PedidoId, ItemId),
+	PRIMARY KEY (Id, PedidoId, ItemId),
 	-- chaves estrangeiras
 	FOREIGN KEY (PedidoId) REFERENCES Pedidos(Id),
 	FOREIGN KEY (ItemId) REFERENCES Cardapio(Id)
 );
+
+drop table ItensPedido;
 
 select * from ItensPedido;
 
