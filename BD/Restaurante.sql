@@ -12,7 +12,7 @@ CREATE TABLE Usuario(
 );
 
 -- check funciona como um enum a gente passa o campo que será do tipo ou atendimento ou cozinha no login do user
-INSERT INTO Usuario(Nome, CPF, Login, Senha, Tipo) VALUES ('Joelyson', '1234', 'Joe123', 'senha', 'Atendimento');
+INSERT INTO Usuario(Nome, CPF, Login, Senha, Tipo) VALUES ('User Teste', '123654', 'Teste', '123', 'Atendimento');
 SELECT * FROM Usuario;
 
 SELECT TOP 1 * FROM Usuario order by id desc;

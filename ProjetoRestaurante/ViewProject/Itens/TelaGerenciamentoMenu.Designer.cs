@@ -38,6 +38,7 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.panelCamposCardapio = new System.Windows.Forms.Panel();
+            this.txtUrl = new System.Windows.Forms.TextBox();
             this.btnImagem = new System.Windows.Forms.Button();
             this.pctImagem = new System.Windows.Forms.PictureBox();
             this.txtDetalhes = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ofdImagem = new System.Windows.Forms.OpenFileDialog();
-            this.txtUrl = new System.Windows.Forms.TextBox();
             this.panelGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
             this.panelCardapio.SuspendLayout();
@@ -173,6 +173,14 @@
             this.panelCamposCardapio.Size = new System.Drawing.Size(599, 231);
             this.panelCamposCardapio.TabIndex = 2;
             // 
+            // txtUrl
+            // 
+            this.txtUrl.Location = new System.Drawing.Point(448, 153);
+            this.txtUrl.Name = "txtUrl";
+            this.txtUrl.ReadOnly = true;
+            this.txtUrl.Size = new System.Drawing.Size(145, 20);
+            this.txtUrl.TabIndex = 10;
+            // 
             // btnImagem
             // 
             this.btnImagem.Enabled = false;
@@ -277,14 +285,6 @@
             // 
             this.ofdImagem.DefaultExt = "JPG|*.jpg|JPEG|*.jpeg|PNG|*.png";
             this.ofdImagem.Filter = "JPG|*.jpg|JPEG|*.jpeg|PNG|*.png";
-            // 
-            // txtUrl
-            // 
-            this.txtUrl.Location = new System.Drawing.Point(448, 153);
-            this.txtUrl.Name = "txtUrl";
-            this.txtUrl.ReadOnly = true;
-            this.txtUrl.Size = new System.Drawing.Size(145, 20);
-            this.txtUrl.TabIndex = 10;
             // 
             // TelaGerenciamentoMenu
             // 

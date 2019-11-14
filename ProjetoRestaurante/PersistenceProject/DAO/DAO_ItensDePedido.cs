@@ -60,18 +60,19 @@ namespace PersistenceProject.DAO
                 foreach (ItemPedido item in itensPed) // cada pedido realizara o comando
                 {
                     // verificar se tem id
-                    if (item.Id == null) { 
-                    // comando
-                    cmd = new SqlCommand("INSERT INTO ItensPedido (PedidoId, ItemId, Quantidade, ValorItens, Status) VALUES (@PedidoId, @ItemId, @Quantidade, @ValorItens, @Status)", conn);
-                    cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
-                    cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
-                    cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
-                    cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
-                    cmd.Parameters.AddWithValue("@Status", item.Status);
-                    // O status do pedido sempre iniciará em "Aguardando"
-                    conn.Open(); // abre a conexão
-                    cmd.ExecuteNonQuery(); // executa o comando
-                    conn.Close(); // encerra a conexão
+                    if (item.Id == null)
+                    {
+                        // comando
+                        cmd = new SqlCommand("INSERT INTO ItensPedido (PedidoId, ItemId, Quantidade, ValorItens, Status) VALUES (@PedidoId, @ItemId, @Quantidade, @ValorItens, @Status)", conn);
+                        cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
+                        cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
+                        cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
+                        cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
+                        cmd.Parameters.AddWithValue("@Status", item.Status);
+                        // O status do pedido sempre iniciará em "Aguardando"
+                        conn.Open(); // abre a conexão
+                        cmd.ExecuteNonQuery(); // executa o comando
+                        conn.Close(); // encerra a conexão
                     }
                     else
                     {
@@ -91,7 +92,7 @@ namespace PersistenceProject.DAO
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro ao inserir itens de pedido\nErro: "+e);
+                Console.WriteLine("Erro ao inserir itens de pedido\nErro: " + e);
             }
             return GetByPed(itensPed[0].PedidoId); // todos os itens deverão ser do mesmo pedido 
                                                    // então não importa o indice da lista todos tem o mesmo PedidoId
@@ -130,13 +131,19 @@ namespace PersistenceProject.DAO
         // delete itens pedido
         public void DeleteByIdPed(int idPed)
         {
-            // query para deletar todos os itnes de um pedido
-            cmd = new SqlCommand("DELETE ItensPedido WHERE PedidoId = @IdPed", conn);
-            // parametros
-            cmd.Parameters.AddWithValue("@IdPed", idPed);
-            conn.Open(); // abertura da conexão
-            cmd.ExecuteNonQuery(); // execução do comando
-            conn.Close();
+            try
+            {
+                // query para deletar todos os itnes de um pedido
+                cmd = new SqlCommand("DELETE ItensPedido WHERE PedidoId = @IdPed", conn);
+                // parametros
+                cmd.Parameters.AddWithValue("@IdPed", idPed);
+                conn.Open(); // abertura da conexão
+                cmd.ExecuteNonQuery(); // execução do comando
+                conn.Close();
+            } catch(Exception e)
+            {
+                Console.WriteLine("Erro ao deletar itens de pedido!Erro: "+e);
+            }
         }
     }
 }

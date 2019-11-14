@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ViewProject.Itens;
 
 namespace ViewProject
 {
@@ -27,6 +28,16 @@ namespace ViewProject
         private void cadastroDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TelaPedidos().ShowDialog();
+        }
+
+        private void cardapioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TelaGerenciamentoMenu().ShowDialog();
+        }
+
+        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TelaCadastroUsuario().ShowDialog();
         }
     }
 }

@@ -109,6 +109,7 @@ namespace ViewProject
         // itens ped 
         private void dgvItensPed_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            // verificar o que vamos fazer quando clicarmos no item do pedido
         }
 
 
@@ -174,6 +175,15 @@ namespace ViewProject
                 btnProcurarItem.Enabled = chav;
                 txtProcurarItem.Enabled = chav;
             }
+        }
+
+        // limpar campos itens
+        private void ClearControlsItem()
+        {
+            txtIdItem.Clear();
+            txtQtd.Clear();
+            txtValorItens.Clear();
+            cbxStatus.SelectedIndex = -1;
         }
         private void ControlsBasicos(bool chav)
         {
@@ -244,6 +254,8 @@ namespace ViewProject
                 };
                 itensPed.Add(itemPed);
                 CarregaItensPed();
+                ClearControlsItem();
+                ControlsItem(false);
                 btnConfirmar.Enabled = true;
             }
         }

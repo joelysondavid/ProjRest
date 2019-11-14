@@ -123,7 +123,7 @@ namespace PersistenceProject.DAO
                 try
                 {
                     // query
-                    cmd = new SqlCommand("INSERT INTO Usuario1(Nome, Cpf, Login, Senha, Tipo) VALUES(@Nome, @Cpf, @Login, @Senha, @Tipo)", conn);
+                    cmd = new SqlCommand("INSERT INTO Usuario(Nome, Cpf, Login, Senha, Tipo) VALUES(@Nome, @Cpf, @Login, @Senha, @Tipo)", conn);
                     // referenciando os parametros da query
                     cmd.Parameters.AddWithValue("@Nome", usr.Nome);
                     cmd.Parameters.AddWithValue("@Cpf", usr.Cpf);

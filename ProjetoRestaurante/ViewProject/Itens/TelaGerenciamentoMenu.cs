@@ -78,7 +78,7 @@ namespace ViewProject.Itens
             {
                 Item item = new Item
                 {
-                    Id = itemSel != null ? itemSel.Id : null,
+                    Id = (itemSel != null) ? itemSel.Id : null,
                     Descricao = txtDescr.Text,
                     Detalhes = txtDetalhes.Text,
                     Preco = Convert.ToDecimal(txtPreco.Text),

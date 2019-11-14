@@ -184,15 +184,20 @@ namespace PersistenceProject.DAO
         // método delete By id
         public void DeleteById(int idPed)
         {
-            // 1º try
-            // query
-            cmd = new SqlCommand("DELETE Pedidos WHERE Id = @Id", conn);
-            daoItensPed.DeleteByIdPed(idPed); // antes de executar o comando de deletar 
-                                              //// o pedido é necessário deletar os itens dele
-            cmd.Parameters.AddWithValue("@Id", idPed); // referencia do id
-            conn.Open();
-            cmd.ExecuteNonQuery();
-            conn.Close();
+            try
+            {
+                // query
+                cmd = new SqlCommand("DELETE Pedidos WHERE Id = @Id", conn);
+                daoItensPed.DeleteByIdPed(idPed); // antes de executar o comando de deletar 
+                                                  //// o pedido é necessário deletar os itens dele
+                cmd.Parameters.AddWithValue("@Id", idPed); // referencia do id
+                conn.Open();
+                cmd.ExecuteNonQuery();
+                conn.Close();
+            } catch(Exception e)
+            {
+                Console.WriteLine("Erro ao deletar pedido!\nErro: "+e);
+            }
         }
     }
 }

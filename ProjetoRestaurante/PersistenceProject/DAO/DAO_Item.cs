@@ -14,17 +14,16 @@ namespace PersistenceProject.DAO
         private SqlConnection conn = DBConnection.DB_Connection; // variavel que contém a conexão
         IList<Item> itens = new List<Item>(); // lista que conterá nossos itens
 
+        // variavel global para tratar comandos sql
         SqlCommand cmd;
 
         // método save que definirá se é um insert ou 
         public Item Save(Item item)
         {
-            if (item.Id != null)
-            {
-                Console.WriteLine(item.Id);
+            if (item.Id != null)            
                 return Update(item);
-            }
-            else
+            
+                // else
                 return Insert(item);
         }
 
@@ -158,7 +157,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query
-                cmd = new SqlCommand("Update Cardapio SET Descricao=@Descricao, Detalhes=@Detalhes, TempoPrep=@TempoPrep, Preco= @Preco, URLImagem=@URLImagem WHERE Id = @Id", conn);
+                cmd = new SqlCommand("UPDATE Cardapio SET Descricao=@Descricao, Detalhes=@Detalhes, TempoPrep=@TempoPrep, Preco= @Preco, URLImagem=@URLImagem WHERE Id = @Id", conn);
                 // SqlParameters
                 cmd.Parameters.AddWithValue("@Id", item.Id);
                 cmd.Parameters.AddWithValue("@Descricao", item.Descricao);
