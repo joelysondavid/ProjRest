@@ -18,3 +18,4 @@ C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.pdb
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.Itens.TelaGerenciamentoMenu.resources
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaPedidos.resources
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaReservas.resources

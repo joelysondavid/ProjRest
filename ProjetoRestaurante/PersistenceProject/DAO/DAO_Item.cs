@@ -210,7 +210,7 @@ namespace PersistenceProject.DAO
         public void Delete(int id)
         {
             // se o item for nulo é pq não encontrou o item referente ao id buscado
-            if (GetById(id) != null)
+            if (GetById(id)!=null)
             {
                 try
                 {

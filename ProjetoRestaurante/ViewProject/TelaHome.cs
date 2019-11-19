@@ -39,5 +39,10 @@ namespace ViewProject
         {
             new TelaCadastroUsuario().ShowDialog();
         }
+
+        private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TelaReservas().ShowDialog();
+        }
     }
 }

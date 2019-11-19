@@ -53,8 +53,8 @@ namespace ViewProject
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            ClearControls();
-            AlterControls(true);
+            ClearControls(panelPedido); // chama o metodo para limpar os campos
+            AlterControls(true); // altera os campos que devem ser habilitados/desabilitados
         }
 
         private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -88,8 +88,10 @@ namespace ViewProject
         {
             if (pedidoAtual != null)
             {
+                Util.ClearTxt(panelItemPedido);
+                txtIdPedido.Text = pedidoAtual.Id.ToString();
                 ControlsItem(true);
-                cbxStatus.SelectedIndex= 0;
+                cbxStatus.SelectedIndex = 0;
             }
         }
 
@@ -120,6 +122,7 @@ namespace ViewProject
 
             int itemPedId = Convert.ToInt32(dgvItensPed.Rows[e.RowIndex].Cells[0].Value);
             SetCamposItensPed(itemPedId);
+            btnAdicionar.Enabled = false; // desabilita botao adicionar caso eu clique me um item de pedido
             cbxStatus.Enabled = true;
             btnConfirmar.Enabled = true;
         }
@@ -160,7 +163,10 @@ namespace ViewProject
             pedidoAtual.ItensDePedido = itensPed;
             pedidoController.Save(pedidoAtual);
             GetAll();
+            itensPed = pedidoController.GetAllItensPedido(pedidoAtual.Id);
             dgvItensPed.DataSource = pedidoController.GetAllItensPedido(pedidoAtual.Id);
+            itemPedAtual = null;
+            btnConfirmar.Enabled = false; // desabilita confirmar 
         }
 
         private void btnProcurarItem_Click(object sender, EventArgs e)
@@ -190,13 +196,18 @@ namespace ViewProject
         }
 
         // clear controls
-        private void ClearControls()
+        private void ClearControls(Panel panel)
         {
+
+            Util.ClearTxt(panel);
+
             cbxMesa.SelectedIndex = -1;
+            dgvPedidos.ClearSelection();
+            /*
             txtNomeCliente.Clear();
             txtCPF.Clear();
             txtValorTotal.Clear();
-            dgvPedidos.ClearSelection();
+            */
         }
 
         // alter controls
@@ -261,7 +272,7 @@ namespace ViewProject
         // Seta os campos
         private void SetCamposPed(int idPed)
         {
-            ClearControls(); // limpa os campos
+            ClearControls(panelItemPedido); // limpa os campos
             pedidoAtual = pedidoController.GetById(idPed); // obtem o pedido atual
             if (pedidoAtual != null) // caso o pedido atual seja diferente de null
             {

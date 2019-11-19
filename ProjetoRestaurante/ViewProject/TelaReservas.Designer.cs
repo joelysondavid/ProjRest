@@ -1,6 +1,6 @@
 ﻿namespace ViewProject
 {
-    partial class TelaPedidos
+    partial class TelaReservas
     {
         /// <summary>
         /// Required designer variable.
@@ -28,25 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelCardapio = new System.Windows.Forms.Panel();
-            this.btnProcurar = new System.Windows.Forms.Button();
-            this.txtProcurar = new System.Windows.Forms.TextBox();
-            this.btnSalvar = new System.Windows.Forms.Button();
-            this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
-            this.btnVoltar = new System.Windows.Forms.Button();
-            this.panelPedido = new System.Windows.Forms.Panel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtValorTotal = new System.Windows.Forms.TextBox();
-            this.txtCPF = new System.Windows.Forms.TextBox();
-            this.txtNomeCliente = new System.Windows.Forms.TextBox();
-            this.cbxMesa = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.Pedidos = new System.Windows.Forms.Label();
-            this.panelGrid = new System.Windows.Forms.Panel();
-            this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
@@ -71,209 +52,36 @@
             this.ItensPedido = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvItensPed = new System.Windows.Forms.DataGridView();
-            this.btnConfirmar = new System.Windows.Forms.Button();
-            this.panelCardapio.SuspendLayout();
-            this.panelPedido.SuspendLayout();
-            this.panelGrid.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
+            this.panelCardapio = new System.Windows.Forms.Panel();
+            this.btnProcurar = new System.Windows.Forms.Button();
+            this.txtProcurar = new System.Windows.Forms.TextBox();
+            this.btnSalvar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.btnNovo = new System.Windows.Forms.Button();
+            this.btnVoltar = new System.Windows.Forms.Button();
+            this.panelPedido = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtValorTotal = new System.Windows.Forms.TextBox();
+            this.txtCPF = new System.Windows.Forms.TextBox();
+            this.txtNomeCliente = new System.Windows.Forms.TextBox();
+            this.cbxMesa = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.Reservas = new System.Windows.Forms.Label();
+            this.panelGrid = new System.Windows.Forms.Panel();
+            this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.panel1.SuspendLayout();
             this.panelItemPedido.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
             this.panel3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPed)).BeginInit();
+            this.panelCardapio.SuspendLayout();
+            this.panelPedido.SuspendLayout();
+            this.panelGrid.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
             this.SuspendLayout();
-            // 
-            // panelCardapio
-            // 
-            this.panelCardapio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCardapio.Controls.Add(this.btnProcurar);
-            this.panelCardapio.Controls.Add(this.txtProcurar);
-            this.panelCardapio.Controls.Add(this.btnSalvar);
-            this.panelCardapio.Controls.Add(this.btnExcluir);
-            this.panelCardapio.Controls.Add(this.btnNovo);
-            this.panelCardapio.Controls.Add(this.btnVoltar);
-            this.panelCardapio.Controls.Add(this.panelPedido);
-            this.panelCardapio.Controls.Add(this.Pedidos);
-            this.panelCardapio.Controls.Add(this.panelGrid);
-            this.panelCardapio.Location = new System.Drawing.Point(12, 12);
-            this.panelCardapio.Name = "panelCardapio";
-            this.panelCardapio.Size = new System.Drawing.Size(607, 563);
-            this.panelCardapio.TabIndex = 2;
-            // 
-            // btnProcurar
-            // 
-            this.btnProcurar.Location = new System.Drawing.Point(121, 264);
-            this.btnProcurar.Name = "btnProcurar";
-            this.btnProcurar.Size = new System.Drawing.Size(75, 25);
-            this.btnProcurar.TabIndex = 8;
-            this.btnProcurar.Text = "Procurar";
-            this.btnProcurar.UseVisualStyleBackColor = true;
-            // 
-            // txtProcurar
-            // 
-            this.txtProcurar.Location = new System.Drawing.Point(14, 267);
-            this.txtProcurar.Name = "txtProcurar";
-            this.txtProcurar.Size = new System.Drawing.Size(101, 20);
-            this.txtProcurar.TabIndex = 7;
-            // 
-            // btnSalvar
-            // 
-            this.btnSalvar.Enabled = false;
-            this.btnSalvar.Location = new System.Drawing.Point(515, 262);
-            this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(75, 25);
-            this.btnSalvar.TabIndex = 6;
-            this.btnSalvar.Text = "Salvar";
-            this.btnSalvar.UseVisualStyleBackColor = true;
-            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // btnExcluir
-            // 
-            this.btnExcluir.Enabled = false;
-            this.btnExcluir.Location = new System.Drawing.Point(434, 262);
-            this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 25);
-            this.btnExcluir.TabIndex = 5;
-            this.btnExcluir.Text = "Excluir";
-            this.btnExcluir.UseVisualStyleBackColor = true;
-            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Location = new System.Drawing.Point(353, 262);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(75, 25);
-            this.btnNovo.TabIndex = 4;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
-            // btnVoltar
-            // 
-            this.btnVoltar.Location = new System.Drawing.Point(272, 262);
-            this.btnVoltar.Name = "btnVoltar";
-            this.btnVoltar.Size = new System.Drawing.Size(75, 25);
-            this.btnVoltar.TabIndex = 3;
-            this.btnVoltar.Text = "Voltar";
-            this.btnVoltar.UseVisualStyleBackColor = true;
-            this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
-            // 
-            // panelPedido
-            // 
-            this.panelPedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPedido.Controls.Add(this.label4);
-            this.panelPedido.Controls.Add(this.label3);
-            this.panelPedido.Controls.Add(this.label1);
-            this.panelPedido.Controls.Add(this.txtValorTotal);
-            this.panelPedido.Controls.Add(this.txtCPF);
-            this.panelPedido.Controls.Add(this.txtNomeCliente);
-            this.panelPedido.Controls.Add(this.cbxMesa);
-            this.panelPedido.Controls.Add(this.label2);
-            this.panelPedido.Location = new System.Drawing.Point(3, 25);
-            this.panelPedido.Name = "panelPedido";
-            this.panelPedido.Size = new System.Drawing.Size(599, 231);
-            this.panelPedido.TabIndex = 2;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(11, 143);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Valor total R$:";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 95);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(65, 13);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Cliente CPF:";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(42, 13);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Cliente:";
-            // 
-            // txtValorTotal
-            // 
-            this.txtValorTotal.Enabled = false;
-            this.txtValorTotal.Location = new System.Drawing.Point(117, 140);
-            this.txtValorTotal.Name = "txtValorTotal";
-            this.txtValorTotal.Size = new System.Drawing.Size(121, 20);
-            this.txtValorTotal.TabIndex = 4;
-            // 
-            // txtCPF
-            // 
-            this.txtCPF.Enabled = false;
-            this.txtCPF.Location = new System.Drawing.Point(117, 88);
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(121, 20);
-            this.txtCPF.TabIndex = 3;
-            // 
-            // txtNomeCliente
-            // 
-            this.txtNomeCliente.Enabled = false;
-            this.txtNomeCliente.Location = new System.Drawing.Point(117, 47);
-            this.txtNomeCliente.Name = "txtNomeCliente";
-            this.txtNomeCliente.Size = new System.Drawing.Size(121, 20);
-            this.txtNomeCliente.TabIndex = 2;
-            // 
-            // cbxMesa
-            // 
-            this.cbxMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbxMesa.Enabled = false;
-            this.cbxMesa.FormattingEnabled = true;
-            this.cbxMesa.Location = new System.Drawing.Point(117, 6);
-            this.cbxMesa.Name = "cbxMesa";
-            this.cbxMesa.Size = new System.Drawing.Size(121, 21);
-            this.cbxMesa.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 9);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Nº Mesa:";
-            // 
-            // Pedidos
-            // 
-            this.Pedidos.AutoSize = true;
-            this.Pedidos.Location = new System.Drawing.Point(270, 0);
-            this.Pedidos.Name = "Pedidos";
-            this.Pedidos.Size = new System.Drawing.Size(45, 13);
-            this.Pedidos.TabIndex = 1;
-            this.Pedidos.Text = "Pedidos";
-            // 
-            // panelGrid
-            // 
-            this.panelGrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelGrid.Controls.Add(this.dgvPedidos);
-            this.panelGrid.Location = new System.Drawing.Point(13, 297);
-            this.panelGrid.Name = "panelGrid";
-            this.panelGrid.Size = new System.Drawing.Size(577, 206);
-            this.panelGrid.TabIndex = 0;
-            // 
-            // dgvPedidos
-            // 
-            this.dgvPedidos.AllowUserToAddRows = false;
-            this.dgvPedidos.AllowUserToDeleteRows = false;
-            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPedidos.Location = new System.Drawing.Point(4, 3);
-            this.dgvPedidos.Name = "dgvPedidos";
-            this.dgvPedidos.ReadOnly = true;
-            this.dgvPedidos.Size = new System.Drawing.Size(568, 198);
-            this.dgvPedidos.TabIndex = 0;
-            this.dgvPedidos.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPedidos_CellClick);
             // 
             // panel1
             // 
@@ -285,10 +93,10 @@
             this.panel1.Controls.Add(this.panelItemPedido);
             this.panel1.Controls.Add(this.ItensPedido);
             this.panel1.Controls.Add(this.panel3);
-            this.panel1.Location = new System.Drawing.Point(706, 13);
+            this.panel1.Location = new System.Drawing.Point(705, 25);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(607, 563);
-            this.panel1.TabIndex = 9;
+            this.panel1.TabIndex = 11;
             // 
             // btnAdicionar
             // 
@@ -299,7 +107,6 @@
             this.btnAdicionar.TabIndex = 6;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
-            this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
             // btnRemoverItem
             // 
@@ -320,7 +127,6 @@
             this.btnNovoItem.TabIndex = 4;
             this.btnNovoItem.Text = "Novo";
             this.btnNovoItem.UseVisualStyleBackColor = true;
-            this.btnNovoItem.Click += new System.EventHandler(this.btnNovoItem_Click);
             // 
             // btnCancelarItem
             // 
@@ -331,7 +137,6 @@
             this.btnCancelarItem.TabIndex = 3;
             this.btnCancelarItem.Text = "Cancelar";
             this.btnCancelarItem.UseVisualStyleBackColor = true;
-            this.btnCancelarItem.Click += new System.EventHandler(this.btnCancelarItem_Click);
             // 
             // panelItemPedido
             // 
@@ -413,7 +218,6 @@
             this.btnProcurarItem.TabIndex = 8;
             this.btnProcurarItem.Text = "Procurar";
             this.btnProcurarItem.UseVisualStyleBackColor = true;
-            this.btnProcurarItem.Click += new System.EventHandler(this.btnProcurarItem_Click);
             // 
             // panel4
             // 
@@ -435,7 +239,6 @@
             this.dgvItens.Size = new System.Drawing.Size(229, 152);
             this.dgvItens.TabIndex = 0;
             this.dgvItens.Visible = false;
-            this.dgvItens.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItens_CellClick);
             // 
             // label5
             // 
@@ -525,37 +328,202 @@
             this.dgvItensPed.ReadOnly = true;
             this.dgvItensPed.Size = new System.Drawing.Size(568, 198);
             this.dgvItensPed.TabIndex = 0;
-            this.dgvItensPed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItensPed_CellClick);
             // 
-            // btnConfirmar
+            // panelCardapio
             // 
-            this.btnConfirmar.Enabled = false;
-            this.btnConfirmar.Location = new System.Drawing.Point(1171, 598);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(142, 25);
-            this.btnConfirmar.TabIndex = 7;
-            this.btnConfirmar.Text = "Confirmar Pedido";
-            this.btnConfirmar.UseVisualStyleBackColor = true;
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
+            this.panelCardapio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelCardapio.Controls.Add(this.btnProcurar);
+            this.panelCardapio.Controls.Add(this.txtProcurar);
+            this.panelCardapio.Controls.Add(this.btnSalvar);
+            this.panelCardapio.Controls.Add(this.btnExcluir);
+            this.panelCardapio.Controls.Add(this.btnNovo);
+            this.panelCardapio.Controls.Add(this.btnVoltar);
+            this.panelCardapio.Controls.Add(this.panelPedido);
+            this.panelCardapio.Controls.Add(this.Reservas);
+            this.panelCardapio.Controls.Add(this.panelGrid);
+            this.panelCardapio.Location = new System.Drawing.Point(11, 24);
+            this.panelCardapio.Name = "panelCardapio";
+            this.panelCardapio.Size = new System.Drawing.Size(607, 563);
+            this.panelCardapio.TabIndex = 10;
             // 
-            // TelaPedidos
+            // btnProcurar
+            // 
+            this.btnProcurar.Location = new System.Drawing.Point(121, 264);
+            this.btnProcurar.Name = "btnProcurar";
+            this.btnProcurar.Size = new System.Drawing.Size(75, 25);
+            this.btnProcurar.TabIndex = 8;
+            this.btnProcurar.Text = "Procurar";
+            this.btnProcurar.UseVisualStyleBackColor = true;
+            // 
+            // txtProcurar
+            // 
+            this.txtProcurar.Location = new System.Drawing.Point(14, 267);
+            this.txtProcurar.Name = "txtProcurar";
+            this.txtProcurar.Size = new System.Drawing.Size(101, 20);
+            this.txtProcurar.TabIndex = 7;
+            // 
+            // btnSalvar
+            // 
+            this.btnSalvar.Enabled = false;
+            this.btnSalvar.Location = new System.Drawing.Point(515, 262);
+            this.btnSalvar.Name = "btnSalvar";
+            this.btnSalvar.Size = new System.Drawing.Size(75, 25);
+            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.Text = "Salvar";
+            this.btnSalvar.UseVisualStyleBackColor = true;
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Enabled = false;
+            this.btnExcluir.Location = new System.Drawing.Point(434, 262);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 25);
+            this.btnExcluir.TabIndex = 5;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(353, 262);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(75, 25);
+            this.btnNovo.TabIndex = 4;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            // 
+            // btnVoltar
+            // 
+            this.btnVoltar.Location = new System.Drawing.Point(272, 262);
+            this.btnVoltar.Name = "btnVoltar";
+            this.btnVoltar.Size = new System.Drawing.Size(75, 25);
+            this.btnVoltar.TabIndex = 3;
+            this.btnVoltar.Text = "Voltar";
+            this.btnVoltar.UseVisualStyleBackColor = true;
+            // 
+            // panelPedido
+            // 
+            this.panelPedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPedido.Controls.Add(this.label4);
+            this.panelPedido.Controls.Add(this.label3);
+            this.panelPedido.Controls.Add(this.label1);
+            this.panelPedido.Controls.Add(this.txtValorTotal);
+            this.panelPedido.Controls.Add(this.txtCPF);
+            this.panelPedido.Controls.Add(this.txtNomeCliente);
+            this.panelPedido.Controls.Add(this.cbxMesa);
+            this.panelPedido.Controls.Add(this.label2);
+            this.panelPedido.Location = new System.Drawing.Point(3, 25);
+            this.panelPedido.Name = "panelPedido";
+            this.panelPedido.Size = new System.Drawing.Size(599, 231);
+            this.panelPedido.TabIndex = 2;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(11, 143);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 13);
+            this.label4.TabIndex = 7;
+            this.label4.Text = "Valor total R$:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(11, 95);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(65, 13);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "Cliente CPF:";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(11, 47);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(42, 13);
+            this.label1.TabIndex = 5;
+            this.label1.Text = "Cliente:";
+            // 
+            // txtValorTotal
+            // 
+            this.txtValorTotal.Enabled = false;
+            this.txtValorTotal.Location = new System.Drawing.Point(117, 140);
+            this.txtValorTotal.Name = "txtValorTotal";
+            this.txtValorTotal.Size = new System.Drawing.Size(121, 20);
+            this.txtValorTotal.TabIndex = 4;
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.Enabled = false;
+            this.txtCPF.Location = new System.Drawing.Point(117, 88);
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(121, 20);
+            this.txtCPF.TabIndex = 3;
+            // 
+            // txtNomeCliente
+            // 
+            this.txtNomeCliente.Enabled = false;
+            this.txtNomeCliente.Location = new System.Drawing.Point(117, 47);
+            this.txtNomeCliente.Name = "txtNomeCliente";
+            this.txtNomeCliente.Size = new System.Drawing.Size(121, 20);
+            this.txtNomeCliente.TabIndex = 2;
+            // 
+            // cbxMesa
+            // 
+            this.cbxMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxMesa.Enabled = false;
+            this.cbxMesa.FormattingEnabled = true;
+            this.cbxMesa.Location = new System.Drawing.Point(117, 6);
+            this.cbxMesa.Name = "cbxMesa";
+            this.cbxMesa.Size = new System.Drawing.Size(121, 21);
+            this.cbxMesa.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 9);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Nº Mesa:";
+            // 
+            // Reservas
+            // 
+            this.Reservas.AutoSize = true;
+            this.Reservas.Location = new System.Drawing.Point(270, 0);
+            this.Reservas.Name = "Reservas";
+            this.Reservas.Size = new System.Drawing.Size(45, 13);
+            this.Reservas.TabIndex = 1;
+            this.Reservas.Text = "Pedidos";
+            // 
+            // panelGrid
+            // 
+            this.panelGrid.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGrid.Controls.Add(this.dgvPedidos);
+            this.panelGrid.Location = new System.Drawing.Point(13, 297);
+            this.panelGrid.Name = "panelGrid";
+            this.panelGrid.Size = new System.Drawing.Size(577, 206);
+            this.panelGrid.TabIndex = 0;
+            // 
+            // dgvPedidos
+            // 
+            this.dgvPedidos.AllowUserToAddRows = false;
+            this.dgvPedidos.AllowUserToDeleteRows = false;
+            this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.Location = new System.Drawing.Point(4, 3);
+            this.dgvPedidos.Name = "dgvPedidos";
+            this.dgvPedidos.ReadOnly = true;
+            this.dgvPedidos.Size = new System.Drawing.Size(568, 198);
+            this.dgvPedidos.TabIndex = 0;
+            // 
+            // TelaReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1335, 649);
-            this.Controls.Add(this.btnConfirmar);
+            this.ClientSize = new System.Drawing.Size(1324, 635);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelCardapio);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "TelaPedidos";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "TelaNovoPedido";
-            this.panelCardapio.ResumeLayout(false);
-            this.panelCardapio.PerformLayout();
-            this.panelPedido.ResumeLayout(false);
-            this.panelPedido.PerformLayout();
-            this.panelGrid.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
+            this.Name = "TelaReservas";
+            this.Text = "TelaReservas";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panelItemPedido.ResumeLayout(false);
@@ -564,12 +532,42 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).EndInit();
             this.panel3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPed)).EndInit();
+            this.panelCardapio.ResumeLayout(false);
+            this.panelCardapio.PerformLayout();
+            this.panelPedido.ResumeLayout(false);
+            this.panelPedido.PerformLayout();
+            this.panelGrid.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnAdicionar;
+        private System.Windows.Forms.Button btnRemoverItem;
+        private System.Windows.Forms.Button btnNovoItem;
+        private System.Windows.Forms.Button btnCancelarItem;
+        private System.Windows.Forms.Panel panelItemPedido;
+        private System.Windows.Forms.ComboBox cbxStatus;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtValorItens;
+        private System.Windows.Forms.TextBox txtProcurarItem;
+        private System.Windows.Forms.Button btnProcurarItem;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.DataGridView dgvItens;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtQtd;
+        private System.Windows.Forms.TextBox txtIdItem;
+        private System.Windows.Forms.TextBox txtIdPedido;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label ItensPedido;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dgvItensPed;
         private System.Windows.Forms.Panel panelCardapio;
         private System.Windows.Forms.Button btnProcurar;
         private System.Windows.Forms.TextBox txtProcurar;
@@ -586,33 +584,8 @@
         private System.Windows.Forms.TextBox txtNomeCliente;
         private System.Windows.Forms.ComboBox cbxMesa;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label Pedidos;
+        private System.Windows.Forms.Label Reservas;
         private System.Windows.Forms.Panel panelGrid;
         private System.Windows.Forms.DataGridView dgvPedidos;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Button btnProcurarItem;
-        private System.Windows.Forms.TextBox txtProcurarItem;
-        private System.Windows.Forms.Button btnAdicionar;
-        private System.Windows.Forms.Button btnRemoverItem;
-        private System.Windows.Forms.Button btnNovoItem;
-        private System.Windows.Forms.Button btnCancelarItem;
-        private System.Windows.Forms.Panel panelItemPedido;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtQtd;
-        private System.Windows.Forms.TextBox txtIdItem;
-        private System.Windows.Forms.TextBox txtIdPedido;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label ItensPedido;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.DataGridView dgvItensPed;
-        private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.DataGridView dgvItens;
-        private System.Windows.Forms.ComboBox cbxStatus;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox txtValorItens;
-        private System.Windows.Forms.Button btnConfirmar;
     }
 }

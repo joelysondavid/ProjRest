@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 
 namespace ModelProject
 {
-    class Reserva
+    public class Reserva
     {
         public int? Id { get; set; }
         public string NomeCliente { get; set; }
         public string CpfCliente { get; set; }
         public string NumMesa { get; set; }
+        public DateTime ReservaInicio { get; set; }
 
         public Reserva()
         {

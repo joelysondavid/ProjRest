@@ -78,6 +78,13 @@
     <Compile Include="TelaPedidos.Designer.cs">
       <DependentUpon>TelaPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="TelaReservas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaReservas.Designer.cs">
+      <DependentUpon>TelaReservas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\Util.cs" />
     <EmbeddedResource Include="Itens\TelaGerenciamentoMenu.resx">
       <DependentUpon>TelaGerenciamentoMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -101,6 +108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="TelaPedidos.resx">
       <DependentUpon>TelaPedidos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaReservas.resx">
+      <DependentUpon>TelaReservas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

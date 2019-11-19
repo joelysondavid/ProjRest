@@ -65,7 +65,7 @@ CREATE TABLE ItensPedido(
 
 drop table ItensPedido;
 
-select * from ItensPedido;
+select * from ItensPedido order by id desc;
 
 -- TABELA MESA Que será usada para gerenciamento de mesas e reservas de mesas
 CREATE TABLE Mesas(
@@ -92,7 +92,9 @@ CREATE TABLE Reservas(
 	FOREIGN KEY (NumMesa) REFERENCES Mesas(Numero)
 );
 
+SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio FROM Reservas;
 
+select * from Reservas order by id desc;
 
 SELECT * FROM Reservas WHERE ReservaInicio < DATEADD(HOUR, -2, getdate());
 
