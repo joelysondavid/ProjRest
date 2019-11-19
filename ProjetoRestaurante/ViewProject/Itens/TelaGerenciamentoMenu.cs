@@ -197,5 +197,10 @@ namespace ViewProject.Itens
             btnSalvar.Enabled = chav;
             btnImagem.Enabled = chav;
         }
+
+        private void btnProcurar_Click(object sender, EventArgs e)
+        {
+            dgvItens.DataSource = itemController.GetItemsByDescr("%" + txtProcurar.Text + "%");
+        }
     }
 }

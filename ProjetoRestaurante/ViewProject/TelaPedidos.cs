@@ -19,6 +19,7 @@ namespace ViewProject
         ItemController itemController;
         Pedido pedidoAtual;
         IList<ItemPedido> itensPed = new List<ItemPedido>();
+        ItemPedido itemPedAtual;
         public TelaPedidos()
         {
             InitializeComponent();
@@ -88,20 +89,21 @@ namespace ViewProject
             if (pedidoAtual != null)
             {
                 ControlsItem(true);
+                cbxStatus.SelectedIndex= 0;
             }
         }
-               
+
         // excluir pedido
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             if (pedidoAtual.Id != null)
             {
-                if(DialogResult.Yes == MessageBox.Show("Deseja realmente excluir o pedido?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
+                if (DialogResult.Yes == MessageBox.Show("Deseja realmente excluir o pedido?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
                 {
                     int idPed = (int)pedidoAtual.Id;
                     pedidoController.DeleteById(idPed);
                     GetAll();
-                }              
+                }
 
             }
         }
@@ -109,7 +111,68 @@ namespace ViewProject
         // itens ped 
         private void dgvItensPed_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            // verificar o que vamos fazer quando clicarmos no item do pedido
+            int qtdL = dgvItensPed.Rows.Count; // qtd linhas
+            int qtdC = dgvItensPed.Columns.Count; // qtd colunas
+            // se o indice da coluna ou de linha estiver invalido retornara
+            if (e.RowIndex < 0 || e.ColumnIndex < 0 || e.RowIndex > qtdL || e.ColumnIndex > qtdC) return;
+
+            // os itens de pedidos serão constantemente alterados
+
+            int itemPedId = Convert.ToInt32(dgvItensPed.Rows[e.RowIndex].Cells[0].Value);
+            SetCamposItensPed(itemPedId);
+            cbxStatus.Enabled = true;
+            btnConfirmar.Enabled = true;
+        }
+
+        // seta os campos
+        private void SetCamposItensPed(int itemPedId)
+        {
+            itemPedAtual = pedidoController.GetItemById(itemPedId);
+            if (itemPedAtual != null)
+            {
+                txtIdItem.Text = itemPedAtual.ItemId.ToString();
+                txtQtd.Text = itemPedAtual.Quantidade.ToString();
+                txtValorItens.Text = itemPedAtual.ValorItens.ToString();
+                cbxStatus.SelectedItem = itemPedAtual.Status;
+            }
+        }
+
+        // carrega dgvItensPed
+        private void CarregaItensPed()
+        {
+            dgvItensPed.DataSource = 0;
+            dgvItensPed.DataSource = itensPed;
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            // verifica se o pedido atual é nulo
+            if (itemPedAtual != null)
+            {
+                for (int i = 0; i < itensPed.Count; i++)
+                {
+                    if (itensPed[i].Id == itemPedAtual.Id)
+                    {
+                        itensPed[i].Status = cbxStatus.SelectedItem.ToString();
+                    }
+                }
+            }
+            pedidoAtual.ItensDePedido = itensPed;
+            pedidoController.Save(pedidoAtual);
+            GetAll();
+            dgvItensPed.DataSource = pedidoController.GetAllItensPedido(pedidoAtual.Id);
+        }
+
+        private void btnProcurarItem_Click(object sender, EventArgs e)
+        {
+            dgvItens.DataSource = itemController.GetItemsByDescr("%" + txtProcurarItem.Text + "%");
+        }
+
+        private void btnCancelarItem_Click(object sender, EventArgs e)
+        {
+            ControlsItem(false);
+            ClearControlsItem();
+            btnConfirmar.Enabled = false;
         }
 
 
@@ -118,13 +181,12 @@ namespace ViewProject
         // metodo get all
         private void GetAll()
         {
-            dgvPedidos.DataSource = 0;
             dgvItens.DataSource = null;
             dgvPedidos.DataSource = pedidoController.GetAll();
-            dgvItens.DataSource = 0;
             dgvItens.DataSource = itemController.GetAll();
             cbxMesa.DataSource = mesaController.GetAll();
-            cbxMesa.SelectedIndex = -1;
+            if (pedidoAtual == null)
+                cbxMesa.SelectedIndex = -1;
         }
 
         // clear controls
@@ -174,6 +236,11 @@ namespace ViewProject
                 dgvItens.Visible = chav;
                 btnProcurarItem.Enabled = chav;
                 txtProcurarItem.Enabled = chav;
+                // caso eu click para adicionar um item a um pedido devo desabilitar a configiuração dos pedidos
+                cbxMesa.Enabled = !chav;
+                txtNomeCliente.Enabled = !chav;
+                txtCPF.Enabled = !chav;
+                dgvPedidos.Enabled = !chav;
             }
         }
 
@@ -198,7 +265,9 @@ namespace ViewProject
             pedidoAtual = pedidoController.GetById(idPed); // obtem o pedido atual
             if (pedidoAtual != null) // caso o pedido atual seja diferente de null
             {
-                cbxMesa.SelectedItem = mesaController.GetByNum(pedidoAtual.NumMesa); // verificar 
+                IList<Mesa> mesas = mesaController.GetAll();
+                cbxMesa.SelectedItem = mesaController.GetByNum(pedidoAtual.NumMesa);
+                // mesaController.GetByNum(pedidoAtual.NumMesa); // verificar 
                 txtNomeCliente.Text = pedidoAtual.NomeCliente;
                 txtCPF.Text = pedidoAtual.CpfCliente;
                 txtValorTotal.Text = pedidoAtual.ValorTotal.ToString();
@@ -258,21 +327,6 @@ namespace ViewProject
                 ControlsItem(false);
                 btnConfirmar.Enabled = true;
             }
-        }
-
-        // carrega dgvItensPed
-        private void CarregaItensPed()
-        {
-            dgvItensPed.DataSource = 0;
-            dgvItensPed.DataSource = itensPed;
-        }
-
-        private void btnConfirmar_Click(object sender, EventArgs e)
-        {
-            pedidoAtual.ItensDePedido = itensPed;
-            pedidoController.Save(pedidoAtual);
-            GetAll();
-            ClearControls();
         }
     }
 }

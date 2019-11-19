@@ -29,9 +29,9 @@ CREATE TABLE Cardapio (
 ); 
 
 select * from Cardapio;
-nome
 delete cardapio where id=11
 
+SELECT Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio WHERE Descricao LIKE '%%'
 select top 1 Id, Descricao from Cardapio order by Id desc;
 SELECT TOP 1 Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio ORDER BY Id DESC;
 

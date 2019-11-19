@@ -331,6 +331,7 @@
             this.btnCancelarItem.TabIndex = 3;
             this.btnCancelarItem.Text = "Voltar";
             this.btnCancelarItem.UseVisualStyleBackColor = true;
+            this.btnCancelarItem.Click += new System.EventHandler(this.btnCancelarItem_Click);
             // 
             // panel2
             // 
@@ -412,6 +413,7 @@
             this.btnProcurarItem.TabIndex = 8;
             this.btnProcurarItem.Text = "Procurar";
             this.btnProcurarItem.UseVisualStyleBackColor = true;
+            this.btnProcurarItem.Click += new System.EventHandler(this.btnProcurarItem_Click);
             // 
             // panel4
             // 

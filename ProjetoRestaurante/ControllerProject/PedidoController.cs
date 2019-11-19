@@ -20,7 +20,7 @@ namespace ControllerProject
         }
 
         // GET: ALL Itens de Pedido
-        public IList<ItemPedido> GetAllItensPedido(int pedidoId)
+        public IList<ItemPedido> GetAllItensPedido(int? pedidoId)
         {
             return daoItensPed.GetByPed(pedidoId);
         }
@@ -29,6 +29,11 @@ namespace ControllerProject
         public Pedido GetById(int id)
         {
             return daoPedido.GetById(id);
+        }
+        // GET: Item By Id
+        public ItemPedido GetItemById(int id)
+        {
+            return daoItensPed.GetById(id);
         }
 
         

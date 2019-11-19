@@ -35,5 +35,11 @@ namespace ControllerProject
         {
             daoItem.Delete(id);
         }
+
+        // método get Items by descri
+        public IList<Item> GetItemsByDescr(string descri)
+        {
+            return daoItem.GetByDescricao(descri);
+        }
     }
 }

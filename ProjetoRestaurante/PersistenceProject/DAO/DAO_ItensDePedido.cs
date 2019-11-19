@@ -48,6 +48,40 @@ namespace PersistenceProject.DAO
             }
             return itensPed;
         }
+
+        public ItemPedido GetById(int id)
+        {
+            ItemPedido itemPed = null;
+            try
+            {
+
+                // comando seleciona todos os itens a aprtir do pedido
+                cmd = new SqlCommand("SELECT Id, PedidoId, ItemId, Quantidade, ValorItens, Status FROM ItensPedido WHERE Id = @Id", conn);
+                cmd.Parameters.AddWithValue("@Id", id); // referencia com parametro
+                conn.Open(); // abertura da conexão
+                using (SqlDataReader reader = cmd.ExecuteReader()) // executa o comando
+                {
+                    while (reader.Read()) // enquanto houver itens de pedido
+                    {
+                        itemPed = new ItemPedido
+                        {
+                            Id = reader.GetInt32(0),
+                            PedidoId = reader.GetInt32(1),
+                            ItemId = reader.GetInt32(2),
+                            Quantidade = reader.GetInt32(3),
+                            ValorItens = reader.GetDecimal(4),
+                            Status = reader.GetString(5)
+                        };
+                    }
+                }
+                conn.Close(); // após execução encerra a conexão
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao buscar itens de pedido!\nErro: " + e);
+            }
+            return itemPed;
+        }
         // GET ALL
 
         // INSERT ItensPedido

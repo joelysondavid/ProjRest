@@ -20,11 +20,11 @@ namespace PersistenceProject.DAO
         // método save que definirá se é um insert ou 
         public Item Save(Item item)
         {
-            if (item.Id != null)            
+            if (item.Id != null)
                 return Update(item);
-            
-                // else
-                return Insert(item);
+
+            // else
+            return Insert(item);
         }
 
         // GetAll Itens
@@ -92,6 +92,36 @@ namespace PersistenceProject.DAO
                 Console.WriteLine("Erro ao obter item por id!\nErro: " + e);
             }
             return item;
+        }
+
+        // GET: ByDescr
+        public IList<Item> GetByDescricao(string descricao)
+        {
+            // lista dos itens 
+            IList<Item> items = new List<Item>();
+            // comando
+            cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio WHERE Descricao LIKE @Descricao", conn);
+            cmd.Parameters.AddWithValue("@Descricao", descricao); // sql param
+            conn.Open(); // abertura da conexao
+            using(SqlDataReader reader = cmd.ExecuteReader()) // executa um comando e passa para uma sqlreader
+            {
+                // enquanto a query for executada ou seja enquanto eu tiver dados relacionados a minha busca
+                while (reader.Read())
+                {
+                    // adiciono um novo item na lista
+                    items.Add(new Item
+                    {
+                        Id=reader.GetInt32(0),
+                        Descricao=reader.GetString(1),
+                        Detalhes=reader.GetString(2),
+                        TempoPreparo=reader.GetInt32(3),
+                        Preco=reader.GetDecimal(4),
+                        URLImagem=reader.GetString(5)
+                    });
+                }
+            }
+            conn.Close(); // encerra a conexao
+            return items; // retorna os itens
         }
 
         // método get last item
@@ -190,9 +220,10 @@ namespace PersistenceProject.DAO
                     conn.Open(); // abre a conexão
                     cmd.ExecuteNonQuery(); // executa o comando de deleção
                     conn.Close(); // encerra a conexão
-                } catch(Exception e)
+                }
+                catch (Exception e)
                 {
-                    Console.WriteLine("Erro ao deletar por Id!\nErro: "+e);
+                    Console.WriteLine("Erro ao deletar por Id!\nErro: " + e);
                 }
             }
         }
