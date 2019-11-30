@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.panelCardapio = new System.Windows.Forms.Panel();
+            this.panelGeral = new System.Windows.Forms.Panel();
             this.btnProcurar = new System.Windows.Forms.Button();
             this.txtProcurar = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
-            this.panelPedido = new System.Windows.Forms.Panel();
+            this.panelReserva = new System.Windows.Forms.Panel();
+            this.txtDescricaoMesa = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.mtbDataHora = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -50,30 +52,28 @@
             this.dgvReservas = new System.Windows.Forms.DataGridView();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtDescricaoMesa = new System.Windows.Forms.TextBox();
-            this.panelCardapio.SuspendLayout();
-            this.panelPedido.SuspendLayout();
+            this.panelGeral.SuspendLayout();
+            this.panelReserva.SuspendLayout();
             this.panelGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelCardapio
+            // panelGeral
             // 
-            this.panelCardapio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCardapio.Controls.Add(this.btnProcurar);
-            this.panelCardapio.Controls.Add(this.txtProcurar);
-            this.panelCardapio.Controls.Add(this.btnSalvar);
-            this.panelCardapio.Controls.Add(this.btnExcluir);
-            this.panelCardapio.Controls.Add(this.btnLimpar);
-            this.panelCardapio.Controls.Add(this.btnVoltar);
-            this.panelCardapio.Controls.Add(this.panelPedido);
-            this.panelCardapio.Controls.Add(this.Reservas);
-            this.panelCardapio.Controls.Add(this.panelGrid);
-            this.panelCardapio.Location = new System.Drawing.Point(11, 24);
-            this.panelCardapio.Name = "panelCardapio";
-            this.panelCardapio.Size = new System.Drawing.Size(607, 563);
-            this.panelCardapio.TabIndex = 10;
+            this.panelGeral.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelGeral.Controls.Add(this.btnProcurar);
+            this.panelGeral.Controls.Add(this.txtProcurar);
+            this.panelGeral.Controls.Add(this.btnSalvar);
+            this.panelGeral.Controls.Add(this.btnExcluir);
+            this.panelGeral.Controls.Add(this.btnLimpar);
+            this.panelGeral.Controls.Add(this.btnVoltar);
+            this.panelGeral.Controls.Add(this.panelReserva);
+            this.panelGeral.Controls.Add(this.Reservas);
+            this.panelGeral.Controls.Add(this.panelGrid);
+            this.panelGeral.Location = new System.Drawing.Point(11, 24);
+            this.panelGeral.Name = "panelGeral";
+            this.panelGeral.Size = new System.Drawing.Size(607, 563);
+            this.panelGeral.TabIndex = 10;
             // 
             // btnProcurar
             // 
@@ -128,23 +128,41 @@
             this.btnVoltar.UseVisualStyleBackColor = true;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
             // 
-            // panelPedido
+            // panelReserva
             // 
-            this.panelPedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelPedido.Controls.Add(this.txtDescricaoMesa);
-            this.panelPedido.Controls.Add(this.label5);
-            this.panelPedido.Controls.Add(this.mtbDataHora);
-            this.panelPedido.Controls.Add(this.label4);
-            this.panelPedido.Controls.Add(this.label3);
-            this.panelPedido.Controls.Add(this.label1);
-            this.panelPedido.Controls.Add(this.txtCPF);
-            this.panelPedido.Controls.Add(this.txtNomeCliente);
-            this.panelPedido.Controls.Add(this.cbxMesa);
-            this.panelPedido.Controls.Add(this.label2);
-            this.panelPedido.Location = new System.Drawing.Point(3, 25);
-            this.panelPedido.Name = "panelPedido";
-            this.panelPedido.Size = new System.Drawing.Size(599, 231);
-            this.panelPedido.TabIndex = 2;
+            this.panelReserva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelReserva.Controls.Add(this.txtDescricaoMesa);
+            this.panelReserva.Controls.Add(this.label5);
+            this.panelReserva.Controls.Add(this.mtbDataHora);
+            this.panelReserva.Controls.Add(this.label4);
+            this.panelReserva.Controls.Add(this.label3);
+            this.panelReserva.Controls.Add(this.label1);
+            this.panelReserva.Controls.Add(this.txtCPF);
+            this.panelReserva.Controls.Add(this.txtNomeCliente);
+            this.panelReserva.Controls.Add(this.cbxMesa);
+            this.panelReserva.Controls.Add(this.label2);
+            this.panelReserva.Location = new System.Drawing.Point(3, 25);
+            this.panelReserva.Name = "panelReserva";
+            this.panelReserva.Size = new System.Drawing.Size(599, 231);
+            this.panelReserva.TabIndex = 2;
+            // 
+            // txtDescricaoMesa
+            // 
+            this.txtDescricaoMesa.Location = new System.Drawing.Point(284, 47);
+            this.txtDescricaoMesa.Multiline = true;
+            this.txtDescricaoMesa.Name = "txtDescricaoMesa";
+            this.txtDescricaoMesa.ReadOnly = true;
+            this.txtDescricaoMesa.Size = new System.Drawing.Size(301, 168);
+            this.txtDescricaoMesa.TabIndex = 14;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(283, 22);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(102, 13);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Descrição da Mesa:";
             // 
             // mtbDataHora
             // 
@@ -255,38 +273,20 @@
             this.btnFinalizar.Text = "Finalizar Reserva";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(283, 22);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 13);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Descrição da Mesa:";
-            // 
-            // txtDescricaoMesa
-            // 
-            this.txtDescricaoMesa.Location = new System.Drawing.Point(284, 47);
-            this.txtDescricaoMesa.Multiline = true;
-            this.txtDescricaoMesa.Name = "txtDescricaoMesa";
-            this.txtDescricaoMesa.ReadOnly = true;
-            this.txtDescricaoMesa.Size = new System.Drawing.Size(301, 168);
-            this.txtDescricaoMesa.TabIndex = 14;
-            // 
             // TelaReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(628, 635);
             this.Controls.Add(this.btnFinalizar);
-            this.Controls.Add(this.panelCardapio);
+            this.Controls.Add(this.panelGeral);
             this.Name = "TelaReservas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaReservas";
-            this.panelCardapio.ResumeLayout(false);
-            this.panelCardapio.PerformLayout();
-            this.panelPedido.ResumeLayout(false);
-            this.panelPedido.PerformLayout();
+            this.panelGeral.ResumeLayout(false);
+            this.panelGeral.PerformLayout();
+            this.panelReserva.ResumeLayout(false);
+            this.panelReserva.PerformLayout();
             this.panelGrid.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvReservas)).EndInit();
             this.ResumeLayout(false);
@@ -294,14 +294,14 @@
         }
 
         #endregion
-        private System.Windows.Forms.Panel panelCardapio;
+        private System.Windows.Forms.Panel panelGeral;
         private System.Windows.Forms.Button btnProcurar;
         private System.Windows.Forms.TextBox txtProcurar;
         private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnVoltar;
-        private System.Windows.Forms.Panel panelPedido;
+        private System.Windows.Forms.Panel panelReserva;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCPF;

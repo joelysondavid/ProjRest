@@ -40,25 +40,33 @@
             this.label5 = new System.Windows.Forms.Label();
             this.btnCadastrar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
+            this.panelUsuario = new System.Windows.Forms.Panel();
+            this.panelDgv = new System.Windows.Forms.Panel();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.btnLimpar = new System.Windows.Forms.Button();
+            this.btnExcluir = new System.Windows.Forms.Button();
+            this.panelUsuario.SuspendLayout();
+            this.panelDgv.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
             // 
             // txtNome
             // 
-            this.txtNome.Location = new System.Drawing.Point(121, 49);
+            this.txtNome.Location = new System.Drawing.Point(60, 28);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(100, 20);
             this.txtNome.TabIndex = 0;
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(121, 75);
+            this.txtLogin.Location = new System.Drawing.Point(60, 110);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(100, 20);
             this.txtLogin.TabIndex = 1;
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(121, 101);
+            this.txtSenha.Location = new System.Drawing.Point(323, 113);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(100, 20);
@@ -66,7 +74,7 @@
             // 
             // txtCpf
             // 
-            this.txtCpf.Location = new System.Drawing.Point(121, 127);
+            this.txtCpf.Location = new System.Drawing.Point(60, 72);
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(100, 20);
             this.txtCpf.TabIndex = 3;
@@ -80,15 +88,15 @@
             this.cbxTipo.Items.AddRange(new object[] {
             "Atendimento",
             "Cozinha"});
-            this.cbxTipo.Location = new System.Drawing.Point(121, 168);
+            this.cbxTipo.Location = new System.Drawing.Point(297, 31);
             this.cbxTipo.Name = "cbxTipo";
-            this.cbxTipo.Size = new System.Drawing.Size(121, 21);
+            this.cbxTipo.Size = new System.Drawing.Size(127, 21);
             this.cbxTipo.TabIndex = 4;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(74, 52);
+            this.label1.Location = new System.Drawing.Point(13, 31);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 5;
@@ -97,7 +105,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(76, 78);
+            this.label2.Location = new System.Drawing.Point(15, 113);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 6;
@@ -106,7 +114,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(71, 104);
+            this.label3.Location = new System.Drawing.Point(260, 116);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 7;
@@ -115,7 +123,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(82, 130);
+            this.label4.Location = new System.Drawing.Point(21, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 8;
@@ -124,7 +132,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(77, 171);
+            this.label5.Location = new System.Drawing.Point(253, 34);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(38, 13);
             this.label5.TabIndex = 9;
@@ -132,7 +140,7 @@
             // 
             // btnCadastrar
             // 
-            this.btnCadastrar.Location = new System.Drawing.Point(167, 243);
+            this.btnCadastrar.Location = new System.Drawing.Point(363, 194);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 10;
@@ -142,7 +150,7 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(74, 243);
+            this.btnSair.Location = new System.Drawing.Point(120, 194);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 23);
             this.btnSair.TabIndex = 11;
@@ -150,30 +158,83 @@
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
+            // panelUsuario
+            // 
+            this.panelUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelUsuario.Controls.Add(this.label5);
+            this.panelUsuario.Controls.Add(this.label4);
+            this.panelUsuario.Controls.Add(this.label3);
+            this.panelUsuario.Controls.Add(this.label2);
+            this.panelUsuario.Controls.Add(this.label1);
+            this.panelUsuario.Controls.Add(this.cbxTipo);
+            this.panelUsuario.Controls.Add(this.txtCpf);
+            this.panelUsuario.Controls.Add(this.txtSenha);
+            this.panelUsuario.Controls.Add(this.txtLogin);
+            this.panelUsuario.Controls.Add(this.txtNome);
+            this.panelUsuario.Location = new System.Drawing.Point(14, 16);
+            this.panelUsuario.Name = "panelUsuario";
+            this.panelUsuario.Size = new System.Drawing.Size(440, 172);
+            this.panelUsuario.TabIndex = 12;
+            // 
+            // panelDgv
+            // 
+            this.panelDgv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDgv.Controls.Add(this.dgvUsuarios);
+            this.panelDgv.Location = new System.Drawing.Point(13, 235);
+            this.panelDgv.Name = "panelDgv";
+            this.panelDgv.Size = new System.Drawing.Size(440, 178);
+            this.panelDgv.TabIndex = 13;
+            // 
+            // dgvUsuarios
+            // 
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Location = new System.Drawing.Point(3, 3);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.Size = new System.Drawing.Size(431, 172);
+            this.dgvUsuarios.TabIndex = 0;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+            // 
+            // btnLimpar
+            // 
+            this.btnLimpar.Location = new System.Drawing.Point(201, 194);
+            this.btnLimpar.Name = "btnLimpar";
+            this.btnLimpar.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpar.TabIndex = 14;
+            this.btnLimpar.Text = "Limpar";
+            this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
+            // 
+            // btnExcluir
+            // 
+            this.btnExcluir.Location = new System.Drawing.Point(282, 194);
+            this.btnExcluir.Name = "btnExcluir";
+            this.btnExcluir.Size = new System.Drawing.Size(75, 23);
+            this.btnExcluir.TabIndex = 15;
+            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            // 
             // TelaCadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ActiveBorder;
             this.ClientSize = new System.Drawing.Size(468, 427);
+            this.Controls.Add(this.btnExcluir);
+            this.Controls.Add(this.btnLimpar);
+            this.Controls.Add(this.panelDgv);
             this.Controls.Add(this.btnSair);
+            this.Controls.Add(this.panelUsuario);
             this.Controls.Add(this.btnCadastrar);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.cbxTipo);
-            this.Controls.Add(this.txtCpf);
-            this.Controls.Add(this.txtSenha);
-            this.Controls.Add(this.txtLogin);
-            this.Controls.Add(this.txtNome);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaCadastroUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaCadastroUsuario";
+            this.panelUsuario.ResumeLayout(false);
+            this.panelUsuario.PerformLayout();
+            this.panelDgv.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -191,5 +252,10 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Panel panelUsuario;
+        private System.Windows.Forms.Panel panelDgv;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
+        private System.Windows.Forms.Button btnLimpar;
+        private System.Windows.Forms.Button btnExcluir;
     }
 }

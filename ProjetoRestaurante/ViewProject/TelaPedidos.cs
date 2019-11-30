@@ -100,6 +100,7 @@ namespace ViewProject
                 Util.ClearTxt(panelItemPedido);
                 txtIdPedido.Text = pedidoAtual.Id.ToString();
                 ControlsItem(true);
+                btnSalvarItem.Enabled = false;
                 cbxStatus.SelectedIndex = 0;
                 dgvItensPed.DataSource = null;
                 dgvItensPed.DataSource = pedidoController.GetAllItensPedido(pedidoAtual.Id);
@@ -138,7 +139,7 @@ namespace ViewProject
             SetCamposItensPed(item);
             btnAdicionar.Enabled = false; // desabilita botao adicionar caso eu clique me um item de pedido
             cbxStatus.Enabled = true;
-            btnConfirmar.Enabled = true;
+            btnSalvarItem.Enabled = true;
         }
 
         // seta os campos
@@ -150,6 +151,7 @@ namespace ViewProject
                 txtQtd.Text = item.Quantidade.ToString();
                 txtValorItens.Text = item.ValorItens.ToString();
                 cbxStatus.SelectedItem = item.Status;
+                itemPedAtual = item;
             }
         }
 
@@ -169,7 +171,6 @@ namespace ViewProject
         {
             ControlsItem(false);
             ClearControlsItem();
-            btnConfirmar.Enabled = false;
             dgvItensPed.DataSource = null;
         }
 
@@ -180,7 +181,6 @@ namespace ViewProject
         private void GetAll()
         {
             dgvPedidos.ClearSelection();
-            dgvPedidos.DataSource = null;
             dgvPedidos.DataSource = pedidoController.GetAll();
             dgvItens.DataSource = itemController.GetAll();
             mesas = mesaController.GetMesasDisponiveis();
@@ -343,6 +343,7 @@ namespace ViewProject
                 ControlsItem(false); // desabilita os campos do item
                 // ControlsBasicos(false); // desabilita o botao de adicionar e o botao de remover
                 CarregaItensPed(); // carrega os itens
+                GetAll();
                 btnAdicionar.Enabled = false;
             }
         }
@@ -362,6 +363,25 @@ namespace ViewProject
             {
                 MessageBox.Show("Pedido não pode ser finalizado, pois não contém itens!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
+        }
+
+        private void btnSalvarItem_Click(object sender, EventArgs e)
+        {
+            itemPedAtual.Status = cbxStatus.SelectedItem.ToString();
+            for(int i=0;i< pedidoAtual.ItensDePedido.Count;i++)
+            {
+                if (pedidoAtual.ItensDePedido[i].Id == itemPedAtual.Id)
+                {
+                    pedidoAtual.ItensDePedido[i] = itemPedAtual;
+                }
+            }
+            pedidoController.Save(pedidoAtual);
+            btnSalvarItem.Enabled = false;
+            dgvItensPed.DataSource = null;
+            Util.ClearTxt(panelItemPedido);
+            GetAll();
+            txtIdPedido.Text = pedidoAtual.Id.ToString();
+            dgvItensPed.DataSource = pedidoController.GetAllItensPedido(pedidoAtual.Id);
         }
     }
 }

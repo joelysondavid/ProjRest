@@ -25,9 +25,17 @@ namespace ControllerProject
             return this.daoUser.GetAll();
         }
 
+        public Usuario GetById(int id)
+        {
+            return daoUser.GetById(id);
+        }
         public Usuario Salvar(Usuario user, string login, string senha)
         { 
             return this.daoUser.Salvar(user, login, senha);
+        }
+        public bool Delete(int id)
+        {
+            return daoUser.Delete(id);
         }
     }
 }

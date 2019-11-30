@@ -24,6 +24,7 @@ namespace ViewProject
             string data = DateTime.Now.ToString();
             mtbDataHora.Text = data;
             GetAll();
+            ClearCampos();
         }
 
         // GET ALL
@@ -32,6 +33,7 @@ namespace ViewProject
             dgvReservas.DataSource = null;
             dgvReservas.DataSource = reservaController.GetAll();
             cbxMesa.DataSource = mesaController.GetMesasDisponiveis();
+            cbxMesa.SelectedIndex = -1;
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -41,9 +43,18 @@ namespace ViewProject
 
         private void cbxMesa_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string numMesa=cbxMesa.SelectedItem.ToString();
-            Mesa mesa = mesaController.GetByNum(numMesa);
-            txtDescricaoMesa.Text = mesa.Descricao;
+            if (cbxMesa.SelectedIndex > -1)
+            {
+                string numMesa = cbxMesa.SelectedItem.ToString();
+                Mesa mesa = mesaController.GetByNum(numMesa);
+                txtDescricaoMesa.Text = mesa.Descricao;
+            }
+        }
+
+        private void ClearCampos()
+        {
+            Util.ClearTxt(panelReserva);
+            cbxMesa.SelectedIndex = -1;
         }
     }
 }

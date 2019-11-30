@@ -15,10 +15,12 @@ namespace ViewProject
     public partial class TelaCadastroUsuario : Form
     {
         private UsuarioController controller;
+        private Usuario userAtual;
         public TelaCadastroUsuario()
         {
             InitializeComponent();
             controller = new UsuarioController();
+            GetAll();
         }
 
         private void btnCadastrar_Click(object sender, EventArgs e)
@@ -41,6 +43,7 @@ namespace ViewProject
                 if (usuario.Id != null)
                 {
                     MessageBox.Show("Usuario cadastrado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    GetAll();
                 }
                 else
                 {
@@ -68,6 +71,65 @@ namespace ViewProject
         private void btnSair_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnLimpar_Click(object sender, EventArgs e)
+        {
+            Util.ClearTxt(panelUsuario);
+            cbxTipo.SelectedIndex = -1;
+            userAtual = null;
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            if (userAtual == null)
+            {
+                MessageBox.Show("Usuário não selecionado ou não encontrado!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (DialogResult.Yes == MessageBox.Show("Deseja realmete apagar este usuario?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+            {
+                bool deletado=controller.Delete((int)userAtual.Id);
+                if (deletado == true)
+                {
+                    MessageBox.Show("Usuario deletado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    userAtual = null;
+                    GetAll();
+                }
+                else
+                    MessageBox.Show("Erro ao deletar usuario!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao deletar usuario!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GetAll()
+        {
+            dgvUsuarios.DataSource = null;
+            dgvUsuarios.DataSource = controller.GetAll();
+        }
+
+        private void dgvUsuarios_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int qtdL = dgvUsuarios.Rows.Count; // qtd de linhas
+            int qtdC = dgvUsuarios.Columns.Count; // qtd colunas
+
+            if ((e.RowIndex < 0 || e.ColumnIndex < 0) || (e.RowIndex > qtdL || e.ColumnIndex > qtdC)) return;
+
+            int userId = (int)dgvUsuarios.Rows[e.RowIndex].Cells[0].Value;
+            userAtual = controller.GetById(userId);
+            SetCampos(userAtual);
+            dgvUsuarios.ClearSelection();
+        }
+
+        private void SetCampos(Usuario user)
+        {
+            txtNome.Text = user.Nome;
+            txtLogin.Text = user.Login;
+            txtCpf.Text = user.Cpf;
+            cbxTipo.SelectedItem = user.TipoUsr;
         }
     }
 }

@@ -43,7 +43,7 @@ namespace ModelProject
             foreach(var item in ItensDePedido)
             {
                 // o valortotal será a soma de todos os itens
-                ValorTotal = item.ValorItens * item.Quantidade; // que é o valor do item x a quantidade comprada
+                valorTotal += item.ValorItens; // que é o valor do item x a quantidade comprada
             }
             return valorTotal;
         }

@@ -30,7 +30,7 @@ namespace PersistenceProject.DAO
             IList<Usuario> usuarios = new List<Usuario>();
             try
             {
-                cmd = new SqlCommand("SELECT Id, Nome, Cpf, Login, Senha, Tipo FROM Usuario", conn);
+                cmd = new SqlCommand("SELECT Id, Nome, Cpf, Login, Tipo FROM Usuario", conn);
                 conn.Open();
                 using (SqlDataReader reader = cmd.ExecuteReader())
                 {
@@ -42,8 +42,7 @@ namespace PersistenceProject.DAO
                             Nome = reader.GetString(1),
                             Cpf = reader.GetString(2),
                             Login = reader.GetString(3),
-                            Senha = reader.GetString(4),
-                            TipoUsr = reader.GetString(5)
+                            TipoUsr = reader.GetString(4)
                         }); // adicionando cada usuario na lista
                     }
                 }
@@ -63,7 +62,7 @@ namespace PersistenceProject.DAO
             // cria um objeto
             Usuario usuario = new Usuario();
             // comando sql para execução da query
-            cmd = new SqlCommand("SELECT Id, Nome, Cpf, Login, Senha, Tipo FROM Usuario WHERE Id = @Id", conn);
+            cmd = new SqlCommand("SELECT Id, Nome, Cpf, Login, Tipo FROM Usuario WHERE Id = @Id", conn);
             cmd.Parameters.AddWithValue("@Id", id); // referenciando o parametro da query
             conn.Open(); // abre a conexão
             using (SqlDataReader reader = cmd.ExecuteReader()) // atraves do data reader executa o comando
@@ -74,8 +73,7 @@ namespace PersistenceProject.DAO
                     usuario.Nome = reader.GetString(1);
                     usuario.Cpf = reader.GetString(2);
                     usuario.Login = reader.GetString(3);
-                    usuario.Senha = reader.GetString(4);
-                    usuario.TipoUsr = reader.GetString(5);
+                    usuario.TipoUsr = reader.GetString(4);
                 }
             }
             conn.Close(); // encerra a conexão (toda conexão aberta tem que ser encerrada!!!)
@@ -174,8 +172,9 @@ namespace PersistenceProject.DAO
         }
 
         // método para apagar user
-        public void Delete(int id)
+        public bool Delete(int id)
         {
+            bool deletado = false;
             try
             {
                 // query para deletar usuario apartir do id
@@ -184,11 +183,13 @@ namespace PersistenceProject.DAO
                 conn.Open(); // abertura da conex
                 cmd.ExecuteNonQuery(); // execução do comando
                 conn.Close(); // encerrando a conexão
+                deletado = true;
             }
             catch (Exception e)
             {
                 Console.WriteLine("Erro ao deletar usuário!\nErro: " + e);
             }
+            return deletado;
         }
 
         // método auxiliar para verificação de usuário já existente

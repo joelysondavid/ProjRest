@@ -74,7 +74,7 @@
             this.dgvItensPed = new System.Windows.Forms.DataGridView();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnConfirmar = new System.Windows.Forms.Button();
+            this.btnSalvarItem = new System.Windows.Forms.Button();
             this.panelPedidos.SuspendLayout();
             this.panelPedido.SuspendLayout();
             this.panelGrid.SuspendLayout();
@@ -285,6 +285,7 @@
             // panel1
             // 
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.btnSalvarItem);
             this.panel1.Controls.Add(this.btnAdicionar);
             this.panel1.Controls.Add(this.btnRemoverItem);
             this.panel1.Controls.Add(this.btnNovoItem);
@@ -371,7 +372,8 @@
             "Aguardando",
             "Preparando",
             "Pronto",
-            "Entregue"});
+            "Entregue",
+            "Cancelado"});
             this.cbxStatus.Location = new System.Drawing.Point(117, 181);
             this.cbxStatus.Name = "cbxStatus";
             this.cbxStatus.Size = new System.Drawing.Size(121, 21);
@@ -545,15 +547,16 @@
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
-            // btnConfirmar
+            // btnSalvarItem
             // 
-            this.btnConfirmar.Enabled = false;
-            this.btnConfirmar.Location = new System.Drawing.Point(1171, 598);
-            this.btnConfirmar.Name = "btnConfirmar";
-            this.btnConfirmar.Size = new System.Drawing.Size(142, 25);
-            this.btnConfirmar.TabIndex = 7;
-            this.btnConfirmar.Text = "Confirmar Pedido";
-            this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnSalvarItem.Enabled = false;
+            this.btnSalvarItem.Location = new System.Drawing.Point(516, 519);
+            this.btnSalvarItem.Name = "btnSalvarItem";
+            this.btnSalvarItem.Size = new System.Drawing.Size(75, 25);
+            this.btnSalvarItem.TabIndex = 7;
+            this.btnSalvarItem.Text = "Salvar";
+            this.btnSalvarItem.UseVisualStyleBackColor = true;
+            this.btnSalvarItem.Click += new System.EventHandler(this.btnSalvarItem_Click);
             // 
             // TelaPedidos
             // 
@@ -561,7 +564,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1335, 649);
             this.Controls.Add(this.btnFinalizar);
-            this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelPedidos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -633,6 +635,6 @@
         private System.Windows.Forms.TextBox txtValorItens;
         private System.Windows.Forms.ToolTip toolTip1;
         private System.Windows.Forms.Button btnFinalizar;
-        private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.Button btnSalvarItem;
     }
 }

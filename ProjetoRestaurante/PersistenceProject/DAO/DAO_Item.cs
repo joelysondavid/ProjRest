@@ -34,7 +34,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query para seleção
-                cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio", conn);
+                cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, Disponivel, URLImagem FROM Cardapio", conn);
                 conn.Open(); // abertura da connec
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa a query
                 {
@@ -47,7 +47,8 @@ namespace PersistenceProject.DAO
                             Detalhes = reader.GetString(2),
                             TempoPreparo = reader.GetInt32(3),
                             Preco = reader.GetDecimal(4),
-                            URLImagem = reader.GetString(5)
+                            Disponivel=reader.GetBoolean(5),
+                            URLImagem = reader.GetString(6)
                         });
                     }
                 }
@@ -67,7 +68,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query para seleção
-                cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio  WHERE Id = @Id", conn);
+                cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, Disponivel, URLImagem FROM Cardapio  WHERE Id = @Id", conn);
                 cmd.Parameters.AddWithValue("@Id", id);
                 conn.Open(); // abertura da connec
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa a query
@@ -81,7 +82,8 @@ namespace PersistenceProject.DAO
                             Detalhes = reader.GetString(2),
                             TempoPreparo = reader.GetInt32(3),
                             Preco = reader.GetDecimal(4),
-                            URLImagem = reader.GetString(5)
+                            Disponivel=reader.GetBoolean(5),
+                            URLImagem = reader.GetString(6)
                         };
                     }
                 }
@@ -100,7 +102,7 @@ namespace PersistenceProject.DAO
             // lista dos itens 
             IList<Item> items = new List<Item>();
             // comando
-            cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio WHERE Descricao LIKE @Descricao", conn);
+            cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, Disponivel, URLImagem FROM Cardapio WHERE Descricao LIKE @Descricao", conn);
             cmd.Parameters.AddWithValue("@Descricao", descricao); // sql param
             conn.Open(); // abertura da conexao
             using (SqlDataReader reader = cmd.ExecuteReader()) // executa um comando e passa para uma sqlreader
@@ -116,7 +118,8 @@ namespace PersistenceProject.DAO
                         Detalhes = reader.GetString(2),
                         TempoPreparo = reader.GetInt32(3),
                         Preco = reader.GetDecimal(4),
-                        URLImagem = reader.GetString(5)
+                        Disponivel=reader.GetBoolean(5),
+                        URLImagem = reader.GetString(6)
                     });
                 }
             }
@@ -131,7 +134,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query para seleção
-                cmd = new SqlCommand("SELECT TOP 1 Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio ORDER BY Id DESC", conn);
+                cmd = new SqlCommand("SELECT TOP 1 Id, Descricao, Detalhes, TempoPrep, Preco, Disponivel, URLImagem FROM Cardapio ORDER BY Id DESC", conn);
                 conn.Open(); // abertura da connec
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa a query
                 {
@@ -144,7 +147,8 @@ namespace PersistenceProject.DAO
                             Detalhes = reader.GetString(2),
                             TempoPreparo = reader.GetInt32(3),
                             Preco = reader.GetDecimal(4),
-                            URLImagem = reader.GetString(5)
+                            Disponivel=reader.GetBoolean(5),
+                            URLImagem = reader.GetString(6)
                         };
                     }
                 }
@@ -163,12 +167,13 @@ namespace PersistenceProject.DAO
             try
             {
                 // query
-                cmd = new SqlCommand("INSERT INTO Cardapio (Descricao, Detalhes, TempoPrep, Preco, URLImagem) VALUES (@Descricao, @Detalhes, @TempoPrep, @Preco, @URLImagem)", conn);
+                cmd = new SqlCommand("INSERT INTO Cardapio (Descricao, Detalhes, TempoPrep, Preco, Disponivel, URLImagem) VALUES (@Descricao, @Detalhes, @TempoPrep, @Preco, @Disponivel, @URLImagem)", conn);
                 // SqlParameters
                 cmd.Parameters.AddWithValue("@Descricao", item.Descricao);
                 cmd.Parameters.AddWithValue("@Detalhes", item.Detalhes);
                 cmd.Parameters.AddWithValue("@TempoPrep", item.TempoPreparo);
                 cmd.Parameters.AddWithValue("@Preco", item.Preco);
+                cmd.Parameters.AddWithValue("@Disponivel", true);
                 cmd.Parameters.AddWithValue("@URLImagem", item.URLImagem);
                 conn.Open(); // abre a conexão
                 cmd.ExecuteNonQuery(); // executa o comando

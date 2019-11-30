@@ -13,6 +13,7 @@ namespace ModelProject
         public string Detalhes { get; set; }
         public int TempoPreparo { get; set; }
         public decimal Preco { get; set; }
+        public bool Disponivel { get; set; }
         public string URLImagem { get; set; }
 
         // contrutor recebendo nulo
