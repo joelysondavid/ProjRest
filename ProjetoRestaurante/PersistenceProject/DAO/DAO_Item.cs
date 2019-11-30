@@ -12,10 +12,10 @@ namespace PersistenceProject.DAO
     public class DAO_Item
     {
         private SqlConnection conn = DBConnection.DB_Connection; // variavel que contém a conexão
-        IList<Item> itens = new List<Item>(); // lista que conterá nossos itens
 
         // variavel global para tratar comandos sql
         SqlCommand cmd;
+        DAO_ItensDePedido daoItensPed = new DAO_ItensDePedido();
 
         // método save que definirá se é um insert ou 
         public Item Save(Item item)
@@ -30,6 +30,7 @@ namespace PersistenceProject.DAO
         // GetAll Itens
         public IList<Item> GetAll()
         {
+            IList<Item> itens = new List<Item>();
             try
             {
                 // query para seleção
@@ -37,7 +38,6 @@ namespace PersistenceProject.DAO
                 conn.Open(); // abertura da connec
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa a query
                 {
-                    itens.Clear();
                     while (reader.Read()) // enquanto tiver leitura
                     {
                         itens.Add(new Item
@@ -103,7 +103,7 @@ namespace PersistenceProject.DAO
             cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio WHERE Descricao LIKE @Descricao", conn);
             cmd.Parameters.AddWithValue("@Descricao", descricao); // sql param
             conn.Open(); // abertura da conexao
-            using(SqlDataReader reader = cmd.ExecuteReader()) // executa um comando e passa para uma sqlreader
+            using (SqlDataReader reader = cmd.ExecuteReader()) // executa um comando e passa para uma sqlreader
             {
                 // enquanto a query for executada ou seja enquanto eu tiver dados relacionados a minha busca
                 while (reader.Read())
@@ -111,12 +111,12 @@ namespace PersistenceProject.DAO
                     // adiciono um novo item na lista
                     items.Add(new Item
                     {
-                        Id=reader.GetInt32(0),
-                        Descricao=reader.GetString(1),
-                        Detalhes=reader.GetString(2),
-                        TempoPreparo=reader.GetInt32(3),
-                        Preco=reader.GetDecimal(4),
-                        URLImagem=reader.GetString(5)
+                        Id = reader.GetInt32(0),
+                        Descricao = reader.GetString(1),
+                        Detalhes = reader.GetString(2),
+                        TempoPreparo = reader.GetInt32(3),
+                        Preco = reader.GetDecimal(4),
+                        URLImagem = reader.GetString(5)
                     });
                 }
             }
@@ -207,25 +207,41 @@ namespace PersistenceProject.DAO
         }
 
         // método deletebyid
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            // se o item for nulo é pq não encontrou o item referente ao id buscado
-            if (GetById(id)!=null)
+            IList<ItemPedido> itensPed = daoItensPed.GetAll();
+            bool deletado = false; // variavel verificadora se deletou ou não
+            bool itemCadastrado = false; // variavel para verificar se o item já foi cadastrado em algum pedido
+            Item item = GetById(id);
+            for (int i = 0; i < itensPed.Count; i++)
             {
-                try
+                if (itensPed[i].ItemId == item.Id)
                 {
-                    // quert para deletar item
-                    cmd = new SqlCommand("DELETE Cardapio WHERE Id = @Id", conn);
-                    cmd.Parameters.AddWithValue("@Id", id); // referencia os sqlparameter com id solicitado no param do metodo
-                    conn.Open(); // abre a conexão
-                    cmd.ExecuteNonQuery(); // executa o comando de deleção
-                    conn.Close(); // encerra a conexão
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Erro ao deletar por Id!\nErro: " + e);
+                    itemCadastrado = true;
                 }
             }
+            if (itemCadastrado == false)
+            {
+                // se o item for nulo é pq não encontrou o item referente ao id buscado
+                if (GetById(id) != null)
+                {
+                    try
+                    {
+                        // quert para deletar item
+                        cmd = new SqlCommand("DELETE Cardapio WHERE Id = @Id", conn);
+                        cmd.Parameters.AddWithValue("@Id", id); // referencia os sqlparameter com id solicitado no param do metodo
+                        conn.Open(); // abre a conexão
+                        cmd.ExecuteNonQuery(); // executa o comando de deleção
+                        conn.Close(); // encerra a conexão
+                        deletado = true;
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine("Erro ao deletar por Id!\nErro: " + e);
+                    }
+                }
+            }
+            return deletado;
         }
     }
 }

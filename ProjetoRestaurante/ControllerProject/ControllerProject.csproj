@@ -45,6 +45,7 @@
     <Compile Include="MesaController.cs" />
     <Compile Include="PedidoController.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReservaController.cs" />
     <Compile Include="UsuarioController.cs" />
   </ItemGroup>
   <ItemGroup>

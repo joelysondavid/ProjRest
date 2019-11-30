@@ -10,6 +10,7 @@ namespace ModelProject
     {
         public string NumMesa { get; set; }
         public string Descricao { get; set; }
+        public bool Disponivel { get; set; }
 
         // sobrescrevendo método tostring
         public override string ToString()

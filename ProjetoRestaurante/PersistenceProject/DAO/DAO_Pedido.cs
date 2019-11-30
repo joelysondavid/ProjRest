@@ -12,9 +12,10 @@ namespace PersistenceProject.DAO
     public class DAO_Pedido
     {
         private DAO_ItensDePedido daoItensPed = new DAO_ItensDePedido(); // instancia de itens de pedido
+        private DAO_Mesa daoMesa = new DAO_Mesa();
         private SqlConnection conn = DBConnection.DB_Connection; // variavel com conexão
         SqlCommand cmd;
-        IList<Pedido> pedidos = new List<Pedido>();
+        // IList<Pedido> pedidos = new List<Pedido>();
 
         // método get by id
         public Pedido GetById(int id)
@@ -23,7 +24,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query com comando para buscar pedido por id
-                cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, ValorTotal FROM Pedidos WHERE Id = @Id", conn);
+                cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, DataPed, Status, ValorTotal FROM Pedidos WHERE Id = @Id", conn);
                 cmd.Parameters.AddWithValue("@Id", id); // referenciando parametro passado para query com parametro solicitado pelo metodo
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa o comando de leitura
@@ -36,7 +37,9 @@ namespace PersistenceProject.DAO
                             NumMesa = reader.GetString(1),
                             NomeCliente = reader.GetString(2),
                             CpfCliente = reader.GetString(3),
-                            ValorTotal = reader.GetDecimal(4),
+                            DataPed = reader.GetDateTime(4).ToString(),
+                            Status = reader.GetString(5),
+                            ValorTotal = reader.GetDecimal(6),
                         };
                     }
                 }
@@ -56,11 +59,11 @@ namespace PersistenceProject.DAO
         // método get all pedidos
         public IList<Pedido> GetAll()
         {
+            IList<Pedido> pedidos = new List<Pedido>(); // trabalhar com uma list geral de pedidos estava dando erro
             try
             {
-                pedidos.Clear();
                 // query com comando para buscar todos os pedidos
-                cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, ValorTotal FROM Pedidos", conn);
+                cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, ValorTotal, DataPed, Status FROM Pedidos", conn);
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa o comando de leitura
                 {
@@ -73,16 +76,19 @@ namespace PersistenceProject.DAO
                             NomeCliente = reader.GetString(2),
                             CpfCliente = reader.GetString(3),
                             ValorTotal = reader.GetDecimal(4),
+                            DataPed = reader.GetDateTime(5).ToString(),
+                            Status = reader.GetString(6)
                         });
                     }
                 }
                 conn.Close(); // encerra a conexão
-                
+
                 // após encerrar a conexão e obter todos os pedidos é necessário buscar também os itens destes pedidos
                 for (int i = 0; i < pedidos.Count; i++)
                 {
                     // desta forma estaremos buscando todos os itens de cada pedido
-                    pedidos[i].ItensDePedido = daoItensPed.GetByPed(pedidos[i].Id);
+                    if (pedidos[i].ItensDePedido.Count > 0)
+                        pedidos[i].ItensDePedido = daoItensPed.GetByPed(pedidos[i].Id);
                 }
             }
             catch (Exception e)
@@ -99,7 +105,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query com comando para buscar o ultimo pedido inserido
-                cmd = new SqlCommand("SELECT TOP 1 Id, NumMesa, NomeCliente, CpfCliente, ValorTotal FROM Pedidos ORDER BY Id Desc", conn);
+                cmd = new SqlCommand("SELECT TOP 1 Id, NumMesa, NomeCliente, CpfCliente, ValorTotal, DataPed, Status FROM Pedidos ORDER BY Id Desc", conn);
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa o comando de leitura
                 {
@@ -112,6 +118,7 @@ namespace PersistenceProject.DAO
                             NomeCliente = reader.GetString(2),
                             CpfCliente = reader.GetString(3),
                             ValorTotal = reader.GetDecimal(4),
+                            Status = reader.GetString(6)
                         };
                     }
                 }
@@ -134,18 +141,23 @@ namespace PersistenceProject.DAO
             try
             {
                 // comando
-                cmd = new SqlCommand("INSERT INTO Pedidos (NumMesa, NomeCliente, CpfCliente, ValorTotal) VALUES (@NumMesa, @NomeCli, @CpfCli, @ValorTotal)", conn);
+                cmd = new SqlCommand("INSERT INTO Pedidos (NumMesa, NomeCliente, CpfCliente, DataPed, Status, ValorTotal) VALUES (@NumMesa, @NomeCli, @CpfCli, @DataPed, @Status, @ValorTotal)", conn);
                 // referenciando os sqlparameters com os parametros do pedido
                 cmd.Parameters.AddWithValue("@NumMesa", pedido.NumMesa);
                 cmd.Parameters.AddWithValue("@NomeCli", pedido.NomeCliente);
                 cmd.Parameters.AddWithValue("@CpfCli", pedido.CpfCliente);
+                cmd.Parameters.AddWithValue("@DataPed", pedido.DataPed);
+                cmd.Parameters.AddWithValue("@Status", pedido.Status);
                 cmd.Parameters.AddWithValue("@ValorTotal", pedido.CalcValorTotal());
                 conn.Open(); // abertura da conexão
                 cmd.ExecuteNonQuery(); // executa o comando para salvar o pedido
                 conn.Close(); // encerra a conexão
                               // após a inserção do novo pedido é necessário também cadastrar os pedidos deste pedido pois estão em tableas separadas
-                daoItensPed.Insert(pedido.ItensDePedido);
-            } catch(Exception e)
+                              // daoItensPed.Insert(pedido.ItensDePedido);
+                              // ao inserir um pedido tenho que avisar que a mesa esta indisponivel
+                daoMesa.UpdateStatus(pedido.NumMesa, false);
+            }
+            catch (Exception e)
             {
                 Console.WriteLine("Erro ao inserir Pedido!\nErro: " + e);
             }
@@ -158,20 +170,24 @@ namespace PersistenceProject.DAO
             try
             {
                 // comando
-                cmd = new SqlCommand("UPDATE Pedidos SET NumMesa=@NumMesa, NomeCliente=@NomeCli, CpfCliente=@CpfCli, ValorTotal=@ValorTotal WHERE Id=@Id", conn);
+                cmd = new SqlCommand("UPDATE Pedidos SET NumMesa=@NumMesa, NomeCliente=@NomeCli, CpfCliente=@CpfCli, DataPed=@DataPed, Status=@Status, ValorTotal=@ValorTotal WHERE Id=@Id", conn);
                 // referenciando os sqlparameters com os parametros do pedido
                 cmd.Parameters.AddWithValue("@Id", pedido.Id);
                 cmd.Parameters.AddWithValue("@NumMesa", pedido.NumMesa);
                 cmd.Parameters.AddWithValue("@NomeCli", pedido.NomeCliente);
                 cmd.Parameters.AddWithValue("@CpfCli", pedido.CpfCliente);
+                cmd.Parameters.AddWithValue("@DataPed", pedido.DataPed);
+                cmd.Parameters.AddWithValue("@Status", pedido.Status);
                 cmd.Parameters.AddWithValue("@ValorTotal", pedido.CalcValorTotal());
                 conn.Open(); // abertura da conexão
                 cmd.ExecuteNonQuery(); // executa o comando para salvar o pedido
                 conn.Close(); // encerra a conexão
                               // após a inserção do novo pedido é necessário também cadastrar os pedidos deste pedido pois estão em tableas separadas
-                // é necessário verificar se já existem pedidos
-                // if(ped)
+                              // é necessário verificar se já existem pedidos
+                              // if(ped)
                 daoItensPed.Insert(pedido.ItensDePedido);
+                if (pedido.Status == "Finalizado")
+                    daoMesa.UpdateStatus(pedido.NumMesa, true);
             }
             catch (Exception e)
             {
@@ -182,7 +198,7 @@ namespace PersistenceProject.DAO
         }
 
         // método delete By id
-        public void DeleteById(int idPed)
+        public void DeleteById(int idPed, string numMesa)
         {
             try
             {
@@ -194,9 +210,11 @@ namespace PersistenceProject.DAO
                 conn.Open();
                 cmd.ExecuteNonQuery();
                 conn.Close();
-            } catch(Exception e)
+                daoMesa.UpdateStatus(numMesa, true);
+            }
+            catch (Exception e)
             {
-                Console.WriteLine("Erro ao deletar pedido!\nErro: "+e);
+                Console.WriteLine("Erro ao deletar pedido!\nErro: " + e);
             }
         }
     }

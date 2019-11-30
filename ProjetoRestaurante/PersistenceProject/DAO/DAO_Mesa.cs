@@ -13,7 +13,6 @@ namespace PersistenceProject.DAO
     {
         private SqlConnection conn = DBConnection.DB_Connection;
         private SqlCommand command;
-        private IList<Mesa> mesas = new List<Mesa>();
         // método get Mesa pelo Numero
         public Mesa GetByNum(string num)
         {
@@ -21,7 +20,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // query selecionar a mesa referente ao numero passado no param
-                command = new SqlCommand("SELECT Numero, Descricao FROM Mesas WHERE Numero = @Num", conn);
+                command = new SqlCommand("SELECT Numero, Descricao, Disponivel FROM Mesas WHERE Numero = @Num", conn);
                 // atribuindo o numero ao parametro '@Num'
                 command.Parameters.AddWithValue("@Num", num);
                 conn.Open(); // abre a conexão
@@ -31,13 +30,14 @@ namespace PersistenceProject.DAO
                     {
                         mesa.NumMesa = reader.GetString(0);
                         mesa.Descricao = reader.GetString(1);
+                        mesa.Disponivel = reader.GetBoolean(2);
                     }
                 }
                 conn.Close(); // encerra a conexão
             }
             catch (Exception e)
             {
-                Console.WriteLine("Erro ao buscar mesa!\nErro: "+e);
+                Console.WriteLine("Erro ao buscar mesa!\nErro: " + e);
             }
             return mesa;
         }
@@ -46,22 +46,54 @@ namespace PersistenceProject.DAO
         // método get Mesa pelo Numero
         public IList<Mesa> GetAll()
         {
-            // lembrando que deve se verificar sempre as mesas disponiveis
-            command = new SqlCommand("SELECT Numero, Descricao FROM Mesas", conn);
+            IList<Mesa> mesas = new List<Mesa>();
+            try
+            {
+                // lembrando que deve se verificar sempre as mesas disponiveis
+                command = new SqlCommand("SELECT Numero, Descricao, Disponivel FROM Mesas", conn);
+                conn.Open(); // abre a conexão
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        mesas.Add(new Mesa
+                        {
+                            NumMesa = reader.GetString(0),
+                            Descricao = reader.GetString(1),
+                            Disponivel = reader.GetBoolean(2)
+                        });
+                    }
+                }
+                conn.Close(); // encerra a conexão
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao buscar todas as mesas!\nErro: " + e);
+
+            }
+            return mesas;
+        }
+
+        // buscar mesa a partir da data da disponibilidade
+        public IList<Mesa> GetMesasDisponiveis()
+        {
+            IList<Mesa> mesasDisponiveis = new List<Mesa>();
+            command = new SqlCommand("SELECT M.* FROM Mesas AS M LEFT JOIN Reservas AS R ON M.Numero = R.NumMesa WHERE R.Finalizada='True' OR M.Disponivel='True'", conn);
             conn.Open(); // abre a conexão
             using (SqlDataReader reader = command.ExecuteReader())
             {
                 while (reader.Read())
                 {
-                    this.mesas.Add(new Mesa
+                    mesasDisponiveis.Add(new Mesa
                     {
                         NumMesa = reader.GetString(0),
-                        Descricao = reader.GetString(1)
+                        Descricao = reader.GetString(1),
+                        Disponivel = reader.GetBoolean(2)
                     });
                 }
             }
-            conn.Close(); // encerra a conexão
-            return this.mesas;
+            conn.Close();
+            return mesasDisponiveis;
         }
 
         // cadastro de mesas
@@ -73,10 +105,11 @@ namespace PersistenceProject.DAO
                 try
                 {
                     // query
-                    command = new SqlCommand("INSERT INTO Mesas VALUES (@Numero, @Descricao)", conn);
+                    command = new SqlCommand("INSERT INTO Mesas VALUES (@Numero, @Descricao, @Disponivel)", conn);
                     // referencia os paramtros da query com os parametros recebidos
                     command.Parameters.AddWithValue("@Numero", mesa.NumMesa);
                     command.Parameters.AddWithValue("@Descricao", mesa.Descricao);
+                    command.Parameters.AddWithValue("@Disponivel", mesa.Disponivel);
                     conn.Open(); // abre a conexão
                     command.ExecuteNonQuery(); // executa o comando
                     conn.Close(); // encerra a conexão
@@ -84,7 +117,7 @@ namespace PersistenceProject.DAO
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Erro ao inserir mesa!\nErro: "+e);
+                    Console.WriteLine("Erro ao inserir mesa!\nErro: " + e);
                 }
             }
             return mes;
@@ -98,10 +131,10 @@ namespace PersistenceProject.DAO
                 try
                 {
                     // query
-                    command = new SqlCommand("UPDATE Mesas VALUES (@Numero, @Descricao) WHERE Numero = @Num", conn);
+                    command = new SqlCommand("UPDATE Mesas SET Descricao=@Descricao, Disponivel=@Disponivel WHERE Numero = @Num", conn);
                     // referencia os paramtros da query com os parametros recebidos
-                    command.Parameters.AddWithValue("@Numero", mesa.NumMesa);
                     command.Parameters.AddWithValue("@Descricao", mesa.Descricao);
+                    command.Parameters.AddWithValue("@Disponivel", mesa.Disponivel);
                     command.Parameters.AddWithValue("@Num", numMesa); // numero da mesa antes da atualização
                     conn.Open(); // abre a conexão
                     command.ExecuteNonQuery(); // executa o comando
@@ -110,18 +143,43 @@ namespace PersistenceProject.DAO
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Erro ao inserir mesa!\nErro: "+e);
+                    Console.WriteLine("Erro ao inserir mesa!\nErro: " + e);
+                }
+            }
+            return mes;
+        }
+
+        // update status mesa
+        public Mesa UpdateStatus(string numMesa, bool status)
+        {
+            Mesa mes = null;
+            {
+                try
+                {
+                    // query
+                    command = new SqlCommand("UPDATE Mesas SET Disponivel=@Disponivel WHERE Numero = @Num", conn);
+                    // referencia os paramtros da query com os parametros recebidos
+                    command.Parameters.AddWithValue("@Disponivel", status);
+                    command.Parameters.AddWithValue("@Num", numMesa); // numero da mesa antes da atualização
+                    conn.Open(); // abre a conexão
+                    command.ExecuteNonQuery(); // executa o comando
+                    conn.Close(); // encerra a conexão
+                    mes = GetByNum(numMesa); // retorna a mesa que acabará de criar
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Erro ao atualizar mesa!\nErro: " + e);
                 }
             }
             return mes;
         }
         // metodo para deletar uma mesa
-        public void Delete(int num)
+        public void Delete(string num)
         {
             try
             {
                 // query para deletar mesa apartir do num
-                command = new SqlCommand("DELETE Mesa WHERE Numero = @Num", conn);
+                command = new SqlCommand("DELETE Mesas WHERE Numero = @Num", conn);
                 command.Parameters.AddWithValue("@Num", num); // referenciado o parametro
                 conn.Open(); // abertura da conex
                 command.ExecuteNonQuery(); // execução do comando
@@ -131,6 +189,15 @@ namespace PersistenceProject.DAO
             {
                 Console.WriteLine("Erro ao deletar mesa!\nErro: " + e);
             }
+        }
+        // SAVE
+        public Mesa Save(Mesa mesa)
+        {
+            Mesa ms = GetByNum(mesa.NumMesa);
+            if (ms.NumMesa != null)
+                return Update(mesa, mesa.NumMesa);
+            // else omitido
+            return Insert(mesa);
         }
 
         // verifica mesas

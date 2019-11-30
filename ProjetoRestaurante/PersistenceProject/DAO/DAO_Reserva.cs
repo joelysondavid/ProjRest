@@ -12,18 +12,19 @@ namespace PersistenceProject.DAO
     public class DAO_Reserva
     {
         private SqlConnection conn = DBConnection.DB_Connection; // variavel de conexão
-        private IList<Reserva> reservas = new List<Reserva>(); // lista de reservas
         private SqlCommand cmd; // variavel para comandos sql
+        private DAO_Mesa daoMesa = new DAO_Mesa();
 
         // GET: AllReservas
         // método repsonsavel por obter todas as reservas cadastradas
         public IList<Reserva> GetAll()
         {
-            reservas.Clear(); // limpa a lista para não duplciar itens que já estão na lista
+            IList<Reserva> reservas = new List<Reserva>(); // lista de reservas
+
             try
             {
                 // comando que irá realizar select em todas as reservas
-                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio FROM Reservas", conn);
+                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas", conn);
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // comando que irá executar o comando e passar tudo quefoi lido para variavel reader
                 {
@@ -36,7 +37,8 @@ namespace PersistenceProject.DAO
                             NomeCliente = reader.GetString(1),
                             CpfCliente = reader.GetString(2),
                             NumMesa = reader.GetString(3),
-                            ReservaInicio = reader.GetDateTime(4)
+                            ReservaInicio = reader.GetDateTime(4),
+                            Finalizada = reader.GetBoolean(5)
                         };
                         // adiciona o item lido na lista de reservas
                         reservas.Add(reserva);
@@ -206,16 +208,18 @@ namespace PersistenceProject.DAO
             Reserva reserva = null; // cria novo objeto reserva
             try
             {
-                cmd = new SqlCommand("INSERT INTO Reservas (NomeCliente, CpfCliente, NumMesa, ReservaInicio) VALUES (@NomeCliente, @CpfCliente, @NumMesa, @ReservaInicio)", conn);
+                cmd = new SqlCommand("INSERT INTO Reservas (NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada) VALUES (@NomeCliente, @CpfCliente, @NumMesa, @ReservaInicio, @Finalizada)", conn);
                 // referenciando os parametros
                 cmd.Parameters.AddWithValue("@NomeCliente", rsv.NomeCliente);
                 cmd.Parameters.AddWithValue("@CpfCliente", rsv.CpfCliente);
                 cmd.Parameters.AddWithValue("@NumMesa", rsv.NumMesa);
                 cmd.Parameters.AddWithValue("@ReservaInicio", rsv.ReservaInicio);
+                cmd.Parameters.AddWithValue("@Finalizada", rsv.Finalizada);
                 conn.Open(); // abertura da conexão
                 cmd.ExecuteNonQuery(); // executa o comando
                 conn.Close(); // encerra a conexão
-                reserva = GetLast(); // obtem o ultimo registro 
+                daoMesa.UpdateStatus(rsv.NumMesa, false);
+                reserva = GetLast(); // obtem o ultimo registro
             }
             catch (Exception e)
             {
@@ -231,16 +235,21 @@ namespace PersistenceProject.DAO
             Reserva reserva = null; // cria um objeto reserva
             try
             {
-                cmd = new SqlCommand("UPDATE Reservas SET NomeCliente=@NomeCliente, CpfCliente=@CpfCliente, NumMesa=@NumMesa, ReservaInicio=@ReservaInicio WHERE Id = @Id", conn);
+                cmd = new SqlCommand("UPDATE Reservas SET NomeCliente=@NomeCliente, CpfCliente=@CpfCliente, NumMesa=@NumMesa, ReservaInicio=@ReservaInicio, Finalizada=@Finalizada WHERE Id = @Id", conn);
                 // referenciando os parametros
                 cmd.Parameters.AddWithValue("@Id", rsv.Id);
                 cmd.Parameters.AddWithValue("@NomeCliente", rsv.NomeCliente);
                 cmd.Parameters.AddWithValue("@CpfCliente", rsv.CpfCliente);
                 cmd.Parameters.AddWithValue("@NumMesa", rsv.NumMesa);
                 cmd.Parameters.AddWithValue("@ReservaInicio", rsv.ReservaInicio);
+                cmd.Parameters.AddWithValue("@Finalizada", rsv.Finalizada);
                 conn.Open(); // abertura da conexão
                 cmd.ExecuteNonQuery(); // executa o comando
                 conn.Close(); // encerra a coenxão
+                if (rsv.Finalizada == true)
+                {
+                    daoMesa.UpdateStatus(rsv.NumMesa, true);
+                }
                 reserva = GetById((int)rsv.Id); // da um get na reserva atualizada através de seu id
             }
             catch (Exception e)

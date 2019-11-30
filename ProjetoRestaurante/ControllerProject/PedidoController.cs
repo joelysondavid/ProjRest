@@ -53,9 +53,9 @@ namespace ControllerProject
         }
 
         // DELETE: ById
-        public void DeleteById(int idPed)
+        public void DeleteById(int idPed, string numMesa)
         {
-            daoPedido.DeleteById(idPed);
+            daoPedido.DeleteById(idPed, numMesa);
         }
     }
 }

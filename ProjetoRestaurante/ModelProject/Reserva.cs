@@ -13,6 +13,7 @@ namespace ModelProject
         public string CpfCliente { get; set; }
         public string NumMesa { get; set; }
         public DateTime ReservaInicio { get; set; }
+        public bool Finalizada { get; set; }
 
         public Reserva()
         {

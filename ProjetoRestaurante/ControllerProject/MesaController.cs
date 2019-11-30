@@ -22,7 +22,21 @@ namespace ControllerProject
         {
             return daoMesa.GetByNum(num);
         }
-        // cadastro nova mesa
 
+        // delete
+        public void DeleteByNum(string num)
+        {
+            daoMesa.Delete(num);
+        }
+        public IList<Mesa> GetMesasDisponiveis()
+        {
+            return daoMesa.GetMesasDisponiveis();
+        }
+
+        // cadastro ou atualização nova mesa
+        public Mesa Save(Mesa mesa)
+        {
+            return daoMesa.Save(mesa);
+        }
     }
 }

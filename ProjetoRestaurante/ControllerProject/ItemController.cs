@@ -31,9 +31,9 @@ namespace ControllerProject
         }
 
         // método delete
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            daoItem.Delete(id);
+            return daoItem.Delete(id);
         }
 
         // método get Items by descri

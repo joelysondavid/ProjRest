@@ -13,6 +13,8 @@ namespace ModelProject
         public string NomeCliente { get; set; }
         public string CpfCliente { get; set; }
         public decimal ValorTotal { get; set; }
+        public string DataPed { get; set; }
+        public string Status { get; set; }
         // itens de pedidos
         public IList<ItemPedido> ItensDePedido { get; set; }
 

@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.panelCardapio = new System.Windows.Forms.Panel();
+            this.components = new System.ComponentModel.Container();
+            this.panelPedidos = new System.Windows.Forms.Panel();
             this.btnProcurar = new System.Windows.Forms.Button();
             this.txtProcurar = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
@@ -71,8 +72,10 @@
             this.ItensPedido = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvItensPed = new System.Windows.Forms.DataGridView();
+            this.btnFinalizar = new System.Windows.Forms.Button();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.btnConfirmar = new System.Windows.Forms.Button();
-            this.panelCardapio.SuspendLayout();
+            this.panelPedidos.SuspendLayout();
             this.panelPedido.SuspendLayout();
             this.panelGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
@@ -84,22 +87,22 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvItensPed)).BeginInit();
             this.SuspendLayout();
             // 
-            // panelCardapio
+            // panelPedidos
             // 
-            this.panelCardapio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelCardapio.Controls.Add(this.btnProcurar);
-            this.panelCardapio.Controls.Add(this.txtProcurar);
-            this.panelCardapio.Controls.Add(this.btnSalvar);
-            this.panelCardapio.Controls.Add(this.btnExcluir);
-            this.panelCardapio.Controls.Add(this.btnNovo);
-            this.panelCardapio.Controls.Add(this.btnVoltar);
-            this.panelCardapio.Controls.Add(this.panelPedido);
-            this.panelCardapio.Controls.Add(this.Pedidos);
-            this.panelCardapio.Controls.Add(this.panelGrid);
-            this.panelCardapio.Location = new System.Drawing.Point(12, 12);
-            this.panelCardapio.Name = "panelCardapio";
-            this.panelCardapio.Size = new System.Drawing.Size(607, 563);
-            this.panelCardapio.TabIndex = 2;
+            this.panelPedidos.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPedidos.Controls.Add(this.btnProcurar);
+            this.panelPedidos.Controls.Add(this.txtProcurar);
+            this.panelPedidos.Controls.Add(this.btnSalvar);
+            this.panelPedidos.Controls.Add(this.btnExcluir);
+            this.panelPedidos.Controls.Add(this.btnNovo);
+            this.panelPedidos.Controls.Add(this.btnVoltar);
+            this.panelPedidos.Controls.Add(this.panelPedido);
+            this.panelPedidos.Controls.Add(this.Pedidos);
+            this.panelPedidos.Controls.Add(this.panelGrid);
+            this.panelPedidos.Location = new System.Drawing.Point(12, 12);
+            this.panelPedidos.Name = "panelPedidos";
+            this.panelPedidos.Size = new System.Drawing.Size(607, 563);
+            this.panelPedidos.TabIndex = 2;
             // 
             // btnProcurar
             // 
@@ -192,6 +195,7 @@
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Cliente CPF:";
+            this.toolTip1.SetToolTip(this.label3, "Não obrigatório: CPF do Cliente");
             // 
             // label1
             // 
@@ -201,12 +205,14 @@
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Cliente:";
+            this.toolTip1.SetToolTip(this.label1, "Obrigatório: Nome do cliente");
             // 
             // txtValorTotal
             // 
             this.txtValorTotal.Enabled = false;
             this.txtValorTotal.Location = new System.Drawing.Point(117, 140);
             this.txtValorTotal.Name = "txtValorTotal";
+            this.txtValorTotal.ReadOnly = true;
             this.txtValorTotal.Size = new System.Drawing.Size(121, 20);
             this.txtValorTotal.TabIndex = 4;
             // 
@@ -244,6 +250,7 @@
             this.label2.Size = new System.Drawing.Size(51, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Nº Mesa:";
+            this.toolTip1.SetToolTip(this.label2, "Obrigatório: Informe o número da mesa");
             // 
             // Pedidos
             // 
@@ -390,9 +397,9 @@
             // 
             // txtValorItens
             // 
-            this.txtValorItens.Enabled = false;
             this.txtValorItens.Location = new System.Drawing.Point(117, 135);
             this.txtValorItens.Name = "txtValorItens";
+            this.txtValorItens.ReadOnly = true;
             this.txtValorItens.Size = new System.Drawing.Size(121, 20);
             this.txtValorItens.TabIndex = 9;
             // 
@@ -527,6 +534,17 @@
             this.dgvItensPed.TabIndex = 0;
             this.dgvItensPed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItensPed_CellClick);
             // 
+            // btnFinalizar
+            // 
+            this.btnFinalizar.Enabled = false;
+            this.btnFinalizar.Location = new System.Drawing.Point(477, 598);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(142, 25);
+            this.btnFinalizar.TabIndex = 10;
+            this.btnFinalizar.Text = "Finalizar Pedido";
+            this.btnFinalizar.UseVisualStyleBackColor = true;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
             // btnConfirmar
             // 
             this.btnConfirmar.Enabled = false;
@@ -536,22 +554,22 @@
             this.btnConfirmar.TabIndex = 7;
             this.btnConfirmar.Text = "Confirmar Pedido";
             this.btnConfirmar.UseVisualStyleBackColor = true;
-            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // TelaPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1335, 649);
+            this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.btnConfirmar);
             this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panelCardapio);
+            this.Controls.Add(this.panelPedidos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaPedidos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "TelaNovoPedido";
-            this.panelCardapio.ResumeLayout(false);
-            this.panelCardapio.PerformLayout();
+            this.panelPedidos.ResumeLayout(false);
+            this.panelPedidos.PerformLayout();
             this.panelPedido.ResumeLayout(false);
             this.panelPedido.PerformLayout();
             this.panelGrid.ResumeLayout(false);
@@ -570,7 +588,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panelCardapio;
+        private System.Windows.Forms.Panel panelPedidos;
         private System.Windows.Forms.Button btnProcurar;
         private System.Windows.Forms.TextBox txtProcurar;
         private System.Windows.Forms.Button btnSalvar;
@@ -613,6 +631,8 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox txtValorItens;
+        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.Button btnConfirmar;
     }
 }

@@ -29,31 +29,6 @@ namespace ViewProject.Itens
             this.Close();
         }
 
-        private void dgvItens_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            // variavel que armazenara a quantidade de linhas
-            int qtdL = dgvItens.Rows.Count;
-            int qtdC = dgvItens.Columns.Count; // qtd de colunas
-
-            // caso o meu objeto que esta sendo recebido 'e' (event) tiver linhas menos que zero ou 
-            // colunas ou maior que a quatidade retornará nada
-            if ((e.RowIndex < 0 || e.ColumnIndex < 0) || (e.RowIndex > qtdL || e.ColumnIndex > qtdC))
-                return;
-
-            // busco usuario pelo Id obtido na linha do indice clicado na celula 0 "primeira celula"
-            // e atribuo a item ID
-            int itemId = Convert.ToInt32(dgvItens.Rows[e.RowIndex].Cells[0].Value);
-
-            itemSel = null; // limpando o itemSel
-            itemSel = itemController.GetById(itemId);
-
-            // chma o metodo responsavel por setar os campos
-            SetCampos(itemSel);
-
-            // metodo altercontrols
-            AlterControls(true);
-            btnExcluir.Enabled = true;
-        }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
@@ -62,12 +37,18 @@ namespace ViewProject.Itens
                 if (DialogResult.Yes == MessageBox.Show("Deseja realmente deleletar o item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
                 {
                     int id = (int)itemSel.Id; // converto item por ser do tipo que pode ser vázio
-                    itemController.Delete(id); // chamo método para deletar itens
-                    GetItens(); // atualizo a grid
-                    MessageBox.Show("Item deletado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LimparCampos(); // limpa os campso
-                    AlterControls(false); // seta os controles para false
-                    btnExcluir.Enabled = false; // desabilita o botão excluir
+                    bool deletado = itemController.Delete(id); // chamo método para deletar itens
+                    if (deletado == true)
+                    {
+                        GetItens(); // atualizo a grid
+                        MessageBox.Show("Item deletado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparCampos(); // limpa os campso
+                        AlterControls(false); // seta os controles para false
+                        btnExcluir.Enabled = false; // desabilita o botão excluir
+                    } else
+                    {
+                        MessageBox.Show("Esse item não pode ser deletado, pois já esta sendo usado em outro item!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
                 }
             }
         }
@@ -148,9 +129,8 @@ namespace ViewProject.Itens
         // carrega items
         public void GetItens()
         {
-            dgvItens.ClearSelection();
             dgvItens.DataSource = 0;
-            dgvItens.DataSource = this.itemController.GetAll();
+            dgvItens.DataSource = itemController.GetAll();
         }
 
         // método para passar o item obtido pelo param para os campos corretos
@@ -201,6 +181,41 @@ namespace ViewProject.Itens
         private void btnProcurar_Click(object sender, EventArgs e)
         {
             dgvItens.DataSource = itemController.GetItemsByDescr("%" + txtProcurar.Text + "%");
+        }
+
+        private void dgvItens_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+
+                // variavel que armazenara a quantidade de linhas
+                int qtdL = dgvItens.Rows.Count;
+                int qtdC = dgvItens.Columns.Count; // qtd de colunas
+
+                // caso o meu objeto que esta sendo recebido 'e' (event) tiver linhas menos que zero ou 
+                // colunas ou maior que a quatidade retornará nada
+                if ((e.RowIndex < 0 || e.ColumnIndex < 0) || (e.RowIndex > qtdL || e.ColumnIndex > qtdC))
+                    return;
+
+                // busco usuario pelo Id obtido na linha do indice clicado na celula 0 "primeira celula"
+                // e atribuo a item ID
+                int itemId = Convert.ToInt32(dgvItens.Rows[e.RowIndex].Cells[0].Value);
+
+                itemSel = null; // limpando o itemSel
+                itemSel = itemController.GetById(itemId);
+
+                // chma o metodo responsavel por setar os campos
+                SetCampos(itemSel);
+
+                // metodo altercontrols
+                AlterControls(true);
+                btnExcluir.Enabled = true;
+            }
+            catch (IndexOutOfRangeException ex)
+            {
+                MessageBox.Show("Erro ao buscar no item clicado!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Erro: " + ex);
+            }
         }
     }
 }

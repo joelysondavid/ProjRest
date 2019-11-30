@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ControllerProject;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -13,6 +14,12 @@ namespace ViewProject
 {
     public partial class TelaHome : Form
     {
+        ItemController itemController = new ItemController();
+        MesaController mesaController = new MesaController();
+        PedidoController pedidoController = new PedidoController();
+        ReservaController reservaController = new ReservaController();
+        UsuarioController usuarioController = new UsuarioController();
+
         public TelaHome()
         {
             InitializeComponent();
@@ -43,6 +50,11 @@ namespace ViewProject
         private void reservasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TelaReservas().ShowDialog();
+        }
+
+        private void mesasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TelaMesas().ShowDialog();
         }
     }
 }
