@@ -37,12 +37,12 @@ namespace ViewProject
             {
                 Pedido pedido = new Pedido
                 {
-                    Id = pedidoAtual==null?null:pedidoAtual.Id,
+                    Id = pedidoAtual == null ? null : pedidoAtual.Id,
                     NumMesa = cbxMesa.SelectedItem.ToString(),
                     NomeCliente = txtNomeCliente.Text,
                     CpfCliente = txtCPF.Text,
-                    DataPed= DateTime.Now.ToShortDateString(),
-                    Status = "Em andamento",                    
+                    DataPed = DateTime.Now.ToShortDateString(),
+                    Status = "Em andamento",
                 };
                 pedidoController.Save(pedido);
                 GetAll();
@@ -118,8 +118,9 @@ namespace ViewProject
                     string numMesa = pedidoAtual.NumMesa;
                     pedidoController.DeleteById(idPed, numMesa);
                     GetAll();
+                    ClearControlsItem();
                     ClearControls(panelPedido);
-                    Console.WriteLine("Pedido apagado com sucesso!", "Sucesso!", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    Console.WriteLine("Pedido apagado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -144,7 +145,7 @@ namespace ViewProject
 
         // seta os campos
         private void SetCamposItensPed(ItemPedido item)
-        {           
+        {
             if (item.Id != null)
             {
                 txtIdItem.Text = item.ItemId.ToString();
@@ -337,7 +338,7 @@ namespace ViewProject
                 };
                 // itensPed.Add(itemPed);
                 pedidoAtual.ItensDePedido.Add(itemPed); // adiciona o item a lista de itens de pedido
-                pedidoController.Save(pedidoAtual); // salva o item
+                pedidoAtual = pedidoController.Save(pedidoAtual); // salva o item
                 ClearControlsItem(); // limpa os campos do panel item
                 txtIdPedido.Text = pedidoAtual.Id.ToString();
                 ControlsItem(false); // desabilita os campos do item
@@ -352,14 +353,19 @@ namespace ViewProject
         {
             if (pedidoAtual.ItensDePedido.Count > 0)
             {
-                Pedido pedido = pedidoAtual;
-                pedido.DataPed = DateTime.Today.ToShortDateString();
-                pedido.Status = "Finalizado";
-                pedidoController.Save(pedido);
-                pedidoAtual = null;
-                GetAll();
-                ClearControls(panelPedido);
-            } else
+                if (DialogResult.Yes == MessageBox.Show("Deseja realmente finalizar este pedido?\nTotal de R$ " + pedidoAtual.ValorTotal + " Reais\nConfirmar Pagamento?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    Pedido pedido = pedidoAtual;
+                    pedido.DataPed = DateTime.Today.ToShortDateString();
+                    pedido.Status = "Finalizado";
+                    pedidoController.Save(pedido);
+                    GetAll();
+                    ClearControlsItem();
+                    ClearControls(panelPedido);
+                    MessageBox.Show("Pedido finalizado com sucesso!","Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+            }
+            else
             {
                 MessageBox.Show("Pedido não pode ser finalizado, pois não contém itens!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -368,7 +374,7 @@ namespace ViewProject
         private void btnSalvarItem_Click(object sender, EventArgs e)
         {
             itemPedAtual.Status = cbxStatus.SelectedItem.ToString();
-            for(int i=0;i< pedidoAtual.ItensDePedido.Count;i++)
+            for (int i = 0; i < pedidoAtual.ItensDePedido.Count; i++)
             {
                 if (pedidoAtual.ItensDePedido[i].Id == itemPedAtual.Id)
                 {

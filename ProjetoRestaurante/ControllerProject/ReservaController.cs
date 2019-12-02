@@ -19,5 +19,10 @@ namespace ControllerProject
         {
             return daoReserva.GetAll();
         }
+
+        public Reserva Save(Reserva reserva)
+        {
+            return daoReserva.Save(reserva);
+        }
     }
 }

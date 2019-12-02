@@ -112,84 +112,91 @@ namespace PersistenceProject.DAO
             }
             return itemPed;
         }
-        // GET ALL
-
-        // INSERT ItensPedido
-        public IList<ItemPedido> Insert(IList<ItemPedido> itensPed) // esse método tem como objetivo inserir todos os itens do pedido
+        private ItemPedido GetLast()
         {
-            // IList<ItenPedido> itens = new List<ItenPedido>();
+            ItemPedido item = null;
             try
             {
-
-                foreach (ItemPedido item in itensPed) // cada pedido realizara o comando
+                // comando
+                cmd = new SqlCommand("SELECT TOP 1 Id, PedidoId, ItemId, Quantidade, ValorItens, Status FROM ItensPedido ORDER BY ID DESC", conn);
+                // O status do pedido sempre iniciará em "Aguardando"
+                conn.Open(); // abre a conexão
+                using (SqlDataReader reader = cmd.ExecuteReader())// executa o comando
                 {
-                    // verificar se tem id
-                    if (item.Id == null)
+                    while (reader.Read())
                     {
-                        // comando
-                        cmd = new SqlCommand("INSERT INTO ItensPedido (PedidoId, ItemId, Quantidade, ValorItens, Status) VALUES (@PedidoId, @ItemId, @Quantidade, @ValorItens, @Status)", conn);
-                        cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
-                        cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
-                        cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
-                        cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
-                        cmd.Parameters.AddWithValue("@Status", item.Status);
-                        // O status do pedido sempre iniciará em "Aguardando"
-                        conn.Open(); // abre a conexão
-                        cmd.ExecuteNonQuery(); // executa o comando
-                        conn.Close(); // encerra a conexão
+                        item = new ItemPedido
+                        {
+                            Id = reader.GetInt32(0),
+                            PedidoId = reader.GetInt32(1),
+                            ItemId = reader.GetInt32(2),
+                            Quantidade = reader.GetInt32(3),
+                            ValorItens = reader.GetDecimal(4),
+                            Status = reader.GetString(5)
+                        };
                     }
-                    else
-                    {
-                        cmd = new SqlCommand("UPDATE ItensPedido SET PedidoId=@PedidoId, ItemId=@ItemId, Quantidade=@Quantidade, ValorItens=@ValorItens, Status=@Status WHERE Id=@Id", conn);
-                        cmd.Parameters.AddWithValue("Id", item.Id);
-                        cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
-                        cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
-                        cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
-                        cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
-                        cmd.Parameters.AddWithValue("@Status", item.Status);
-                        // O status do pedido sempre iniciará em "Aguardando"
-                        conn.Open(); // abre a conexão
-                        cmd.ExecuteNonQuery(); // executa o comando
-                        conn.Close(); // encerra a conexão
-                    }
-                } // após a inserção dos itens                 
+                }
+                conn.Close(); // encerra a conexão
             }
             catch (Exception e)
             {
                 Console.WriteLine("Erro ao inserir itens de pedido\nErro: " + e);
             }
-            return GetByPed(itensPed[0].PedidoId); // todos os itens deverão ser do mesmo pedido 
-                                                   // então não importa o indice da lista todos tem o mesmo PedidoId
+            return item;
+        }
+
+        // INSERT ItensPedido
+        public ItemPedido Insert(ItemPedido item) // esse método tem como objetivo inserir todos os itens do pedido
+        {
+            try
+            {
+
+                // comando
+                cmd = new SqlCommand("INSERT INTO ItensPedido (PedidoId, ItemId, Quantidade, ValorItens, Status) VALUES (@PedidoId, @ItemId, @Quantidade, @ValorItens, @Status)", conn);
+                cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
+                cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
+                cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
+                cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
+                cmd.Parameters.AddWithValue("@Status", item.Status);
+                // O status do pedido sempre iniciará em "Aguardando"
+                conn.Open(); // abre a conexão
+                cmd.ExecuteNonQuery(); // executa o comando
+                conn.Close(); // encerra a conexão
+
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao inserir itens de pedido\nErro: " + e);
+            }
+            return GetLast(); // todos os itens deverão ser do mesmo pedido 
+                              // então não importa o indice da lista todos tem o mesmo PedidoId
         }
 
         // metodo update Itens ped
-        public IList<ItemPedido> Update(IList<ItemPedido> itensPed) // esse método tem como objetivo inserir todos os itens do pedido
+        public ItemPedido Update(ItemPedido item) // esse método tem como objetivo inserir todos os itens do pedido
         {
-            // IList<ItenPedido> itens = new List<ItenPedido>();
             try
             {
+                // comando
+                cmd = new SqlCommand("UPDATE ItensPedido SET PedidoId=PedidoId, ItemId=@ItemId, Quantidade=@Quantidade, ValorItens=@ValorItens, Status=@Status WHERE Id = @Id", conn);
+                cmd.Parameters.AddWithValue("Id", item.Id);
+                cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
+                cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
+                cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
+                cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
+                cmd.Parameters.AddWithValue("@Status", item.Status);
+                // O status do pedido sempre iniciará em "Aguardando"
+                conn.Open(); // abre a conexão
+                cmd.ExecuteNonQuery(); // executa o comando
+                conn.Close(); // encerra a conexão
+            } // após a inserção dos itens                 
 
-                foreach (ItemPedido item in itensPed) // cada pedido realizara o comando
-                {
-                    // comando
-                    cmd = new SqlCommand("UPDATE ItensPedido (Id, PedidoId, ItemId, Quantidade, ValorItens, Status) VALUES (@PedidoId, @ItemId, @Quantidade, @ValorItens, Aguardando)", conn);
-                    cmd.Parameters.AddWithValue("Id", item.Id);
-                    cmd.Parameters.AddWithValue("@PedidoId", item.PedidoId);
-                    cmd.Parameters.AddWithValue("@ItemId", item.ItemId);
-                    cmd.Parameters.AddWithValue("@Quantidade", item.Quantidade);
-                    cmd.Parameters.AddWithValue("@ValorItens", item.ValorItens);
-                    // O status do pedido sempre iniciará em "Aguardando"
-                    conn.Open(); // abre a conexão
-                    cmd.ExecuteNonQuery(); // executa o comando
-                    conn.Close(); // encerra a conexão
-                } // após a inserção dos itens                 
-            }
             catch (Exception e)
             {
                 Console.WriteLine("Erro ao inserir itens de pedido\nErro: " + e);
             }
-            return GetByPed(itensPed[0].PedidoId); // todos os itens deverão ser do mesmo pedido 
-                                                   // então não importa o indice da lista todos tem o mesmo PedidoId
+            return GetById((int)item.Id); // todos os itens deverão ser do mesmo pedido 
+                                          // então não importa o indice da lista todos tem o mesmo PedidoId
         }
 
         // delete itens pedido
@@ -204,10 +211,24 @@ namespace PersistenceProject.DAO
                 conn.Open(); // abertura da conexão
                 cmd.ExecuteNonQuery(); // execução do comando
                 conn.Close();
-            } catch(Exception e)
-            {
-                Console.WriteLine("Erro ao deletar itens de pedido!Erro: "+e);
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao deletar itens de pedido!Erro: " + e);
+            }
+        }
+
+        public IList<ItemPedido> SaveItems(IList<ItemPedido> itensPed)
+        {
+            IList<ItemPedido> itensSalvos = new List<ItemPedido>();
+            foreach(var item in itensPed)
+            {
+                if (item.Id != null)
+                    itensSalvos.Add(Update(item));
+                else
+                    itensSalvos.Add(Insert(item));
+            }
+            return itensSalvos;
         }
     }
 }

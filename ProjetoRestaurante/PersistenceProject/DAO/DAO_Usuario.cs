@@ -115,7 +115,7 @@ namespace PersistenceProject.DAO
         {
             Usuario usuario = null;
             // 1- fazer validação verificar se o login já existe
-            if (VerificaUsuario(usr) == false)
+            if (VerificaUsuario(usr) == true)
             {
                 // 2- realizar o try e tentar pegar uam exeção
                 try
@@ -195,14 +195,14 @@ namespace PersistenceProject.DAO
         // método auxiliar para verificação de usuário já existente
         private bool VerificaUsuario(Usuario user)
         {
-            IList<Usuario> usuarios = this.GetAll(); // obtem uma lista com todos os usuário já cadastrados
+            IList<Usuario> usuarios = GetAll(); // obtem uma lista com todos os usuário já cadastrados
             foreach (Usuario usuario in usuarios) // faz um foreach para cada elemento dessa lista
             {
                 // se o usuario passado pelo parâmetro já tiver sido cadastrado com login (em maiusculo) ou cpf
                 if ((usuario.Login.ToUpper() == user.Login.ToUpper()) || (usuario.Cpf == user.Cpf))
-                    return true; // retorna true
+                    return false; // se encontrar um usuario com login ou cpf
             }
-            return false; // caso não tenha nenhum login ou cpf retorna false
+            return true;
         }
     }
 }

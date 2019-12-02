@@ -39,7 +39,7 @@
             this.panelReserva = new System.Windows.Forms.Panel();
             this.txtDescricaoMesa = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.mtbDataHora = new System.Windows.Forms.MaskedTextBox();
+            this.mtbHora = new System.Windows.Forms.MaskedTextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -52,6 +52,7 @@
             this.dgvReservas = new System.Windows.Forms.DataGridView();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.mtbData = new System.Windows.Forms.MaskedTextBox();
             this.panelGeral.SuspendLayout();
             this.panelReserva.SuspendLayout();
             this.panelGrid.SuspendLayout();
@@ -99,6 +100,7 @@
             this.btnSalvar.TabIndex = 6;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnExcluir
             // 
@@ -117,6 +119,7 @@
             this.btnLimpar.TabIndex = 4;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = true;
+            this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
             // 
             // btnVoltar
             // 
@@ -131,9 +134,10 @@
             // panelReserva
             // 
             this.panelReserva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelReserva.Controls.Add(this.mtbData);
             this.panelReserva.Controls.Add(this.txtDescricaoMesa);
             this.panelReserva.Controls.Add(this.label5);
-            this.panelReserva.Controls.Add(this.mtbDataHora);
+            this.panelReserva.Controls.Add(this.mtbHora);
             this.panelReserva.Controls.Add(this.label4);
             this.panelReserva.Controls.Add(this.label3);
             this.panelReserva.Controls.Add(this.label1);
@@ -163,15 +167,16 @@
             this.label5.Size = new System.Drawing.Size(102, 13);
             this.label5.TabIndex = 13;
             this.label5.Text = "Descrição da Mesa:";
+            this.toolTip1.SetToolTip(this.label5, "Descrição da mesa");
             // 
-            // mtbDataHora
+            // mtbHora
             // 
-            this.mtbDataHora.Location = new System.Drawing.Point(134, 19);
-            this.mtbDataHora.Mask = "00/00/0000 90:00";
-            this.mtbDataHora.Name = "mtbDataHora";
-            this.mtbDataHora.Size = new System.Drawing.Size(121, 20);
-            this.mtbDataHora.TabIndex = 12;
-            this.mtbDataHora.ValidatingType = typeof(System.DateTime);
+            this.mtbHora.Location = new System.Drawing.Point(213, 19);
+            this.mtbHora.Mask = "00:00";
+            this.mtbHora.Name = "mtbHora";
+            this.mtbHora.Size = new System.Drawing.Size(42, 20);
+            this.mtbHora.TabIndex = 12;
+            this.mtbHora.ValidatingType = typeof(System.DateTime);
             // 
             // label4
             // 
@@ -181,25 +186,27 @@
             this.label4.Size = new System.Drawing.Size(104, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "Data e hora reserva:";
-            this.toolTip1.SetToolTip(this.label4, "Obrigatório: Data e hora da Reserva");
+            this.toolTip1.SetToolTip(this.label4, "Obrigatório: Hra da Reserva, Só agendamos para o mesmo dia");
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 190);
+            this.label3.Location = new System.Drawing.Point(13, 190);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(65, 13);
             this.label3.TabIndex = 6;
             this.label3.Text = "Cliente CPF:";
+            this.toolTip1.SetToolTip(this.label3, "Opcional: CPF do cliente");
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(21, 149);
+            this.label1.Location = new System.Drawing.Point(13, 149);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Cliente:";
+            this.toolTip1.SetToolTip(this.label1, "Obrigatório: Informe o nome do cliente");
             // 
             // txtCPF
             // 
@@ -228,11 +235,12 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 108);
+            this.label2.Location = new System.Drawing.Point(13, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(98, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Mesas Diponíveis: ";
+            this.toolTip1.SetToolTip(this.label2, "Obrigatório: Seleciona uma mesa disponivel");
             // 
             // Reservas
             // 
@@ -272,6 +280,16 @@
             this.btnFinalizar.TabIndex = 11;
             this.btnFinalizar.Text = "Finalizar Reserva";
             this.btnFinalizar.UseVisualStyleBackColor = true;
+            // 
+            // mtbData
+            // 
+            this.mtbData.Location = new System.Drawing.Point(134, 19);
+            this.mtbData.Mask = "00/00/0000";
+            this.mtbData.Name = "mtbData";
+            this.mtbData.ReadOnly = true;
+            this.mtbData.Size = new System.Drawing.Size(67, 20);
+            this.mtbData.TabIndex = 15;
+            this.mtbData.ValidatingType = typeof(System.DateTime);
             // 
             // TelaReservas
             // 
@@ -314,8 +332,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.MaskedTextBox mtbDataHora;
+        private System.Windows.Forms.MaskedTextBox mtbHora;
         private System.Windows.Forms.TextBox txtDescricaoMesa;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.MaskedTextBox mtbData;
     }
 }

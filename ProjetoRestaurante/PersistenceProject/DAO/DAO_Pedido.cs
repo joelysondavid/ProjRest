@@ -185,7 +185,7 @@ namespace PersistenceProject.DAO
                               // após a inserção do novo pedido é necessário também cadastrar os pedidos deste pedido pois estão em tableas separadas
                               // é necessário verificar se já existem pedidos
                               // if(ped)
-                daoItensPed.Insert(pedido.ItensDePedido);
+                daoItensPed.SaveItems(pedido.ItensDePedido);
                 if (pedido.Status == "Finalizado")
                     daoMesa.UpdateStatus(pedido.NumMesa, true);
             }

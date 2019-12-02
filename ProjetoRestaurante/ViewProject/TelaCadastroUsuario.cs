@@ -25,31 +25,40 @@ namespace ViewProject
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
-            if (!VerificaCampos())
+            if (CamposValidos())
             {
                 Usuario user = new Usuario
                 {
-                    Nome = txtNome.Text
-                    ,
-                    Cpf = txtCpf.Text
-                    ,
-                    Login = txtLogin.Text
-                    ,
-                    Senha = txtSenha.Text
-                    ,
+                    Id = userAtual != null ? userAtual.Id : null,
+                    Nome = txtNome.Text,
+                    Cpf = txtCpf.Text,
+                    Login = txtLogin.Text,
+                    Senha = txtSenha.Text,
                     TipoUsr = cbxTipo.SelectedItem.ToString()
                 };
-                Usuario usuario = controller.Salvar(user, null, null);
-                if (usuario.Id != null)
+                Usuario usuario;
+                if (userAtual != null)
                 {
-                    MessageBox.Show("Usuario cadastrado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    usuario = controller.Salvar(user, userAtual.Login, txtSenha.Text);
+                    if (txtNovaSenha.Text == string.Empty)
+                    {
+                        MessageBox.Show("O campo de nova senha deve estar preenchido!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
+                else
+                    usuario = controller.Salvar(user, null, null);
+
+                if (usuario != null)
+                {
+                    MessageBox.Show("Usuario salvo com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     GetAll();
+                    LimparCampos();
                 }
                 else
                 {
-                    MessageBox.Show("Erro ao inserir Usuário!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Erro ao salvar Usuário!\nVerifique se todos os campos estão preenchidos corretamente.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-
             }
             else
             {
@@ -59,9 +68,9 @@ namespace ViewProject
 
 
         // método auxiliar verifica se os campos estão vázios
-        private bool VerificaCampos()
+        private bool CamposValidos()
         {
-            if (string.IsNullOrWhiteSpace(txtLogin.Text))
+            if (txtNome.Text != string.Empty && txtCpf.Text != string.Empty && txtLogin.Text != string.Empty && txtSenha.Text != string.Empty && cbxTipo.SelectedIndex != -1)
             {
                 return true;
             }
@@ -78,6 +87,8 @@ namespace ViewProject
             Util.ClearTxt(panelUsuario);
             cbxTipo.SelectedIndex = -1;
             userAtual = null;
+            lblNovaSenha.Visible = false;
+            txtNovaSenha.Visible = false;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -89,12 +100,13 @@ namespace ViewProject
             }
             if (DialogResult.Yes == MessageBox.Show("Deseja realmete apagar este usuario?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
             {
-                bool deletado=controller.Delete((int)userAtual.Id);
+                bool deletado = controller.Delete((int)userAtual.Id);
                 if (deletado == true)
                 {
                     MessageBox.Show("Usuario deletado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     userAtual = null;
                     GetAll();
+                    LimparCampos();
                 }
                 else
                     MessageBox.Show("Erro ao deletar usuario!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -130,6 +142,15 @@ namespace ViewProject
             txtLogin.Text = user.Login;
             txtCpf.Text = user.Cpf;
             cbxTipo.SelectedItem = user.TipoUsr;
+            lblNovaSenha.Visible = true;
+            txtNovaSenha.Visible = true;
+        }
+
+        private void LimparCampos()
+        {
+            Util.ClearTxt(panelUsuario);
+            cbxTipo.SelectedIndex = -1;
+            userAtual = null;
         }
     }
 }

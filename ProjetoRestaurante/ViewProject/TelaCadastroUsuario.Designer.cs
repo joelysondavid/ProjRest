@@ -45,6 +45,8 @@
             this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.lblNovaSenha = new System.Windows.Forms.Label();
+            this.txtNovaSenha = new System.Windows.Forms.TextBox();
             this.panelUsuario.SuspendLayout();
             this.panelDgv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
@@ -59,14 +61,14 @@
             // 
             // txtLogin
             // 
-            this.txtLogin.Location = new System.Drawing.Point(60, 110);
+            this.txtLogin.Location = new System.Drawing.Point(60, 102);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(100, 20);
             this.txtLogin.TabIndex = 1;
             // 
             // txtSenha
             // 
-            this.txtSenha.Location = new System.Drawing.Point(323, 113);
+            this.txtSenha.Location = new System.Drawing.Point(323, 105);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(100, 20);
@@ -74,7 +76,7 @@
             // 
             // txtCpf
             // 
-            this.txtCpf.Location = new System.Drawing.Point(60, 72);
+            this.txtCpf.Location = new System.Drawing.Point(60, 67);
             this.txtCpf.Name = "txtCpf";
             this.txtCpf.Size = new System.Drawing.Size(100, 20);
             this.txtCpf.TabIndex = 3;
@@ -105,7 +107,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(15, 113);
+            this.label2.Location = new System.Drawing.Point(13, 105);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(39, 13);
             this.label2.TabIndex = 6;
@@ -114,7 +116,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(260, 116);
+            this.label3.Location = new System.Drawing.Point(273, 108);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(44, 13);
             this.label3.TabIndex = 7;
@@ -123,7 +125,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 75);
+            this.label4.Location = new System.Drawing.Point(21, 70);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(33, 13);
             this.label4.TabIndex = 8;
@@ -144,7 +146,7 @@
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 23);
             this.btnCadastrar.TabIndex = 10;
-            this.btnCadastrar.Text = "Cadastrar";
+            this.btnCadastrar.Text = "Salvar";
             this.btnCadastrar.UseVisualStyleBackColor = true;
             this.btnCadastrar.Click += new System.EventHandler(this.btnCadastrar_Click);
             // 
@@ -161,6 +163,8 @@
             // panelUsuario
             // 
             this.panelUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelUsuario.Controls.Add(this.lblNovaSenha);
+            this.panelUsuario.Controls.Add(this.txtNovaSenha);
             this.panelUsuario.Controls.Add(this.label5);
             this.panelUsuario.Controls.Add(this.label4);
             this.panelUsuario.Controls.Add(this.label3);
@@ -214,6 +218,25 @@
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // lblNovaSenha
+            // 
+            this.lblNovaSenha.AutoSize = true;
+            this.lblNovaSenha.Location = new System.Drawing.Point(247, 142);
+            this.lblNovaSenha.Name = "lblNovaSenha";
+            this.lblNovaSenha.Size = new System.Drawing.Size(70, 13);
+            this.lblNovaSenha.TabIndex = 11;
+            this.lblNovaSenha.Text = "Nova Senha:";
+            this.lblNovaSenha.Visible = false;
+            // 
+            // txtNovaSenha
+            // 
+            this.txtNovaSenha.Location = new System.Drawing.Point(323, 139);
+            this.txtNovaSenha.Name = "txtNovaSenha";
+            this.txtNovaSenha.PasswordChar = '*';
+            this.txtNovaSenha.Size = new System.Drawing.Size(100, 20);
+            this.txtNovaSenha.TabIndex = 10;
+            this.txtNovaSenha.Visible = false;
+            // 
             // TelaCadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -257,5 +280,7 @@
         private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Label lblNovaSenha;
+        private System.Windows.Forms.TextBox txtNovaSenha;
     }
 }

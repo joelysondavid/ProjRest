@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Itens\TelaGerenciamentoMenu.cs">
+    <Compile Include="TelaGerenciamentoMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Itens\TelaGerenciamentoMenu.Designer.cs">
+    <Compile Include="TelaGerenciamentoMenu.Designer.cs">
       <DependentUpon>TelaGerenciamentoMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -91,7 +91,7 @@
       <DependentUpon>TelaReservas.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\Util.cs" />
-    <EmbeddedResource Include="Itens\TelaGerenciamentoMenu.resx">
+    <EmbeddedResource Include="TelaGerenciamentoMenu.resx">
       <DependentUpon>TelaGerenciamentoMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">

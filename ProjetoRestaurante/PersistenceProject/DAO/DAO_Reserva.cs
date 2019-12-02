@@ -3,6 +3,7 @@ using PersistenceProject.Connection;
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -37,7 +38,7 @@ namespace PersistenceProject.DAO
                             NomeCliente = reader.GetString(1),
                             CpfCliente = reader.GetString(2),
                             NumMesa = reader.GetString(3),
-                            ReservaInicio = reader.GetDateTime(4),
+                            ReservaInicio = reader.GetDateTime(4).ToString(),
                             Finalizada = reader.GetBoolean(5)
                         };
                         // adiciona o item lido na lista de reservas
@@ -75,7 +76,8 @@ namespace PersistenceProject.DAO
                             NomeCliente = reader.GetString(1),
                             CpfCliente = reader.GetString(2),
                             NumMesa = reader.GetString(3),
-                            ReservaInicio = reader.GetDateTime(4)
+                            ReservaInicio = reader.GetDateTime(4).ToString(),
+                            Finalizada=reader.GetBoolean(5)
                         };
                     }
                 }
@@ -110,7 +112,8 @@ namespace PersistenceProject.DAO
                             NomeCliente = reader.GetString(1),
                             CpfCliente = reader.GetString(2),
                             NumMesa = reader.GetString(3),
-                            ReservaInicio = reader.GetDateTime(4)
+                            ReservaInicio = reader.GetDateTime(4).ToString(),
+                            Finalizada = reader.GetBoolean(5)
                         };
                     }
                 }
@@ -145,7 +148,8 @@ namespace PersistenceProject.DAO
                             NomeCliente = reader.GetString(1),
                             CpfCliente = reader.GetString(2),
                             NumMesa = reader.GetString(3),
-                            ReservaInicio = reader.GetDateTime(4)
+                            ReservaInicio = reader.GetDateTime(4).ToString(),
+                            Finalizada = reader.GetBoolean(5)
                         };
                     }
                 }
@@ -165,7 +169,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // comando que irá realizar select
-                cmd = new SqlCommand("SELECT TOP 1 Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio FROM Reservas ORDER BY Id DESC", conn);
+                cmd = new SqlCommand("SELECT TOP 1 Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas ORDER BY Id DESC", conn);
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // comando que irá executar o comando e passar tudo quefoi lido para variavel reader
                 {
@@ -178,7 +182,8 @@ namespace PersistenceProject.DAO
                             NomeCliente = reader.GetString(1),
                             CpfCliente = reader.GetString(2),
                             NumMesa = reader.GetString(3),
-                            ReservaInicio = reader.GetDateTime(4)
+                            ReservaInicio = reader.GetDateTime(4).ToString(),
+                            Finalizada = reader.GetBoolean(5)
                         };
                     }
                 }
@@ -213,8 +218,8 @@ namespace PersistenceProject.DAO
                 cmd.Parameters.AddWithValue("@NomeCliente", rsv.NomeCliente);
                 cmd.Parameters.AddWithValue("@CpfCliente", rsv.CpfCliente);
                 cmd.Parameters.AddWithValue("@NumMesa", rsv.NumMesa);
-                cmd.Parameters.AddWithValue("@ReservaInicio", rsv.ReservaInicio);
-                cmd.Parameters.AddWithValue("@Finalizada", rsv.Finalizada);
+                cmd.Parameters.AddWithValue("@ReservaInicio", DateTime.ParseExact(rsv.ReservaInicio, "dd/MM/yyyy HH:mm", CultureInfo.InvariantCulture));
+                cmd.Parameters.AddWithValue("@Finalizada", false);
                 conn.Open(); // abertura da conexão
                 cmd.ExecuteNonQuery(); // executa o comando
                 conn.Close(); // encerra a conexão
