@@ -49,6 +49,7 @@
             this.panelGrid = new System.Windows.Forms.Panel();
             this.dgvPedidos = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnSalvarItem = new System.Windows.Forms.Button();
             this.btnAdicionar = new System.Windows.Forms.Button();
             this.btnRemoverItem = new System.Windows.Forms.Button();
             this.btnNovoItem = new System.Windows.Forms.Button();
@@ -74,7 +75,6 @@
             this.dgvItensPed = new System.Windows.Forms.DataGridView();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.btnSalvarItem = new System.Windows.Forms.Button();
             this.panelPedidos.SuspendLayout();
             this.panelPedido.SuspendLayout();
             this.panelGrid.SuspendLayout();
@@ -297,6 +297,17 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(607, 563);
             this.panel1.TabIndex = 9;
+            // 
+            // btnSalvarItem
+            // 
+            this.btnSalvarItem.Enabled = false;
+            this.btnSalvarItem.Location = new System.Drawing.Point(516, 519);
+            this.btnSalvarItem.Name = "btnSalvarItem";
+            this.btnSalvarItem.Size = new System.Drawing.Size(75, 25);
+            this.btnSalvarItem.TabIndex = 7;
+            this.btnSalvarItem.Text = "Salvar";
+            this.btnSalvarItem.UseVisualStyleBackColor = true;
+            this.btnSalvarItem.Click += new System.EventHandler(this.btnSalvarItem_Click);
             // 
             // btnAdicionar
             // 
@@ -547,21 +558,11 @@
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
-            // btnSalvarItem
-            // 
-            this.btnSalvarItem.Enabled = false;
-            this.btnSalvarItem.Location = new System.Drawing.Point(516, 519);
-            this.btnSalvarItem.Name = "btnSalvarItem";
-            this.btnSalvarItem.Size = new System.Drawing.Size(75, 25);
-            this.btnSalvarItem.TabIndex = 7;
-            this.btnSalvarItem.Text = "Salvar";
-            this.btnSalvarItem.UseVisualStyleBackColor = true;
-            this.btnSalvarItem.Click += new System.EventHandler(this.btnSalvarItem_Click);
-            // 
             // TelaPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(1335, 649);
             this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.panel1);

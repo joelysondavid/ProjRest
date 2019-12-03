@@ -17,7 +17,7 @@ namespace ViewProject
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new TelaHome());
+            Application.Run(new TelaLogin());
         }
     }
 }

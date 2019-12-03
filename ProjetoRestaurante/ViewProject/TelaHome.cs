@@ -25,13 +25,6 @@ namespace ViewProject
             InitializeComponent();
         }
 
-        private void btnSair_Click(object sender, EventArgs e)
-        {
-            this.Close();
-            TelaLogin login = new TelaLogin();
-            login.Show();
-        }
-
         private void cadastroDePedidosToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TelaPedidos().ShowDialog();
@@ -55,6 +48,12 @@ namespace ViewProject
         private void mesasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TelaMesas().ShowDialog();
+        }
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            TelaLogin login = new TelaLogin();
+            login.Show();
         }
     }
 }

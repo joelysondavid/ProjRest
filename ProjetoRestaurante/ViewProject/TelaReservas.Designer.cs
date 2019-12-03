@@ -37,6 +37,7 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.panelReserva = new System.Windows.Forms.Panel();
+            this.mtbData = new System.Windows.Forms.MaskedTextBox();
             this.txtDescricaoMesa = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.mtbHora = new System.Windows.Forms.MaskedTextBox();
@@ -52,7 +53,6 @@
             this.dgvReservas = new System.Windows.Forms.DataGridView();
             this.btnFinalizar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.mtbData = new System.Windows.Forms.MaskedTextBox();
             this.panelGeral.SuspendLayout();
             this.panelReserva.SuspendLayout();
             this.panelGrid.SuspendLayout();
@@ -150,6 +150,16 @@
             this.panelReserva.Size = new System.Drawing.Size(599, 231);
             this.panelReserva.TabIndex = 2;
             // 
+            // mtbData
+            // 
+            this.mtbData.Location = new System.Drawing.Point(134, 19);
+            this.mtbData.Mask = "00/00/0000";
+            this.mtbData.Name = "mtbData";
+            this.mtbData.ReadOnly = true;
+            this.mtbData.Size = new System.Drawing.Size(67, 20);
+            this.mtbData.TabIndex = 15;
+            this.mtbData.ValidatingType = typeof(System.DateTime);
+            // 
             // txtDescricaoMesa
             // 
             this.txtDescricaoMesa.Location = new System.Drawing.Point(284, 47);
@@ -187,6 +197,7 @@
             this.label4.TabIndex = 8;
             this.label4.Text = "Data e hora reserva:";
             this.toolTip1.SetToolTip(this.label4, "Obrigatório: Hra da Reserva, Só agendamos para o mesmo dia");
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -207,6 +218,7 @@
             this.label1.TabIndex = 5;
             this.label1.Text = "Cliente:";
             this.toolTip1.SetToolTip(this.label1, "Obrigatório: Informe o nome do cliente");
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtCPF
             // 
@@ -241,6 +253,7 @@
             this.label2.TabIndex = 0;
             this.label2.Text = "Mesas Diponíveis: ";
             this.toolTip1.SetToolTip(this.label2, "Obrigatório: Seleciona uma mesa disponivel");
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // Reservas
             // 
@@ -281,23 +294,15 @@
             this.btnFinalizar.Text = "Finalizar Reserva";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             // 
-            // mtbData
-            // 
-            this.mtbData.Location = new System.Drawing.Point(134, 19);
-            this.mtbData.Mask = "00/00/0000";
-            this.mtbData.Name = "mtbData";
-            this.mtbData.ReadOnly = true;
-            this.mtbData.Size = new System.Drawing.Size(67, 20);
-            this.mtbData.TabIndex = 15;
-            this.mtbData.ValidatingType = typeof(System.DateTime);
-            // 
             // TelaReservas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(628, 635);
             this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.panelGeral);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaReservas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TelaReservas";

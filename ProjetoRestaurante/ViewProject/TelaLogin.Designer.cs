@@ -47,9 +47,9 @@
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLogin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtLogin.Location = new System.Drawing.Point(146, 153);
+            this.txtLogin.Location = new System.Drawing.Point(146, 151);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(122, 19);
+            this.txtLogin.Size = new System.Drawing.Size(117, 19);
             this.txtLogin.TabIndex = 0;
             // 
             // txtSenha
@@ -58,10 +58,10 @@
             this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSenha.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtSenha.Location = new System.Drawing.Point(146, 214);
+            this.txtSenha.Location = new System.Drawing.Point(146, 213);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
-            this.txtSenha.Size = new System.Drawing.Size(122, 19);
+            this.txtSenha.Size = new System.Drawing.Size(117, 19);
             this.txtSenha.TabIndex = 1;
             // 
             // btnLogin
@@ -119,23 +119,23 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.panel1.Location = new System.Drawing.Point(88, 169);
+            this.panel1.Location = new System.Drawing.Point(140, 168);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(182, 2);
+            this.panel1.Size = new System.Drawing.Size(125, 2);
             this.panel1.TabIndex = 6;
             // 
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.panel2.Location = new System.Drawing.Point(89, 231);
+            this.panel2.Location = new System.Drawing.Point(141, 230);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(182, 2);
+            this.panel2.Size = new System.Drawing.Size(125, 2);
             this.panel2.TabIndex = 7;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(142, 35);
+            this.pictureBox1.Location = new System.Drawing.Point(144, 34);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(71, 66);
             this.pictureBox1.TabIndex = 8;

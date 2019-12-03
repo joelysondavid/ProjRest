@@ -84,11 +84,7 @@ namespace ViewProject
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            Util.ClearTxt(panelUsuario);
-            cbxTipo.SelectedIndex = -1;
-            userAtual = null;
-            lblNovaSenha.Visible = false;
-            txtNovaSenha.Visible = false;
+            LimparCampos();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -144,6 +140,7 @@ namespace ViewProject
             cbxTipo.SelectedItem = user.TipoUsr;
             lblNovaSenha.Visible = true;
             txtNovaSenha.Visible = true;
+            lineNovaSenha.Visible = true;
         }
 
         private void LimparCampos()
@@ -151,6 +148,9 @@ namespace ViewProject
             Util.ClearTxt(panelUsuario);
             cbxTipo.SelectedIndex = -1;
             userAtual = null;
+            lblNovaSenha.Visible = false;
+            txtNovaSenha.Visible = false;
+            lineNovaSenha.Visible = false;
         }
     }
 }

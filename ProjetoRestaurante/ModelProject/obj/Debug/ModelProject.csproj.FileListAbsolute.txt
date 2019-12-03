@@ -2,4 +2,3 @@ C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ModelProject
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ModelProject\bin\Debug\ModelProject.pdb
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ModelProject\obj\Debug\ModelProject.dll
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ModelProject\obj\Debug\ModelProject.pdb
-C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ModelProject\obj\Debug\ModelProject.csprojAssemblyReference.cache
