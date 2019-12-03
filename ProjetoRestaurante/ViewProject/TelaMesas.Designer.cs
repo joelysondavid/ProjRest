@@ -101,9 +101,9 @@
             // 
             this.lineNovaSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.lineNovaSenha.Controls.Add(this.panel10);
-            this.lineNovaSenha.Location = new System.Drawing.Point(3, 121);
+            this.lineNovaSenha.Location = new System.Drawing.Point(77, 118);
             this.lineNovaSenha.Name = "lineNovaSenha";
-            this.lineNovaSenha.Size = new System.Drawing.Size(169, 2);
+            this.lineNovaSenha.Size = new System.Drawing.Size(95, 2);
             this.lineNovaSenha.TabIndex = 18;
             // 
             // panel10

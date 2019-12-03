@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaCadastroUsuario));
             this.txtNome = new System.Windows.Forms.TextBox();
             this.txtLogin = new System.Windows.Forms.TextBox();
             this.txtSenha = new System.Windows.Forms.TextBox();
@@ -55,10 +56,12 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblNovaSenha = new System.Windows.Forms.Label();
             this.txtNovaSenha = new System.Windows.Forms.TextBox();
-            this.panelDgv = new System.Windows.Forms.Panel();
-            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.panelDgv = new System.Windows.Forms.Panel();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
             this.panelUsuario.SuspendLayout();
             this.panel9.SuspendLayout();
             this.lineNovaSenha.SuspendLayout();
@@ -66,6 +69,8 @@
             this.panel5.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.panelDgv.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
@@ -76,9 +81,9 @@
             this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNome.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtNome.Location = new System.Drawing.Point(60, 27);
+            this.txtNome.Location = new System.Drawing.Point(61, 126);
             this.txtNome.Name = "txtNome";
-            this.txtNome.Size = new System.Drawing.Size(134, 19);
+            this.txtNome.Size = new System.Drawing.Size(130, 19);
             this.txtNome.TabIndex = 0;
             // 
             // txtLogin
@@ -87,9 +92,10 @@
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLogin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtLogin.Location = new System.Drawing.Point(296, 27);
+            this.txtLogin.Location = new System.Drawing.Point(299, 124);
             this.txtLogin.Name = "txtLogin";
-            this.txtLogin.Size = new System.Drawing.Size(132, 19);
+            this.txtLogin.ShortcutsEnabled = false;
+            this.txtLogin.Size = new System.Drawing.Size(130, 19);
             this.txtLogin.TabIndex = 1;
             // 
             // txtSenha
@@ -98,10 +104,11 @@
             this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSenha.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtSenha.Location = new System.Drawing.Point(294, 76);
+            this.txtSenha.Location = new System.Drawing.Point(299, 173);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
-            this.txtSenha.Size = new System.Drawing.Size(136, 19);
+            this.txtSenha.ShortcutsEnabled = false;
+            this.txtSenha.Size = new System.Drawing.Size(130, 19);
             this.txtSenha.TabIndex = 2;
             // 
             // txtCpf
@@ -110,9 +117,9 @@
             this.txtCpf.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCpf.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCpf.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtCpf.Location = new System.Drawing.Point(60, 76);
+            this.txtCpf.Location = new System.Drawing.Point(61, 175);
             this.txtCpf.Name = "txtCpf";
-            this.txtCpf.Size = new System.Drawing.Size(134, 19);
+            this.txtCpf.Size = new System.Drawing.Size(130, 19);
             this.txtCpf.TabIndex = 3;
             // 
             // cbxTipo
@@ -127,9 +134,9 @@
             this.cbxTipo.Items.AddRange(new object[] {
             "Atendimento",
             "Cozinha"});
-            this.cbxTipo.Location = new System.Drawing.Point(70, 124);
+            this.cbxTipo.Location = new System.Drawing.Point(60, 223);
             this.cbxTipo.Name = "cbxTipo";
-            this.cbxTipo.Size = new System.Drawing.Size(127, 21);
+            this.cbxTipo.Size = new System.Drawing.Size(130, 21);
             this.cbxTipo.TabIndex = 4;
             // 
             // label1
@@ -137,7 +144,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(15, 30);
+            this.label1.Location = new System.Drawing.Point(15, 129);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 5;
@@ -148,7 +155,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(249, 30);
+            this.label2.Location = new System.Drawing.Point(249, 129);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(46, 16);
             this.label2.TabIndex = 6;
@@ -159,7 +166,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.SystemColors.Control;
-            this.label3.Location = new System.Drawing.Point(248, 79);
+            this.label3.Location = new System.Drawing.Point(248, 178);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 16);
             this.label3.TabIndex = 7;
@@ -170,7 +177,7 @@
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.SystemColors.Control;
-            this.label4.Location = new System.Drawing.Point(19, 79);
+            this.label4.Location = new System.Drawing.Point(19, 178);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(37, 16);
             this.label4.TabIndex = 8;
@@ -181,7 +188,7 @@
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
-            this.label5.Location = new System.Drawing.Point(15, 128);
+            this.label5.Location = new System.Drawing.Point(15, 227);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 9;
@@ -193,7 +200,7 @@
             this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastrar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCadastrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnCadastrar.Location = new System.Drawing.Point(379, 207);
+            this.btnCadastrar.Location = new System.Drawing.Point(379, 320);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 30);
             this.btnCadastrar.TabIndex = 10;
@@ -207,7 +214,7 @@
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSair.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnSair.Location = new System.Drawing.Point(136, 207);
+            this.btnSair.Location = new System.Drawing.Point(136, 320);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 30);
             this.btnSair.TabIndex = 11;
@@ -218,6 +225,8 @@
             // panelUsuario
             // 
             this.panelUsuario.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelUsuario.Controls.Add(this.pictureBox2);
+            this.panelUsuario.Controls.Add(this.pictureBox1);
             this.panelUsuario.Controls.Add(this.panel9);
             this.panelUsuario.Controls.Add(this.lineNovaSenha);
             this.panelUsuario.Controls.Add(this.panel7);
@@ -237,16 +246,16 @@
             this.panelUsuario.Controls.Add(this.txtLogin);
             this.panelUsuario.Controls.Add(this.txtNome);
             this.panelUsuario.ForeColor = System.Drawing.SystemColors.Control;
-            this.panelUsuario.Location = new System.Drawing.Point(14, 17);
+            this.panelUsuario.Location = new System.Drawing.Point(14, 12);
             this.panelUsuario.Name = "panelUsuario";
-            this.panelUsuario.Size = new System.Drawing.Size(439, 181);
+            this.panelUsuario.Size = new System.Drawing.Size(439, 291);
             this.panelUsuario.TabIndex = 12;
             // 
             // panel9
             // 
             this.panel9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.panel9.Controls.Add(this.panel11);
-            this.panel9.Location = new System.Drawing.Point(59, 143);
+            this.panel9.Location = new System.Drawing.Point(59, 242);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(135, 2);
             this.panel9.TabIndex = 17;
@@ -263,7 +272,7 @@
             // 
             this.lineNovaSenha.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.lineNovaSenha.Controls.Add(this.panel10);
-            this.lineNovaSenha.Location = new System.Drawing.Point(295, 143);
+            this.lineNovaSenha.Location = new System.Drawing.Point(295, 242);
             this.lineNovaSenha.Name = "lineNovaSenha";
             this.lineNovaSenha.Size = new System.Drawing.Size(135, 2);
             this.lineNovaSenha.TabIndex = 17;
@@ -281,7 +290,7 @@
             // 
             this.panel7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.panel7.Controls.Add(this.panel8);
-            this.panel7.Location = new System.Drawing.Point(295, 94);
+            this.panel7.Location = new System.Drawing.Point(295, 193);
             this.panel7.Name = "panel7";
             this.panel7.Size = new System.Drawing.Size(135, 2);
             this.panel7.TabIndex = 16;
@@ -298,7 +307,7 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Location = new System.Drawing.Point(295, 45);
+            this.panel5.Location = new System.Drawing.Point(295, 144);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(135, 2);
             this.panel5.TabIndex = 15;
@@ -315,7 +324,7 @@
             // 
             this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Location = new System.Drawing.Point(59, 94);
+            this.panel3.Location = new System.Drawing.Point(59, 193);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(135, 2);
             this.panel3.TabIndex = 14;
@@ -332,7 +341,7 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.panel2.Controls.Add(this.panel1);
-            this.panel2.Location = new System.Drawing.Point(59, 45);
+            this.panel2.Location = new System.Drawing.Point(59, 144);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(135, 2);
             this.panel2.TabIndex = 12;
@@ -350,7 +359,7 @@
             this.lblNovaSenha.AutoSize = true;
             this.lblNovaSenha.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNovaSenha.ForeColor = System.Drawing.SystemColors.Control;
-            this.lblNovaSenha.Location = new System.Drawing.Point(244, 128);
+            this.lblNovaSenha.Location = new System.Drawing.Point(244, 227);
             this.lblNovaSenha.Name = "lblNovaSenha";
             this.lblNovaSenha.Size = new System.Drawing.Size(76, 16);
             this.lblNovaSenha.TabIndex = 11;
@@ -363,33 +372,12 @@
             this.txtNovaSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNovaSenha.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNovaSenha.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtNovaSenha.Location = new System.Drawing.Point(329, 125);
+            this.txtNovaSenha.Location = new System.Drawing.Point(329, 224);
             this.txtNovaSenha.Name = "txtNovaSenha";
             this.txtNovaSenha.PasswordChar = '*';
             this.txtNovaSenha.Size = new System.Drawing.Size(99, 19);
             this.txtNovaSenha.TabIndex = 10;
             this.txtNovaSenha.Visible = false;
-            // 
-            // panelDgv
-            // 
-            this.panelDgv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelDgv.Controls.Add(this.dgvUsuarios);
-            this.panelDgv.Location = new System.Drawing.Point(13, 247);
-            this.panelDgv.Name = "panelDgv";
-            this.panelDgv.Size = new System.Drawing.Size(440, 178);
-            this.panelDgv.TabIndex = 13;
-            // 
-            // dgvUsuarios
-            // 
-            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.dgvUsuarios.Location = new System.Drawing.Point(3, 3);
-            this.dgvUsuarios.Name = "dgvUsuarios";
-            this.dgvUsuarios.Size = new System.Drawing.Size(431, 172);
-            this.dgvUsuarios.TabIndex = 0;
-            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
             // 
             // btnLimpar
             // 
@@ -397,7 +385,7 @@
             this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnLimpar.Location = new System.Drawing.Point(217, 207);
+            this.btnLimpar.Location = new System.Drawing.Point(217, 320);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 30);
             this.btnLimpar.TabIndex = 14;
@@ -411,7 +399,7 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnExcluir.Location = new System.Drawing.Point(298, 207);
+            this.btnExcluir.Location = new System.Drawing.Point(298, 320);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 30);
             this.btnExcluir.TabIndex = 15;
@@ -419,15 +407,56 @@
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(233, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox1.TabIndex = 18;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
+            this.pictureBox2.Location = new System.Drawing.Point(177, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(64, 64);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox2.TabIndex = 19;
+            this.pictureBox2.TabStop = false;
+            // 
+            // panelDgv
+            // 
+            this.panelDgv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelDgv.Controls.Add(this.dgvUsuarios);
+            this.panelDgv.Location = new System.Drawing.Point(14, 362);
+            this.panelDgv.Name = "panelDgv";
+            this.panelDgv.Size = new System.Drawing.Size(440, 178);
+            this.panelDgv.TabIndex = 13;
+            // 
+            // dgvUsuarios
+            // 
+            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.dgvUsuarios.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.dgvUsuarios.Location = new System.Drawing.Point(3, 8);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.Size = new System.Drawing.Size(432, 165);
+            this.dgvUsuarios.TabIndex = 0;
+            this.dgvUsuarios.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvUsuarios_CellClick);
+            // 
             // TelaCadastroUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(473, 442);
+            this.ClientSize = new System.Drawing.Size(469, 558);
+            this.Controls.Add(this.panelDgv);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnLimpar);
-            this.Controls.Add(this.panelDgv);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.panelUsuario);
             this.Controls.Add(this.btnCadastrar);
@@ -443,6 +472,8 @@
             this.panel5.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.panelDgv.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
@@ -464,8 +495,6 @@
         private System.Windows.Forms.Button btnCadastrar;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Panel panelUsuario;
-        private System.Windows.Forms.Panel panelDgv;
-        private System.Windows.Forms.DataGridView dgvUsuarios;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Label lblNovaSenha;
@@ -482,5 +511,9 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel9;
         private System.Windows.Forms.Panel panel11;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Panel panelDgv;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
     }
 }
