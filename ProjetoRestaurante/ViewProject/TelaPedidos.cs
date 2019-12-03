@@ -215,16 +215,14 @@ namespace ViewProject
         private bool CamposValidos()
         {
             bool valido = false;
-            decimal dec = 0.0m;
             if (cbxMesa.SelectedIndex != -1 && txtNomeCliente.Text != string.Empty/* && txtValorTotal.Text != string.Empty*/)
             {
-                valido = true;
-                /* if (decimal.TryParse(txtValorTotal.Text, out dec))
-                 else
-                     MessageBox.Show("Valor deve ser decimal!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);*/
+                if (Util.VerificaNome(txtNomeCliente.Text))
+                    valido = true;
             }
             else
-                MessageBox.Show("Os campos devem estar preenchidos!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Os campos devem estar preenchidos corretamente!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
             return valido;
         }
 
@@ -324,7 +322,7 @@ namespace ViewProject
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            if (CamposItensValidos() == true)
+            if (CamposItensValidos())
             {
                 Item item = itemController.GetById(Convert.ToInt32(txtIdItem.Text));
 
@@ -362,7 +360,7 @@ namespace ViewProject
                     GetAll();
                     ClearControlsItem();
                     ClearControls(panelPedido);
-                    MessageBox.Show("Pedido finalizado com sucesso!","Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Pedido finalizado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
             else

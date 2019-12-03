@@ -56,29 +56,22 @@ namespace ViewProject
                     LimparCampos();
                 }
             }
-            else
-            {
-                MessageBox.Show("Todos os Campos com asterisco devem ser preenchidos!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
         }
 
 
         // método auxiliar verifica se os campos estão vázios
         private bool CamposValidos()
         {
+            bool valido = false;
             if (txtNome.Text != string.Empty && txtLogin.Text != string.Empty && txtSenha.Text != string.Empty && cbxTipo.SelectedIndex != -1)
             {
                 if (Util.VerificaNome(txtNome.Text))
-                {
-                    return true;
-                }
-                MessageBox.Show("Nome não deve conter caracteres, apenas letras!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    valido = true;
             }
             else
-            {
-                MessageBox.Show("Erro ao salvar Usuário!\nVerifique se todos os campos estão preenchidos corretamente.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            return false;
+                MessageBox.Show("Erro ao salvar Usuário!\nVerifique se todos os campos estão preenchidos corretamente", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            return valido;
         }
 
         private void btnSair_Click(object sender, EventArgs e)

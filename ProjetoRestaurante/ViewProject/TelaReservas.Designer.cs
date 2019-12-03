@@ -43,6 +43,7 @@
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnVoltar = new System.Windows.Forms.Button();
             this.panelReserva = new System.Windows.Forms.Panel();
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
@@ -59,7 +60,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtCPF = new System.Windows.Forms.TextBox();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.cbxMesa = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -229,6 +229,7 @@
             // panelReserva
             // 
             this.panelReserva.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelReserva.Controls.Add(this.txtCPF);
             this.panelReserva.Controls.Add(this.panel6);
             this.panelReserva.Controls.Add(this.panel4);
             this.panelReserva.Controls.Add(this.panel1);
@@ -241,7 +242,6 @@
             this.panelReserva.Controls.Add(this.label4);
             this.panelReserva.Controls.Add(this.label3);
             this.panelReserva.Controls.Add(this.label1);
-            this.panelReserva.Controls.Add(this.txtCPF);
             this.panelReserva.Controls.Add(this.txtNomeCliente);
             this.panelReserva.Controls.Add(this.cbxMesa);
             this.panelReserva.Controls.Add(this.label2);
@@ -249,6 +249,18 @@
             this.panelReserva.Name = "panelReserva";
             this.panelReserva.Size = new System.Drawing.Size(599, 345);
             this.panelReserva.TabIndex = 2;
+            // 
+            // txtCPF
+            // 
+            this.txtCPF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCPF.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCPF.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtCPF.Location = new System.Drawing.Point(132, 289);
+            this.txtCPF.Mask = "000,000,000-00";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(121, 15);
+            this.txtCPF.TabIndex = 20;
             // 
             // panel6
             // 
@@ -415,24 +427,13 @@
             this.label1.Text = "Cliente:";
             this.toolTip1.SetToolTip(this.label1, "Obrigatório: Informe o nome do cliente");
             // 
-            // txtCPF
-            // 
-            this.txtCPF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCPF.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCPF.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtCPF.Location = new System.Drawing.Point(134, 290);
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(121, 15);
-            this.txtCPF.TabIndex = 3;
-            // 
             // txtNomeCliente
             // 
             this.txtNomeCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtNomeCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNomeCliente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeCliente.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtNomeCliente.Location = new System.Drawing.Point(134, 249);
+            this.txtNomeCliente.Location = new System.Drawing.Point(132, 249);
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(121, 15);
             this.txtNomeCliente.TabIndex = 2;
@@ -535,7 +536,6 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtCPF;
         private System.Windows.Forms.TextBox txtNomeCliente;
         private System.Windows.Forms.ComboBox cbxMesa;
         private System.Windows.Forms.Label label2;
@@ -551,5 +551,6 @@
         private System.Windows.Forms.Panel panel5;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.MaskedTextBox txtCPF;
     }
 }

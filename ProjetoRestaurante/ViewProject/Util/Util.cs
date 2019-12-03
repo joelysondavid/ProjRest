@@ -28,7 +28,11 @@ namespace ViewProject
         {
             if (nome.Where(c => char.IsLetter(c)).Count() == nome.Length)
                 return true;
-            else return false;
+            else
+            {
+                MessageBox.Show("Nome inválido, certifique-se de que o nome está escrito corretamente!", "Aviso!",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false;
+            }
         }
     }
 }

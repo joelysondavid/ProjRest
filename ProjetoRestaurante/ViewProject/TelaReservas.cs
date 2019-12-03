@@ -58,7 +58,6 @@ namespace ViewProject
         {
             cbxMesa.SelectedIndex = -1;
             Util.ClearTxt(panelReserva);
-            mtbHora.Clear();
             reservaAtual = null;
         }
 
@@ -111,8 +110,11 @@ namespace ViewProject
         private bool VerificaCampos()
         {
             // verificação da hora
-            if (txtNomeCliente.Text != string.Empty && txtCPF.Text != string.Empty && cbxMesa.SelectedIndex != -1 && mtbHora.Text.Replace(":", "").Trim() != string.Empty)
-                return true;
+            if (txtNomeCliente.Text != string.Empty && cbxMesa.SelectedIndex != -1 && mtbHora.Text.Replace(":", "").Trim() != string.Empty)
+            {
+                if(Util.VerificaNome(txtNomeCliente.Text))
+                    return true;
+            }
 
             return false;
         }
@@ -135,7 +137,7 @@ namespace ViewProject
             if (reserva != null)
             {
                 mtbData.Text = reserva.ReservaInicio;
-                mtbHora.Text = reserva.ReservaInicio;
+                mtbHora.Text = reserva.ReservaInicio.Substring(11);
                 txtNomeCliente.Text = reserva.NomeCliente;
                 txtCPF.Text = reserva.CpfCliente;
                 IList<Mesa> mesasDisp = mesaController.GetMesasDisponiveis(); // mesas disponiveis
@@ -155,7 +157,17 @@ namespace ViewProject
         {
             if (reservaAtual != null)
             {
-                reservaController.Delete(reservaAtual.Id);
+                if (DialogResult.Yes == MessageBox.Show("Deseja realmente apagar a reserva?", "Confimação", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
+                {
+                    bool deletado = reservaController.Delete((int)reservaAtual.Id);
+                    if (deletado == true)
+                    {
+                        MessageBox.Show("Reserva apagada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        ClearControls();
+                        GetAll();
+                    } else
+                        MessageBox.Show("Erro ao deletar reserva!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
     }

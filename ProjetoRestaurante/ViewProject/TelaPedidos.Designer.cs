@@ -54,7 +54,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtValorTotal = new System.Windows.Forms.TextBox();
-            this.txtCPF = new System.Windows.Forms.TextBox();
             this.txtNomeCliente = new System.Windows.Forms.TextBox();
             this.cbxMesa = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -98,6 +97,7 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvItensPed = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.txtCPF = new System.Windows.Forms.MaskedTextBox();
             this.panelPedidos.SuspendLayout();
             this.panel24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -270,6 +270,7 @@
             // 
             this.panelPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.panelPedido.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelPedido.Controls.Add(this.txtCPF);
             this.panelPedido.Controls.Add(this.panel10);
             this.panelPedido.Controls.Add(this.panel8);
             this.panelPedido.Controls.Add(this.panel2);
@@ -278,7 +279,6 @@
             this.panelPedido.Controls.Add(this.label3);
             this.panelPedido.Controls.Add(this.label1);
             this.panelPedido.Controls.Add(this.txtValorTotal);
-            this.panelPedido.Controls.Add(this.txtCPF);
             this.panelPedido.Controls.Add(this.txtNomeCliente);
             this.panelPedido.Controls.Add(this.cbxMesa);
             this.panelPedido.Controls.Add(this.label2);
@@ -403,18 +403,6 @@
             this.txtValorTotal.ReadOnly = true;
             this.txtValorTotal.Size = new System.Drawing.Size(121, 15);
             this.txtValorTotal.TabIndex = 4;
-            // 
-            // txtCPF
-            // 
-            this.txtCPF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtCPF.Enabled = false;
-            this.txtCPF.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCPF.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtCPF.Location = new System.Drawing.Point(108, 106);
-            this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(121, 15);
-            this.txtCPF.TabIndex = 3;
             // 
             // txtNomeCliente
             // 
@@ -913,6 +901,18 @@
             this.dgvItensPed.TabIndex = 0;
             this.dgvItensPed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItensPed_CellClick);
             // 
+            // txtCPF
+            // 
+            this.txtCPF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtCPF.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCPF.ForeColor = System.Drawing.SystemColors.Control;
+            this.txtCPF.Location = new System.Drawing.Point(108, 106);
+            this.txtCPF.Mask = "000,000,000-00";
+            this.txtCPF.Name = "txtCPF";
+            this.txtCPF.Size = new System.Drawing.Size(121, 15);
+            this.txtCPF.TabIndex = 21;
+            // 
             // TelaPedidos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -970,7 +970,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtValorTotal;
-        private System.Windows.Forms.TextBox txtCPF;
         private System.Windows.Forms.TextBox txtNomeCliente;
         private System.Windows.Forms.ComboBox cbxMesa;
         private System.Windows.Forms.Label label2;
@@ -1026,5 +1025,6 @@
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.MaskedTextBox txtCPF;
     }
 }

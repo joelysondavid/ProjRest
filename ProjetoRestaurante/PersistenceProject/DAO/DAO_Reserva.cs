@@ -274,7 +274,7 @@ namespace PersistenceProject.DAO
             {
                 try
                 {
-                    cmd = new SqlCommand("DELETE Reserva WHERE Id = @Id", conn); // comand
+                    cmd = new SqlCommand("DELETE Reservas WHERE Id = @Id", conn); // comand
                     cmd.Parameters.AddWithValue("@Id", id); // referenciando o sqlparam
                     conn.Open(); // abertura da conexão
                     cmd.ExecuteNonQuery(); // executa o comando de deleção;
