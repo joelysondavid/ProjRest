@@ -19,9 +19,16 @@ namespace ViewProject
             // apaga cada campo que for txtbox
             foreach (Control campo in campos)
             {
-                if (campo.GetType() == typeof(TextBox))
+                if (campo.GetType() == typeof(TextBox)||campo.GetType()==typeof(MaskedTextBox))
                     campo.Text = "";
             }
+        }
+
+        public static bool VerificaNome(string nome)
+        {
+            if (nome.Where(c => char.IsLetter(c)).Count() == nome.Length)
+                return true;
+            else return false;
         }
     }
 }

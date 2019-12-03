@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaPedidos));
             this.panelPedidos = new System.Windows.Forms.Panel();
+            this.btnFinalizar = new System.Windows.Forms.Button();
             this.panel24 = new System.Windows.Forms.Panel();
             this.panel25 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -96,7 +97,6 @@
             this.label8 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvItensPed = new System.Windows.Forms.DataGridView();
-            this.btnFinalizar = new System.Windows.Forms.Button();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelPedidos.SuspendLayout();
             this.panel24.SuspendLayout();
@@ -142,6 +142,21 @@
             this.panelPedidos.Size = new System.Drawing.Size(607, 642);
             this.panelPedidos.TabIndex = 2;
             // 
+            // btnFinalizar
+            // 
+            this.btnFinalizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
+            this.btnFinalizar.Enabled = false;
+            this.btnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFinalizar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFinalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnFinalizar.Location = new System.Drawing.Point(448, 595);
+            this.btnFinalizar.Name = "btnFinalizar";
+            this.btnFinalizar.Size = new System.Drawing.Size(142, 30);
+            this.btnFinalizar.TabIndex = 10;
+            this.btnFinalizar.Text = "Finalizar Pedido";
+            this.btnFinalizar.UseVisualStyleBackColor = false;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
+            // 
             // panel24
             // 
             this.panel24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
@@ -186,11 +201,11 @@
             // 
             this.txtProcurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtProcurar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProcurar.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProcurar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProcurar.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtProcurar.Location = new System.Drawing.Point(15, 352);
+            this.txtProcurar.Location = new System.Drawing.Point(15, 356);
             this.txtProcurar.Name = "txtProcurar";
-            this.txtProcurar.Size = new System.Drawing.Size(121, 19);
+            this.txtProcurar.Size = new System.Drawing.Size(121, 15);
             this.txtProcurar.TabIndex = 7;
             // 
             // btnSalvar
@@ -267,6 +282,7 @@
             this.panelPedido.Controls.Add(this.txtNomeCliente);
             this.panelPedido.Controls.Add(this.cbxMesa);
             this.panelPedido.Controls.Add(this.label2);
+            this.panelPedido.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelPedido.Location = new System.Drawing.Point(3, 86);
             this.panelPedido.Name = "panelPedido";
             this.panelPedido.Size = new System.Drawing.Size(599, 256);
@@ -380,12 +396,12 @@
             this.txtValorTotal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtValorTotal.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtValorTotal.Enabled = false;
-            this.txtValorTotal.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorTotal.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorTotal.ForeColor = System.Drawing.SystemColors.Control;
             this.txtValorTotal.Location = new System.Drawing.Point(108, 154);
             this.txtValorTotal.Name = "txtValorTotal";
             this.txtValorTotal.ReadOnly = true;
-            this.txtValorTotal.Size = new System.Drawing.Size(121, 19);
+            this.txtValorTotal.Size = new System.Drawing.Size(121, 15);
             this.txtValorTotal.TabIndex = 4;
             // 
             // txtCPF
@@ -393,11 +409,11 @@
             this.txtCPF.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtCPF.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtCPF.Enabled = false;
-            this.txtCPF.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCPF.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCPF.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtCPF.Location = new System.Drawing.Point(108, 102);
+            this.txtCPF.Location = new System.Drawing.Point(108, 106);
             this.txtCPF.Name = "txtCPF";
-            this.txtCPF.Size = new System.Drawing.Size(121, 19);
+            this.txtCPF.Size = new System.Drawing.Size(121, 15);
             this.txtCPF.TabIndex = 3;
             // 
             // txtNomeCliente
@@ -405,11 +421,11 @@
             this.txtNomeCliente.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtNomeCliente.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNomeCliente.Enabled = false;
-            this.txtNomeCliente.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNomeCliente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeCliente.ForeColor = System.Drawing.SystemColors.Control;
             this.txtNomeCliente.Location = new System.Drawing.Point(108, 61);
             this.txtNomeCliente.Name = "txtNomeCliente";
-            this.txtNomeCliente.Size = new System.Drawing.Size(121, 19);
+            this.txtNomeCliente.Size = new System.Drawing.Size(121, 15);
             this.txtNomeCliente.TabIndex = 2;
             // 
             // cbxMesa
@@ -417,12 +433,12 @@
             this.cbxMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.cbxMesa.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMesa.Enabled = false;
-            this.cbxMesa.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxMesa.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxMesa.ForeColor = System.Drawing.SystemColors.Control;
             this.cbxMesa.FormattingEnabled = true;
             this.cbxMesa.Location = new System.Drawing.Point(108, 15);
             this.cbxMesa.Name = "cbxMesa";
-            this.cbxMesa.Size = new System.Drawing.Size(121, 26);
+            this.cbxMesa.Size = new System.Drawing.Size(121, 24);
             this.cbxMesa.TabIndex = 1;
             // 
             // label2
@@ -450,7 +466,9 @@
             // 
             this.dgvPedidos.AllowUserToAddRows = false;
             this.dgvPedidos.AllowUserToDeleteRows = false;
+            this.dgvPedidos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.dgvPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPedidos.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.dgvPedidos.Location = new System.Drawing.Point(4, 3);
             this.dgvPedidos.Name = "dgvPedidos";
             this.dgvPedidos.ReadOnly = true;
@@ -693,7 +711,7 @@
             this.cbxStatus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.cbxStatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxStatus.Enabled = false;
-            this.cbxStatus.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbxStatus.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbxStatus.ForeColor = System.Drawing.SystemColors.Control;
             this.cbxStatus.FormattingEnabled = true;
             this.cbxStatus.Items.AddRange(new object[] {
@@ -704,7 +722,7 @@
             "Cancelado"});
             this.cbxStatus.Location = new System.Drawing.Point(119, 181);
             this.cbxStatus.Name = "cbxStatus";
-            this.cbxStatus.Size = new System.Drawing.Size(121, 26);
+            this.cbxStatus.Size = new System.Drawing.Size(121, 24);
             this.cbxStatus.TabIndex = 9;
             // 
             // label10
@@ -733,12 +751,12 @@
             // 
             this.txtValorItens.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtValorItens.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtValorItens.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorItens.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorItens.ForeColor = System.Drawing.SystemColors.Control;
             this.txtValorItens.Location = new System.Drawing.Point(119, 135);
             this.txtValorItens.Name = "txtValorItens";
             this.txtValorItens.ReadOnly = true;
-            this.txtValorItens.Size = new System.Drawing.Size(121, 19);
+            this.txtValorItens.Size = new System.Drawing.Size(121, 15);
             this.txtValorItens.TabIndex = 9;
             // 
             // txtProcurarItem
@@ -746,11 +764,11 @@
             this.txtProcurarItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtProcurarItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtProcurarItem.Enabled = false;
-            this.txtProcurarItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProcurarItem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProcurarItem.ForeColor = System.Drawing.SystemColors.Control;
             this.txtProcurarItem.Location = new System.Drawing.Point(431, 26);
             this.txtProcurarItem.Name = "txtProcurarItem";
-            this.txtProcurarItem.Size = new System.Drawing.Size(121, 19);
+            this.txtProcurarItem.Size = new System.Drawing.Size(121, 15);
             this.txtProcurarItem.TabIndex = 7;
             // 
             // btnProcurarItem
@@ -781,7 +799,9 @@
             // 
             this.dgvItens.AllowUserToAddRows = false;
             this.dgvItens.AllowUserToDeleteRows = false;
+            this.dgvItens.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.dgvItens.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItens.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.dgvItens.Location = new System.Drawing.Point(3, 3);
             this.dgvItens.Name = "dgvItens";
             this.dgvItens.ReadOnly = true;
@@ -828,11 +848,11 @@
             this.txtQtd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtQtd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtQtd.Enabled = false;
-            this.txtQtd.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQtd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtQtd.ForeColor = System.Drawing.SystemColors.Control;
             this.txtQtd.Location = new System.Drawing.Point(119, 87);
             this.txtQtd.Name = "txtQtd";
-            this.txtQtd.Size = new System.Drawing.Size(121, 19);
+            this.txtQtd.Size = new System.Drawing.Size(121, 15);
             this.txtQtd.TabIndex = 4;
             // 
             // txtIdItem
@@ -840,11 +860,11 @@
             this.txtIdItem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtIdItem.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIdItem.Enabled = false;
-            this.txtIdItem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdItem.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdItem.ForeColor = System.Drawing.SystemColors.Control;
             this.txtIdItem.Location = new System.Drawing.Point(119, 50);
             this.txtIdItem.Name = "txtIdItem";
-            this.txtIdItem.Size = new System.Drawing.Size(121, 19);
+            this.txtIdItem.Size = new System.Drawing.Size(121, 15);
             this.txtIdItem.TabIndex = 3;
             // 
             // txtIdPedido
@@ -852,11 +872,11 @@
             this.txtIdPedido.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtIdPedido.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtIdPedido.Enabled = false;
-            this.txtIdPedido.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtIdPedido.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtIdPedido.ForeColor = System.Drawing.SystemColors.Control;
             this.txtIdPedido.Location = new System.Drawing.Point(119, 13);
             this.txtIdPedido.Name = "txtIdPedido";
-            this.txtIdPedido.Size = new System.Drawing.Size(121, 19);
+            this.txtIdPedido.Size = new System.Drawing.Size(121, 15);
             this.txtIdPedido.TabIndex = 2;
             // 
             // label8
@@ -883,28 +903,15 @@
             // 
             this.dgvItensPed.AllowUserToAddRows = false;
             this.dgvItensPed.AllowUserToDeleteRows = false;
+            this.dgvItensPed.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.dgvItensPed.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvItensPed.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.dgvItensPed.Location = new System.Drawing.Point(4, 3);
             this.dgvItensPed.Name = "dgvItensPed";
             this.dgvItensPed.ReadOnly = true;
             this.dgvItensPed.Size = new System.Drawing.Size(568, 198);
             this.dgvItensPed.TabIndex = 0;
             this.dgvItensPed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItensPed_CellClick);
-            // 
-            // btnFinalizar
-            // 
-            this.btnFinalizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
-            this.btnFinalizar.Enabled = false;
-            this.btnFinalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnFinalizar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnFinalizar.Location = new System.Drawing.Point(448, 595);
-            this.btnFinalizar.Name = "btnFinalizar";
-            this.btnFinalizar.Size = new System.Drawing.Size(142, 30);
-            this.btnFinalizar.TabIndex = 10;
-            this.btnFinalizar.Text = "Finalizar Pedido";
-            this.btnFinalizar.UseVisualStyleBackColor = false;
-            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
             // TelaPedidos
             // 

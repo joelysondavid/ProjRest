@@ -150,8 +150,8 @@
             // 
             this.btnProcurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnProcurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnProcurar.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcurar.ForeColor = System.Drawing.Color.Black;
+            this.btnProcurar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnProcurar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.btnProcurar.Location = new System.Drawing.Point(122, 340);
             this.btnProcurar.Name = "btnProcurar";
             this.btnProcurar.Size = new System.Drawing.Size(115, 30);
@@ -164,11 +164,11 @@
             // 
             this.txtProcurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtProcurar.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtProcurar.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtProcurar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProcurar.ForeColor = System.Drawing.Color.White;
-            this.txtProcurar.Location = new System.Drawing.Point(14, 344);
+            this.txtProcurar.Location = new System.Drawing.Point(14, 346);
             this.txtProcurar.Name = "txtProcurar";
-            this.txtProcurar.Size = new System.Drawing.Size(101, 18);
+            this.txtProcurar.Size = new System.Drawing.Size(101, 15);
             this.txtProcurar.TabIndex = 7;
             // 
             // btnSalvar
@@ -176,8 +176,8 @@
             this.btnSalvar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnSalvar.Enabled = false;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSalvar.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.Color.Black;
+            this.btnSalvar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.btnSalvar.Location = new System.Drawing.Point(515, 340);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 30);
@@ -191,8 +191,8 @@
             this.btnExcluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnExcluir.Enabled = false;
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcluir.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.ForeColor = System.Drawing.Color.Black;
+            this.btnExcluir.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.btnExcluir.Location = new System.Drawing.Point(434, 340);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 30);
@@ -205,8 +205,8 @@
             // 
             this.btnNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnNovo.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovo.ForeColor = System.Drawing.Color.Black;
+            this.btnNovo.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNovo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.btnNovo.Location = new System.Drawing.Point(353, 340);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 30);
@@ -219,8 +219,8 @@
             // 
             this.btnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnVoltar.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnVoltar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.btnVoltar.Location = new System.Drawing.Point(272, 340);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 30);
@@ -342,12 +342,12 @@
             // 
             this.txtUrl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtUrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtUrl.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUrl.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUrl.ForeColor = System.Drawing.Color.White;
-            this.txtUrl.Location = new System.Drawing.Point(445, 248);
+            this.txtUrl.Location = new System.Drawing.Point(445, 250);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.ReadOnly = true;
-            this.txtUrl.Size = new System.Drawing.Size(145, 18);
+            this.txtUrl.Size = new System.Drawing.Size(145, 15);
             this.txtUrl.TabIndex = 10;
             // 
             // btnImagem
@@ -355,8 +355,8 @@
             this.btnImagem.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnImagem.Enabled = false;
             this.btnImagem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImagem.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImagem.ForeColor = System.Drawing.Color.Black;
+            this.btnImagem.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnImagem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.btnImagem.Location = new System.Drawing.Point(475, 278);
             this.btnImagem.Name = "btnImagem";
             this.btnImagem.Size = new System.Drawing.Size(104, 33);
@@ -379,9 +379,9 @@
             this.txtDetalhes.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtDetalhes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDetalhes.Enabled = false;
-            this.txtDetalhes.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDetalhes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDetalhes.ForeColor = System.Drawing.Color.White;
-            this.txtDetalhes.Location = new System.Drawing.Point(248, 102);
+            this.txtDetalhes.Location = new System.Drawing.Point(248, 104);
             this.txtDetalhes.Multiline = true;
             this.txtDetalhes.Name = "txtDetalhes";
             this.txtDetalhes.Size = new System.Drawing.Size(173, 141);
@@ -392,11 +392,11 @@
             this.txtTempoPrep.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtTempoPrep.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTempoPrep.Enabled = false;
-            this.txtTempoPrep.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTempoPrep.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTempoPrep.ForeColor = System.Drawing.Color.White;
-            this.txtTempoPrep.Location = new System.Drawing.Point(114, 222);
+            this.txtTempoPrep.Location = new System.Drawing.Point(114, 224);
             this.txtTempoPrep.Name = "txtTempoPrep";
-            this.txtTempoPrep.Size = new System.Drawing.Size(39, 18);
+            this.txtTempoPrep.Size = new System.Drawing.Size(39, 15);
             this.txtTempoPrep.TabIndex = 6;
             // 
             // txtPreco
@@ -404,11 +404,11 @@
             this.txtPreco.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtPreco.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPreco.Enabled = false;
-            this.txtPreco.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtPreco.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPreco.ForeColor = System.Drawing.Color.White;
-            this.txtPreco.Location = new System.Drawing.Point(70, 162);
+            this.txtPreco.Location = new System.Drawing.Point(70, 164);
             this.txtPreco.Name = "txtPreco";
-            this.txtPreco.Size = new System.Drawing.Size(78, 18);
+            this.txtPreco.Size = new System.Drawing.Size(78, 15);
             this.txtPreco.TabIndex = 5;
             // 
             // txtDescr
@@ -416,11 +416,11 @@
             this.txtDescr.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtDescr.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDescr.Enabled = false;
-            this.txtDescr.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescr.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescr.ForeColor = System.Drawing.Color.White;
-            this.txtDescr.Location = new System.Drawing.Point(71, 102);
+            this.txtDescr.Location = new System.Drawing.Point(71, 104);
             this.txtDescr.Name = "txtDescr";
-            this.txtDescr.Size = new System.Drawing.Size(76, 18);
+            this.txtDescr.Size = new System.Drawing.Size(76, 15);
             this.txtDescr.TabIndex = 4;
             // 
             // label5

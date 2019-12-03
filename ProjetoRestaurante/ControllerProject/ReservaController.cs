@@ -20,9 +20,19 @@ namespace ControllerProject
             return daoReserva.GetAll();
         }
 
+        public Reserva GetById(int id)
+        {
+            return daoReserva.GetById(id);
+        }
+
         public Reserva Save(Reserva reserva)
         {
             return daoReserva.Save(reserva);
+        }
+
+        public bool Delete(int id)
+        {
+            return daoReserva.Delete(id);
         }
     }
 }

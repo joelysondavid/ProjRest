@@ -23,10 +23,8 @@ namespace ViewProject
             InitializeComponent();
             mesaController = new MesaController();
             reservaController = new ReservaController();
-            string data = DateTime.Now.ToString();
-            mtbData.Text = data;
-            GetAll();
             ClearControls();
+            GetAll();
         }
 
         // GET ALL
@@ -36,6 +34,9 @@ namespace ViewProject
             dgvReservas.DataSource = reservaController.GetAll();
             cbxMesa.DataSource = mesaController.GetMesasDisponiveis();
             cbxMesa.SelectedIndex = -1;
+            string data = DateTime.Now.ToShortDateString();
+            mtbData.Text = data;
+            txtDescricaoMesa.Clear();
         }
 
         private void btnVoltar_Click(object sender, EventArgs e)
@@ -55,8 +56,8 @@ namespace ViewProject
 
         private void ClearControls()
         {
-            Util.ClearTxt(panelReserva);
             cbxMesa.SelectedIndex = -1;
+            Util.ClearTxt(panelReserva);
             mtbHora.Clear();
             reservaAtual = null;
         }
@@ -65,7 +66,7 @@ namespace ViewProject
         {
             if (VerificaCampos())
             {
-                string horario = (mtbHora.Text).Replace(":","").Trim();
+                string horario = (mtbHora.Text).Replace(":", "").Trim();
                 if (horario.Length < 4)
                 {
                     MessageBox.Show("Horario informado incorreto!\nO horario deve conter 4 caracters.", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -91,8 +92,8 @@ namespace ViewProject
                     ReservaInicio = dataHora
                 };
                 reservaController.Save(reserva);
-                GetAll();
                 ClearControls();
+                GetAll();
 
             }
             else
@@ -104,6 +105,7 @@ namespace ViewProject
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             ClearControls();
+            GetAll();
         }
 
         private bool VerificaCampos()
@@ -115,19 +117,46 @@ namespace ViewProject
             return false;
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void dgvReservas_CellClick(object sender, DataGridViewCellEventArgs e)
         {
+            int qtdL = dgvReservas.Rows.Count; // qtd linahs
+            int qtlC = dgvReservas.Columns.Count; // qtd colunas
 
+            if ((e.RowIndex < 0 || e.ColumnIndex < 0) || (e.RowIndex > qtdL || e.ColumnIndex > qtlC))
+                return;
+
+            int idReserva = (int)dgvReservas.Rows[e.RowIndex].Cells[0].Value;
+            reservaAtual = reservaController.GetById(idReserva);
+            SetCampos(reservaAtual);
         }
 
-        private void label2_Click(object sender, EventArgs e)
+        private void SetCampos(Reserva reserva)
         {
-
+            if (reserva != null)
+            {
+                mtbData.Text = reserva.ReservaInicio;
+                mtbHora.Text = reserva.ReservaInicio;
+                txtNomeCliente.Text = reserva.NomeCliente;
+                txtCPF.Text = reserva.CpfCliente;
+                IList<Mesa> mesasDisp = mesaController.GetMesasDisponiveis(); // mesas disponiveis
+                if (!mesasDisp.Contains(mesaController.GetByNum(reserva.NumMesa)))
+                {
+                    mesasDisp.Add(mesaController.GetByNum(reserva.NumMesa));
+                    cbxMesa.DataSource = null;
+                }
+                Mesa mesa = mesaController.GetByNum(reserva.NumMesa);
+                cbxMesa.DataSource = mesasDisp;
+                cbxMesa.SelectedItem = mesa;
+                txtDescricaoMesa.Text = mesa.Descricao;
+            }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void btnExcluir_Click(object sender, EventArgs e)
         {
-
+            if (reservaAtual != null)
+            {
+                reservaController.Delete(reservaAtual.Id);
+            }
         }
     }
 }

@@ -62,7 +62,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // comando que irá realizar select
-                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio FROM Reservas WHERE Id = @Id", conn);
+                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas WHERE Id = @Id", conn);
                 cmd.Parameters.AddWithValue("@Id", id); // passa o parametro recebido para sqlparam
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // comando que irá executar o comando e passar tudo quefoi lido para variavel reader
@@ -98,7 +98,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // comando que irá realizar select
-                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio FROM Reservas WHERE NomeCliente = @NomeCliente", conn);
+                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas WHERE NomeCliente = @NomeCliente", conn);
                 cmd.Parameters.AddWithValue("@NomeCliente", nome); // passa o parametro recebido para sqlparam
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // comando que irá executar o comando e passar tudo quefoi lido para variavel reader
@@ -134,7 +134,7 @@ namespace PersistenceProject.DAO
             try
             {
                 // comando que irá realizar select
-                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio FROM Reservas WHERE CpfCliente = @Cpf", conn);
+                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas WHERE CpfCliente = @Cpf", conn);
                 cmd.Parameters.AddWithValue("@Cpf", cpf); // passa o parametro recebido para sqlparam
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // comando que irá executar o comando e passar tudo quefoi lido para variavel reader
@@ -266,10 +266,11 @@ namespace PersistenceProject.DAO
 
         // DELETE: ById
         // meotdo responsavel por deletar a reserva através do id
-        public void Delete(int id)
+        public bool Delete(int id)
         {
-            // verifica a existencia da reserva com id
-            if (GetById(id) != null)
+            Reserva reserva = GetById(id);
+            bool deletado = false;
+            if (reserva != null)
             {
                 try
                 {
@@ -278,8 +279,9 @@ namespace PersistenceProject.DAO
                     conn.Open(); // abertura da conexão
                     cmd.ExecuteNonQuery(); // executa o comando de deleção;
                     conn.Close(); // encerra a conexão
+                    daoMesa.UpdateStatus(reserva.NumMesa, true);
+                    deletado = true;
                 }
-
                 catch (Exception e)
                 {
                     Console.WriteLine("Erro ao deletar Reserva!\nErro: " + e);
@@ -289,6 +291,7 @@ namespace PersistenceProject.DAO
             {
                 Console.WriteLine($"Reserva id: {id} não encontrada!");
             }
+            return deletado;
         }
     }
 }

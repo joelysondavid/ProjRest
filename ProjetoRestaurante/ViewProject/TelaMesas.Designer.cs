@@ -118,7 +118,7 @@
             // 
             this.txtDescricaoMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtDescricaoMesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtDescricaoMesa.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDescricaoMesa.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescricaoMesa.ForeColor = System.Drawing.SystemColors.Control;
             this.txtDescricaoMesa.Location = new System.Drawing.Point(259, 104);
             this.txtDescricaoMesa.Multiline = true;
@@ -130,7 +130,7 @@
             // 
             this.txtNumMesa.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtNumMesa.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtNumMesa.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumMesa.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumMesa.ForeColor = System.Drawing.SystemColors.Control;
             this.txtNumMesa.Location = new System.Drawing.Point(80, 103);
             this.txtNumMesa.Name = "txtNumMesa";
@@ -174,7 +174,9 @@
             // 
             this.dgvMesas.AllowUserToAddRows = false;
             this.dgvMesas.AllowUserToDeleteRows = false;
+            this.dgvMesas.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.dgvMesas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvMesas.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.dgvMesas.Location = new System.Drawing.Point(3, 3);
             this.dgvMesas.Name = "dgvMesas";
             this.dgvMesas.ReadOnly = true;

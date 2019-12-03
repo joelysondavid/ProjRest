@@ -18,7 +18,7 @@ namespace ViewProject
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // textbox
-            string login = txtLogin.Text;
+           string login = txtLogin.Text;
             string senha = txtSenha.Text;
             Usuario user = usrController.GetLogin(login, senha);
             if (user != null)

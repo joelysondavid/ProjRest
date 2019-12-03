@@ -55,10 +55,6 @@ namespace ViewProject
                     GetAll();
                     LimparCampos();
                 }
-                else
-                {
-                    MessageBox.Show("Erro ao salvar Usuário!\nVerifique se todos os campos estão preenchidos corretamente.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
             }
             else
             {
@@ -70,9 +66,17 @@ namespace ViewProject
         // método auxiliar verifica se os campos estão vázios
         private bool CamposValidos()
         {
-            if (txtNome.Text != string.Empty && txtCpf.Text != string.Empty && txtLogin.Text != string.Empty && txtSenha.Text != string.Empty && cbxTipo.SelectedIndex != -1)
+            if (txtNome.Text != string.Empty && txtLogin.Text != string.Empty && txtSenha.Text != string.Empty && cbxTipo.SelectedIndex != -1)
             {
-                return true;
+                if (Util.VerificaNome(txtNome.Text))
+                {
+                    return true;
+                }
+                MessageBox.Show("Nome não deve conter caracteres, apenas letras!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                MessageBox.Show("Erro ao salvar Usuário!\nVerifique se todos os campos estão preenchidos corretamente.", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             return false;
         }
