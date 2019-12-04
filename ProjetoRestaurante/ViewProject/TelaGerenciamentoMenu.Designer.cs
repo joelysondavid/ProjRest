@@ -351,7 +351,7 @@
             this.txtUrl.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtUrl.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtUrl.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUrl.ForeColor = System.Drawing.Color.White;
+            this.txtUrl.ForeColor = System.Drawing.SystemColors.Control;
             this.txtUrl.Location = new System.Drawing.Point(445, 250);
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.ReadOnly = true;
@@ -390,7 +390,7 @@
             this.txtDetalhes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDetalhes.Enabled = false;
             this.txtDetalhes.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDetalhes.ForeColor = System.Drawing.Color.White;
+            this.txtDetalhes.ForeColor = System.Drawing.SystemColors.Control;
             this.txtDetalhes.Location = new System.Drawing.Point(248, 104);
             this.txtDetalhes.Multiline = true;
             this.txtDetalhes.Name = "txtDetalhes";
@@ -404,7 +404,7 @@
             this.txtTempoPrep.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtTempoPrep.Enabled = false;
             this.txtTempoPrep.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTempoPrep.ForeColor = System.Drawing.Color.White;
+            this.txtTempoPrep.ForeColor = System.Drawing.SystemColors.Control;
             this.txtTempoPrep.Location = new System.Drawing.Point(114, 224);
             this.txtTempoPrep.Name = "txtTempoPrep";
             this.txtTempoPrep.Size = new System.Drawing.Size(39, 15);
@@ -416,7 +416,7 @@
             this.txtPreco.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtPreco.Enabled = false;
             this.txtPreco.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPreco.ForeColor = System.Drawing.Color.White;
+            this.txtPreco.ForeColor = System.Drawing.SystemColors.Control;
             this.txtPreco.Location = new System.Drawing.Point(70, 164);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(78, 15);
@@ -428,7 +428,7 @@
             this.txtDescr.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtDescr.Enabled = false;
             this.txtDescr.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtDescr.ForeColor = System.Drawing.Color.White;
+            this.txtDescr.ForeColor = System.Drawing.SystemColors.Control;
             this.txtDescr.Location = new System.Drawing.Point(71, 104);
             this.txtDescr.Name = "txtDescr";
             this.txtDescr.Size = new System.Drawing.Size(76, 15);

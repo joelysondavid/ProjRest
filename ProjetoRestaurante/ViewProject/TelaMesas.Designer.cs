@@ -255,6 +255,7 @@
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.panelGridMesas);
             this.Controls.Add(this.panelMesas);
+            this.ForeColor = System.Drawing.SystemColors.Control;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "TelaMesas";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
