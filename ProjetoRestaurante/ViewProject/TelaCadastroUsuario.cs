@@ -78,7 +78,7 @@ namespace ViewProject
             bool valido = false;
             if (!string.IsNullOrWhiteSpace(txtNome.Text) && !string.IsNullOrWhiteSpace(txtLogin.Text) && txtSenha.Text != string.Empty && cbxTipo.SelectedIndex != -1)
             {
-                if (txtNome.Text.Length < 30 && txtLogin.Text.Length < 15 && txtSenha.Text.Length < 10)
+                if (txtNome.Text.Length <= 30 && txtLogin.Text.Length <= 15 && txtSenha.Text.Length <= 10)
                 {
                     if (txtNome.Text.Contains(" ") || Util.VerificaNome(txtNome.Text))
                         valido = true;

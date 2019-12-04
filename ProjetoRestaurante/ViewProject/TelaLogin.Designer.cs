@@ -48,6 +48,7 @@
             this.txtLogin.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.ForeColor = System.Drawing.SystemColors.Control;
             this.txtLogin.Location = new System.Drawing.Point(146, 151);
+            this.txtLogin.MaxLength = 15;
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(117, 19);
             this.txtLogin.TabIndex = 0;
@@ -59,6 +60,7 @@
             this.txtSenha.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.ForeColor = System.Drawing.SystemColors.Control;
             this.txtSenha.Location = new System.Drawing.Point(146, 213);
+            this.txtSenha.MaxLength = 10;
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(117, 19);

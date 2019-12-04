@@ -407,6 +407,7 @@
             this.txtNomeCliente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeCliente.ForeColor = System.Drawing.SystemColors.Control;
             this.txtNomeCliente.Location = new System.Drawing.Point(108, 61);
+            this.txtNomeCliente.MaxLength = 50;
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(121, 15);
             this.txtNomeCliente.TabIndex = 1;

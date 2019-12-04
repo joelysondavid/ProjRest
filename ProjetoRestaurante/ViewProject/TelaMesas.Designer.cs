@@ -121,6 +121,7 @@
             this.txtDescricaoMesa.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescricaoMesa.ForeColor = System.Drawing.SystemColors.Control;
             this.txtDescricaoMesa.Location = new System.Drawing.Point(259, 104);
+            this.txtDescricaoMesa.MaxLength = 200;
             this.txtDescricaoMesa.Multiline = true;
             this.txtDescricaoMesa.Name = "txtDescricaoMesa";
             this.txtDescricaoMesa.Size = new System.Drawing.Size(195, 103);
@@ -133,6 +134,7 @@
             this.txtNumMesa.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNumMesa.ForeColor = System.Drawing.SystemColors.Control;
             this.txtNumMesa.Location = new System.Drawing.Point(80, 103);
+            this.txtNumMesa.MaxLength = 5;
             this.txtNumMesa.Name = "txtNumMesa";
             this.txtNumMesa.Size = new System.Drawing.Size(92, 15);
             this.txtNumMesa.TabIndex = 0;
@@ -165,6 +167,7 @@
             // 
             this.panelGridMesas.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelGridMesas.Controls.Add(this.dgvMesas);
+            this.panelGridMesas.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.panelGridMesas.Location = new System.Drawing.Point(12, 272);
             this.panelGridMesas.Name = "panelGridMesas";
             this.panelGridMesas.Size = new System.Drawing.Size(465, 234);

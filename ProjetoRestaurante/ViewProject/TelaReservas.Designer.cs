@@ -169,6 +169,7 @@
             this.txtProcurar.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtProcurar.ForeColor = System.Drawing.SystemColors.Control;
             this.txtProcurar.Location = new System.Drawing.Point(14, 363);
+            this.txtProcurar.MaxLength = 30;
             this.txtProcurar.Name = "txtProcurar";
             this.txtProcurar.Size = new System.Drawing.Size(101, 15);
             this.txtProcurar.TabIndex = 0;
@@ -367,6 +368,7 @@
             this.txtDescricaoMesa.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDescricaoMesa.ForeColor = System.Drawing.SystemColors.Control;
             this.txtDescricaoMesa.Location = new System.Drawing.Point(308, 144);
+            this.txtDescricaoMesa.MaxLength = 200;
             this.txtDescricaoMesa.Multiline = true;
             this.txtDescricaoMesa.Name = "txtDescricaoMesa";
             this.txtDescricaoMesa.ReadOnly = true;
@@ -441,6 +443,7 @@
             this.txtNomeCliente.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNomeCliente.ForeColor = System.Drawing.SystemColors.Control;
             this.txtNomeCliente.Location = new System.Drawing.Point(132, 249);
+            this.txtNomeCliente.MaxLength = 50;
             this.txtNomeCliente.Name = "txtNomeCliente";
             this.txtNomeCliente.Size = new System.Drawing.Size(121, 15);
             this.txtNomeCliente.TabIndex = 2;

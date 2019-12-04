@@ -410,6 +410,7 @@ namespace ViewProject
             Util.ClearTxt(panelItemPedido);
             ControlsItem(false); // desabilita os campos do ite
             GetAll();
+            cbxStatus.SelectedIndex = -1;
             txtIdPedido.Text = pedidoAtual.Id.ToString();
             dgvItensPed.DataSource = pedidoController.GetAllItensPedido(pedidoAtual.Id);
         }
