@@ -59,12 +59,8 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.textBox4 = new System.Windows.Forms.TextBox();
             this.lblNovaSenha = new System.Windows.Forms.Label();
             this.txtNovaSenha = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.panelDgv = new System.Windows.Forms.Panel();
@@ -101,7 +97,7 @@
             this.txtLogin.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtLogin.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLogin.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtLogin.Location = new System.Drawing.Point(299, 124);
+            this.txtLogin.Location = new System.Drawing.Point(299, 128);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.ShortcutsEnabled = false;
             this.txtLogin.Size = new System.Drawing.Size(130, 15);
@@ -113,7 +109,7 @@
             this.txtSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtSenha.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSenha.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtSenha.Location = new System.Drawing.Point(299, 173);
+            this.txtSenha.Location = new System.Drawing.Point(299, 178);
             this.txtSenha.Name = "txtSenha";
             this.txtSenha.PasswordChar = '*';
             this.txtSenha.ShortcutsEnabled = false;
@@ -133,7 +129,7 @@
             this.cbxTipo.Items.AddRange(new object[] {
             "Atendimento",
             "Cozinha"});
-            this.cbxTipo.Location = new System.Drawing.Point(60, 221);
+            this.cbxTipo.Location = new System.Drawing.Point(62, 217);
             this.cbxTipo.Name = "cbxTipo";
             this.cbxTipo.Size = new System.Drawing.Size(130, 24);
             this.cbxTipo.TabIndex = 2;
@@ -236,7 +232,6 @@
             this.panelUsuario.Controls.Add(this.panel5);
             this.panelUsuario.Controls.Add(this.panel3);
             this.panelUsuario.Controls.Add(this.panel2);
-            this.panelUsuario.Controls.Add(this.textBox4);
             this.panelUsuario.Controls.Add(this.lblNovaSenha);
             this.panelUsuario.Controls.Add(this.txtNovaSenha);
             this.panelUsuario.Controls.Add(this.label5);
@@ -244,15 +239,12 @@
             this.panelUsuario.Controls.Add(this.label3);
             this.panelUsuario.Controls.Add(this.label2);
             this.panelUsuario.Controls.Add(this.label1);
-            this.panelUsuario.Controls.Add(this.textBox3);
             this.panelUsuario.Controls.Add(this.cbxTipo);
-            this.panelUsuario.Controls.Add(this.textBox2);
             this.panelUsuario.Controls.Add(this.txtSenha);
-            this.panelUsuario.Controls.Add(this.textBox1);
             this.panelUsuario.Controls.Add(this.txtLogin);
             this.panelUsuario.Controls.Add(this.txtNome);
             this.panelUsuario.ForeColor = System.Drawing.SystemColors.Control;
-            this.panelUsuario.Location = new System.Drawing.Point(14, 12);
+            this.panelUsuario.Location = new System.Drawing.Point(15, 23);
             this.panelUsuario.Name = "panelUsuario";
             this.panelUsuario.Size = new System.Drawing.Size(439, 291);
             this.panelUsuario.TabIndex = 12;
@@ -410,19 +402,6 @@
             this.panel1.Size = new System.Drawing.Size(182, 2);
             this.panel1.TabIndex = 13;
             // 
-            // textBox4
-            // 
-            this.textBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox4.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox4.Location = new System.Drawing.Point(329, 226);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.PasswordChar = '*';
-            this.textBox4.Size = new System.Drawing.Size(99, 15);
-            this.textBox4.TabIndex = 5;
-            this.textBox4.Visible = false;
-            // 
             // lblNovaSenha
             // 
             this.lblNovaSenha.AutoSize = true;
@@ -441,48 +420,12 @@
             this.txtNovaSenha.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNovaSenha.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNovaSenha.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtNovaSenha.Location = new System.Drawing.Point(329, 224);
+            this.txtNovaSenha.Location = new System.Drawing.Point(329, 227);
             this.txtNovaSenha.Name = "txtNovaSenha";
             this.txtNovaSenha.PasswordChar = '*';
             this.txtNovaSenha.Size = new System.Drawing.Size(99, 15);
             this.txtNovaSenha.TabIndex = 5;
             this.txtNovaSenha.Visible = false;
-            // 
-            // textBox3
-            // 
-            this.textBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.textBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox3.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox3.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox3.Location = new System.Drawing.Point(299, 177);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.PasswordChar = '*';
-            this.textBox3.ShortcutsEnabled = false;
-            this.textBox3.Size = new System.Drawing.Size(130, 15);
-            this.textBox3.TabIndex = 4;
-            // 
-            // textBox2
-            // 
-            this.textBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox2.Location = new System.Drawing.Point(299, 128);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.ShortcutsEnabled = false;
-            this.textBox2.Size = new System.Drawing.Size(130, 15);
-            this.textBox2.TabIndex = 3;
-            // 
-            // textBox1
-            // 
-            this.textBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.ForeColor = System.Drawing.SystemColors.Control;
-            this.textBox1.Location = new System.Drawing.Point(61, 128);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(130, 15);
-            this.textBox1.TabIndex = 0;
             // 
             // btnLimpar
             // 
@@ -540,7 +483,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.ClientSize = new System.Drawing.Size(469, 558);
+            this.ClientSize = new System.Drawing.Size(471, 613);
             this.Controls.Add(this.panelDgv);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnLimpar);
@@ -606,9 +549,5 @@
         private System.Windows.Forms.MaskedTextBox txtCpf;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
     }
 }

@@ -108,15 +108,15 @@ CREATE TABLE Reservas(
 );
 
 GO
-SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, ReservaFim FROM Reservas;
+SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas;
 GO
-INSERT INTO Reservas (NomeCliente,CpfCliente, NumMesa, ReservaInicio, ReservaFim) VALUES(
+INSERT INTO Reservas (NomeCliente,CpfCliente, NumMesa, ReservaInicio, Finalizada) VALUES(
 'Joe', '456987', 'G5A2', '29/11/2019 12:30', 0);
-INSERT INTO Reservas (NomeCliente,CpfCliente, NumMesa, ReservaInicio, ReservaFim) VALUES(
+INSERT INTO Reservas (NomeCliente,CpfCliente, NumMesa, ReservaInicio, Finalizada) VALUES(
 'Joe', '456987', 'G5A1', '29/11/2019 12:30', 1);
-INSERT INTO Reservas (NomeCliente,CpfCliente, NumMesa, ReservaInicio, ReservaFim) VALUES(
+INSERT INTO Reservas (NomeCliente,CpfCliente, NumMesa, ReservaInicio, Finalizada) VALUES(
 'Joe', '456987', 'G5A3', '29/11/2019 12:30', 0);
-INSERT INTO Reservas (NomeCliente,CpfCliente, NumMesa, ReservaInicio, ReservaFim) VALUES(
+INSERT INTO Reservas (NomeCliente,CpfCliente, NumMesa, ReservaInicio, Finalizada) VALUES(
 'Joe', '456987', 'B5A2', '29/11/2019 12:30', 1);
 SELECT NumMesa FROM Reservas
  -- DELETE Reservas

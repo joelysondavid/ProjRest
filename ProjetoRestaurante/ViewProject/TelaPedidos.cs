@@ -48,6 +48,7 @@ namespace ViewProject
                 GetAll();
                 AlterControls(false);
                 ClearControls(panelPedido);
+                MessageBox.Show("Pedido inciado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -386,6 +387,16 @@ namespace ViewProject
             GetAll();
             txtIdPedido.Text = pedidoAtual.Id.ToString();
             dgvItensPed.DataSource = pedidoController.GetAllItensPedido(pedidoAtual.Id);
+        }
+
+        private void btnRemoverItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnProcurar_Click(object sender, EventArgs e)
+        {
+            dgvPedidos.DataSource = pedidoController.GetPedidoByNomeCli("%"+txtProcurar.Text+"%");
         }
     }
 }

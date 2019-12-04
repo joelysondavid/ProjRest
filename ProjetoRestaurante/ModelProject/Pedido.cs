@@ -40,10 +40,11 @@ namespace ModelProject
         public decimal CalcValorTotal()
         {
             decimal valorTotal = 0;
-            foreach(var item in ItensDePedido)
+            foreach (var item in ItensDePedido)
             {
                 // o valortotal será a soma de todos os itens
-                valorTotal += item.ValorItens; // que é o valor do item x a quantidade comprada
+                if (item.Status != "Cancelado")
+                    valorTotal += item.ValorItens; // que é o valor do item x a quantidade comprada
             }
             return valorTotal;
         }

@@ -135,6 +135,31 @@ namespace PersistenceProject.DAO
             return pedido;
         }
 
+        public IList<Pedido> GetPedidoNomeCli(string nome)
+        {
+            IList<Pedido> pedidos = new List<Pedido>();
+            cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, ValorTotal, DataPed, Status FROM Pedidos WHERE NomeCliente LIKE @NomeCliente", conn);
+            cmd.Parameters.AddWithValue("@NomeCliente", nome);
+            conn.Open();
+            using (SqlDataReader reader = cmd.ExecuteReader())
+            {
+                while (reader.Read())
+                {
+                    pedidos.Add(new Pedido
+                    {
+                        Id = reader.GetInt32(0),
+                        NumMesa = reader.GetString(1),
+                        NomeCliente = reader.GetString(2),
+                        CpfCliente = reader.GetString(3),
+                        ValorTotal = reader.GetDecimal(4),
+                        Status = reader.GetString(6)
+                    });
+                }
+            }
+            conn.Close();
+            return pedidos;
+        }
+
         // método para inserção de pedidos
         public Pedido Insert(Pedido pedido)
         {

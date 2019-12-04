@@ -25,6 +25,11 @@ namespace ControllerProject
             return daoItensPed.GetByPed(pedidoId);
         }
 
+        public IList<Pedido> GetPedidoByNomeCli(string nome)
+        {
+            return daoPedido.GetPedidoNomeCli(nome);
+        }
+
         // GET: by id
         public Pedido GetById(int id)
         {
