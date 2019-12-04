@@ -156,6 +156,7 @@
             this.btnProcurar.Name = "btnProcurar";
             this.btnProcurar.Size = new System.Drawing.Size(115, 30);
             this.btnProcurar.TabIndex = 8;
+            this.btnProcurar.TabStop = false;
             this.btnProcurar.Text = "Procurar";
             this.btnProcurar.UseVisualStyleBackColor = false;
             this.btnProcurar.Click += new System.EventHandler(this.btnProcurar_Click);
@@ -170,6 +171,7 @@
             this.txtProcurar.Name = "txtProcurar";
             this.txtProcurar.Size = new System.Drawing.Size(101, 15);
             this.txtProcurar.TabIndex = 7;
+            this.txtProcurar.TabStop = false;
             // 
             // btnSalvar
             // 
@@ -181,7 +183,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(515, 340);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 30);
-            this.btnSalvar.TabIndex = 6;
+            this.btnSalvar.TabIndex = 4;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = false;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -197,6 +199,7 @@
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 30);
             this.btnExcluir.TabIndex = 5;
+            this.btnExcluir.TabStop = false;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -211,6 +214,7 @@
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 30);
             this.btnNovo.TabIndex = 4;
+            this.btnNovo.TabStop = false;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = false;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
@@ -225,6 +229,7 @@
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 30);
             this.btnVoltar.TabIndex = 3;
+            this.btnVoltar.TabStop = false;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
@@ -348,7 +353,8 @@
             this.txtUrl.Name = "txtUrl";
             this.txtUrl.ReadOnly = true;
             this.txtUrl.Size = new System.Drawing.Size(145, 15);
-            this.txtUrl.TabIndex = 10;
+            this.txtUrl.TabIndex = 4;
+            this.txtUrl.TabStop = false;
             // 
             // btnImagem
             // 
@@ -385,7 +391,7 @@
             this.txtDetalhes.Multiline = true;
             this.txtDetalhes.Name = "txtDetalhes";
             this.txtDetalhes.Size = new System.Drawing.Size(173, 141);
-            this.txtDetalhes.TabIndex = 7;
+            this.txtDetalhes.TabIndex = 3;
             // 
             // txtTempoPrep
             // 
@@ -397,7 +403,7 @@
             this.txtTempoPrep.Location = new System.Drawing.Point(114, 224);
             this.txtTempoPrep.Name = "txtTempoPrep";
             this.txtTempoPrep.Size = new System.Drawing.Size(39, 15);
-            this.txtTempoPrep.TabIndex = 6;
+            this.txtTempoPrep.TabIndex = 2;
             // 
             // txtPreco
             // 
@@ -409,7 +415,7 @@
             this.txtPreco.Location = new System.Drawing.Point(70, 164);
             this.txtPreco.Name = "txtPreco";
             this.txtPreco.Size = new System.Drawing.Size(78, 15);
-            this.txtPreco.TabIndex = 5;
+            this.txtPreco.TabIndex = 1;
             // 
             // txtDescr
             // 
@@ -421,7 +427,7 @@
             this.txtDescr.Location = new System.Drawing.Point(71, 104);
             this.txtDescr.Name = "txtDescr";
             this.txtDescr.Size = new System.Drawing.Size(76, 15);
-            this.txtDescr.TabIndex = 4;
+            this.txtDescr.TabIndex = 0;
             // 
             // label5
             // 

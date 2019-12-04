@@ -62,5 +62,10 @@ namespace ControllerProject
         {
             daoPedido.DeleteById(idPed, numMesa);
         }
+
+        public IList<Pedido> GetByStatus(string status)
+        {
+            return daoPedido.GetByStatus(status);
+        }
     }
 }

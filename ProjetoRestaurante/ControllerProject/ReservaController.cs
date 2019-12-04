@@ -19,6 +19,10 @@ namespace ControllerProject
         {
             return daoReserva.GetAll();
         }
+        public IList<Reserva> GetReservasByStatus(bool status)
+        {
+            return daoReserva.GetReservasByStatus(status);
+        }
         public IList<Reserva> GetReservaByNomeCli(string nome)
         {
             return daoReserva.GetByNome(nome);
@@ -36,6 +40,11 @@ namespace ControllerProject
         public bool Delete(int id)
         {
             return daoReserva.Delete(id);
+        }
+
+        public bool Finalizar(int id, bool finalizado)
+        {
+            return daoReserva.Finalizar(id, finalizado);
         }
     }
 }

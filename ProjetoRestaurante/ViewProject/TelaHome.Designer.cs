@@ -32,10 +32,13 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidosFinalizadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cardapioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuárioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.reservasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservasAbertasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.reservasFinalizadasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mesasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnSair = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
@@ -60,7 +63,8 @@
             // pedidosToolStripMenuItem
             // 
             this.pedidosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cadastroDePedidosToolStripMenuItem});
+            this.cadastroDePedidosToolStripMenuItem,
+            this.pedidosFinalizadosToolStripMenuItem});
             this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
             this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(76, 23);
             this.pedidosToolStripMenuItem.Text = "Pedidos";
@@ -68,9 +72,16 @@
             // cadastroDePedidosToolStripMenuItem
             // 
             this.cadastroDePedidosToolStripMenuItem.Name = "cadastroDePedidosToolStripMenuItem";
-            this.cadastroDePedidosToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
-            this.cadastroDePedidosToolStripMenuItem.Text = "Pedidos";
+            this.cadastroDePedidosToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.cadastroDePedidosToolStripMenuItem.Text = "Pedidos Abertos";
             this.cadastroDePedidosToolStripMenuItem.Click += new System.EventHandler(this.cadastroDePedidosToolStripMenuItem_Click);
+            // 
+            // pedidosFinalizadosToolStripMenuItem
+            // 
+            this.pedidosFinalizadosToolStripMenuItem.Name = "pedidosFinalizadosToolStripMenuItem";
+            this.pedidosFinalizadosToolStripMenuItem.Size = new System.Drawing.Size(210, 24);
+            this.pedidosFinalizadosToolStripMenuItem.Text = "Pedidos finalizados";
+            this.pedidosFinalizadosToolStripMenuItem.Click += new System.EventHandler(this.pedidosFinalizadosToolStripMenuItem_Click);
             // 
             // cardapioToolStripMenuItem
             // 
@@ -96,10 +107,26 @@
             // 
             // reservasToolStripMenuItem
             // 
+            this.reservasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.reservasAbertasToolStripMenuItem,
+            this.reservasFinalizadasToolStripMenuItem});
             this.reservasToolStripMenuItem.Name = "reservasToolStripMenuItem";
             this.reservasToolStripMenuItem.Size = new System.Drawing.Size(83, 23);
             this.reservasToolStripMenuItem.Text = "Reservas";
-            this.reservasToolStripMenuItem.Click += new System.EventHandler(this.reservasToolStripMenuItem_Click);
+            // 
+            // reservasAbertasToolStripMenuItem
+            // 
+            this.reservasAbertasToolStripMenuItem.Name = "reservasAbertasToolStripMenuItem";
+            this.reservasAbertasToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
+            this.reservasAbertasToolStripMenuItem.Text = "Reservas Abertas";
+            this.reservasAbertasToolStripMenuItem.Click += new System.EventHandler(this.reservasAbertasToolStripMenuItem_Click);
+            // 
+            // reservasFinalizadasToolStripMenuItem
+            // 
+            this.reservasFinalizadasToolStripMenuItem.Name = "reservasFinalizadasToolStripMenuItem";
+            this.reservasFinalizadasToolStripMenuItem.Size = new System.Drawing.Size(219, 24);
+            this.reservasFinalizadasToolStripMenuItem.Text = "Reservas Finalizadas";
+            this.reservasFinalizadasToolStripMenuItem.Click += new System.EventHandler(this.reservasFinalizadasToolStripMenuItem_Click);
             // 
             // mesasToolStripMenuItem
             // 
@@ -155,5 +182,8 @@
         private System.Windows.Forms.ToolStripMenuItem reservasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mesasToolStripMenuItem;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.ToolStripMenuItem pedidosFinalizadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reservasAbertasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem reservasFinalizadasToolStripMenuItem;
     }
 }

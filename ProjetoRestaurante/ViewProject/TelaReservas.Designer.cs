@@ -145,6 +145,7 @@
             this.btnFinalizar.TabIndex = 11;
             this.btnFinalizar.Text = "Finalizar Reserva";
             this.btnFinalizar.UseVisualStyleBackColor = false;
+            this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
             // 
             // btnProcurar
             // 
@@ -156,6 +157,7 @@
             this.btnProcurar.Name = "btnProcurar";
             this.btnProcurar.Size = new System.Drawing.Size(70, 30);
             this.btnProcurar.TabIndex = 8;
+            this.btnProcurar.TabStop = false;
             this.btnProcurar.Text = "Procurar";
             this.btnProcurar.UseVisualStyleBackColor = false;
             this.btnProcurar.Click += new System.EventHandler(this.btnProcurar_Click);
@@ -169,7 +171,8 @@
             this.txtProcurar.Location = new System.Drawing.Point(14, 363);
             this.txtProcurar.Name = "txtProcurar";
             this.txtProcurar.Size = new System.Drawing.Size(101, 15);
-            this.txtProcurar.TabIndex = 7;
+            this.txtProcurar.TabIndex = 0;
+            this.txtProcurar.TabStop = false;
             // 
             // btnSalvar
             // 
@@ -195,6 +198,7 @@
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(70, 30);
             this.btnExcluir.TabIndex = 5;
+            this.btnExcluir.TabStop = false;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -209,6 +213,7 @@
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(70, 30);
             this.btnLimpar.TabIndex = 4;
+            this.btnLimpar.TabStop = false;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -223,6 +228,7 @@
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(70, 30);
             this.btnVoltar.TabIndex = 3;
+            this.btnVoltar.TabStop = false;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);
@@ -261,7 +267,7 @@
             this.txtCPF.Mask = "000,000,000-00";
             this.txtCPF.Name = "txtCPF";
             this.txtCPF.Size = new System.Drawing.Size(121, 15);
-            this.txtCPF.TabIndex = 20;
+            this.txtCPF.TabIndex = 3;
             // 
             // panel6
             // 
@@ -365,7 +371,7 @@
             this.txtDescricaoMesa.Name = "txtDescricaoMesa";
             this.txtDescricaoMesa.ReadOnly = true;
             this.txtDescricaoMesa.Size = new System.Drawing.Size(273, 168);
-            this.txtDescricaoMesa.TabIndex = 14;
+            this.txtDescricaoMesa.TabIndex = 4;
             // 
             // label5
             // 
@@ -389,7 +395,7 @@
             this.mtbHora.Mask = "00:00";
             this.mtbHora.Name = "mtbHora";
             this.mtbHora.Size = new System.Drawing.Size(42, 15);
-            this.mtbHora.TabIndex = 12;
+            this.mtbHora.TabIndex = 0;
             this.mtbHora.ValidatingType = typeof(System.DateTime);
             // 
             // label4

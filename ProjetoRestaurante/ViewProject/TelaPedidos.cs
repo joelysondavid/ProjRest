@@ -21,6 +21,7 @@ namespace ViewProject
         IList<ItemPedido> itensPed = new List<ItemPedido>();
         IList<Mesa> mesas = new List<Mesa>();
         ItemPedido itemPedAtual;
+        Item itemAtual;
         public TelaPedidos()
         {
             InitializeComponent();
@@ -59,12 +60,12 @@ namespace ViewProject
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
-            ClearControls(panelPedido); // chama o metodo para limpar os campos
             AlterControls(true); // altera os campos que devem ser habilitados/desabilitados
             cbxMesa.DataSource = mesaController.GetMesasDisponiveis();
             btnExcluir.Enabled = false;
             ClearControlsItem(); // garante que os controles dos itens serão limpos
             ControlsBasicos(false); // caso os botoes dos itens estejam habilitadas ele desabilita
+            ClearControls(panelPedido); // chama o metodo para limpar os campos
         }
 
         private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -145,15 +146,16 @@ namespace ViewProject
         }
 
         // seta os campos
-        private void SetCamposItensPed(ItemPedido item)
+        private void SetCamposItensPed(ItemPedido itemPedido)
         {
-            if (item.Id != null)
+            if (itemPedido.Id != null)
             {
-                txtIdItem.Text = item.ItemId.ToString();
-                txtQtd.Text = item.Quantidade.ToString();
-                txtValorItens.Text = item.ValorItens.ToString();
-                cbxStatus.SelectedItem = item.Status;
-                itemPedAtual = item;
+                Item item = itemController.GetById(itemPedido.ItemId);
+                txtNomeItem.Text = item.Descricao;
+                txtQtd.Text = itemPedido.Quantidade.ToString();
+                txtValorItens.Text = itemPedido.ValorItens.ToString();
+                cbxStatus.SelectedItem = itemPedido.Status;
+                itemPedAtual = itemPedido;
             }
         }
 
@@ -183,7 +185,7 @@ namespace ViewProject
         private void GetAll()
         {
             dgvPedidos.ClearSelection();
-            dgvPedidos.DataSource = pedidoController.GetAll();
+            dgvPedidos.DataSource = pedidoController.GetByStatus("Em andamento");
             dgvItens.DataSource = itemController.GetAll();
             mesas = mesaController.GetMesasDisponiveis();
             cbxMesa.DataSource = mesas;
@@ -195,9 +197,8 @@ namespace ViewProject
         private void ClearControls(Panel panel)
         {
 
-            Util.ClearTxt(panel);
-
             cbxMesa.SelectedIndex = -1;
+            Util.ClearTxt(panel);
             dgvPedidos.ClearSelection();
             pedidoAtual = null;
         }
@@ -216,9 +217,9 @@ namespace ViewProject
         private bool CamposValidos()
         {
             bool valido = false;
-            if (cbxMesa.SelectedIndex != -1 && txtNomeCliente.Text != string.Empty/* && txtValorTotal.Text != string.Empty*/)
+            if (cbxMesa.SelectedIndex != -1 && !String.IsNullOrWhiteSpace(txtNomeCliente.Text))
             {
-                if (Util.VerificaNome(txtNomeCliente.Text))
+                if (txtNomeCliente.Text.Contains(" ") || Util.VerificaNome(txtNomeCliente.Text))
                     valido = true;
             }
             else
@@ -253,7 +254,7 @@ namespace ViewProject
         private void ClearControlsItem()
         {
             txtIdPedido.Clear();
-            txtIdItem.Clear();
+            txtNomeItem.Clear();
             txtQtd.Clear();
             txtValorItens.Clear();
             cbxStatus.SelectedIndex = -1;
@@ -263,6 +264,7 @@ namespace ViewProject
         {
             btnNovoItem.Enabled = chav;
             btnCancelarItem.Enabled = chav;
+            btnSalvar.Enabled = chav;
         }
 
         // Seta os campos
@@ -300,9 +302,9 @@ namespace ViewProject
             // verifica se o item selecionado é valido, caso contrário ele retorna sem fazer ação
             if (e.RowIndex < 0 || e.ColumnIndex < 0 || e.RowIndex > qtdL || e.ColumnIndex > qtdC) return;
 
-            // passa o id do item selecionado
-            int itemId = Convert.ToInt32(dgvItens.Rows[e.RowIndex].Cells[0].Value);
-            txtIdItem.Text = itemId.ToString();
+            int itemId = (int) dgvItens.Rows[e.RowIndex].Cells[0].Value;
+            itemAtual = itemController.GetById(itemId);
+            txtNomeItem.Text = itemAtual.Descricao;
 
             ControlsItem(true);
             btnAdicionar.Enabled = true;
@@ -325,12 +327,12 @@ namespace ViewProject
         {
             if (CamposItensValidos())
             {
-                Item item = itemController.GetById(Convert.ToInt32(txtIdItem.Text));
+                Item item = itemController.GetById((int)itemAtual.Id);
 
                 ItemPedido itemPed = new ItemPedido
                 {
                     PedidoId = Convert.ToInt32(txtIdPedido.Text),
-                    ItemId = Convert.ToInt32(txtIdItem.Text),
+                    ItemId = (int)item.Id,
                     Quantidade = Convert.ToInt32(txtQtd.Text),
                     ValorItens = Convert.ToInt32(txtQtd.Text) * item.Preco,
                     Status = cbxStatus.SelectedItem.ToString()
@@ -352,6 +354,14 @@ namespace ViewProject
         {
             if (pedidoAtual.ItensDePedido.Count > 0)
             {
+                foreach (var item in pedidoAtual.ItensDePedido)
+                {
+                    if(item.Status != "Entregue" && item.Status != "Cancelado")
+                    {
+                        MessageBox.Show("Para finalziar o pedido não podem haver itens em aberto.\nOs itens devem ser entregues ou cancelados!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                }
                 if (DialogResult.Yes == MessageBox.Show("Deseja realmente finalizar este pedido?\nTotal de R$ " + pedidoAtual.ValorTotal + " Reais\nConfirmar Pagamento?", "Confirmação", MessageBoxButtons.YesNo, MessageBoxIcon.Question))
                 {
                     Pedido pedido = pedidoAtual;
@@ -388,12 +398,6 @@ namespace ViewProject
             txtIdPedido.Text = pedidoAtual.Id.ToString();
             dgvItensPed.DataSource = pedidoController.GetAllItensPedido(pedidoAtual.Id);
         }
-
-        private void btnRemoverItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnProcurar_Click(object sender, EventArgs e)
         {
             dgvPedidos.DataSource = pedidoController.GetPedidoByNomeCli("%"+txtProcurar.Text+"%");

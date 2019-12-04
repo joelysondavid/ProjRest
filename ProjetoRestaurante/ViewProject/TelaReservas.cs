@@ -31,7 +31,7 @@ namespace ViewProject
         private void GetAll()
         {
             dgvReservas.DataSource = null;
-            dgvReservas.DataSource = reservaController.GetAll();
+            dgvReservas.DataSource = reservaController.GetReservasByStatus(false);
             cbxMesa.DataSource = mesaController.GetMesasDisponiveis();
             cbxMesa.SelectedIndex = -1;
             string data = DateTime.Now.ToShortDateString();
@@ -59,6 +59,7 @@ namespace ViewProject
             cbxMesa.SelectedIndex = -1;
             Util.ClearTxt(panelReserva);
             reservaAtual = null;
+            btnFinalizar.Enabled = false;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -110,9 +111,9 @@ namespace ViewProject
         private bool VerificaCampos()
         {
             // verificação da hora
-            if (txtNomeCliente.Text != string.Empty && cbxMesa.SelectedIndex != -1 && mtbHora.Text.Replace(":", "").Trim() != string.Empty)
+            if (!String.IsNullOrWhiteSpace(txtNomeCliente.Text) && cbxMesa.SelectedIndex != -1 && mtbHora.Text.Replace(":", "").Trim() != string.Empty)
             {
-                if(Util.VerificaNome(txtNomeCliente.Text))
+                if(txtNomeCliente.Text.Contains(" ")||Util.VerificaNome(txtNomeCliente.Text))
                     return true;
             }
 
@@ -130,6 +131,7 @@ namespace ViewProject
             int idReserva = (int)dgvReservas.Rows[e.RowIndex].Cells[0].Value;
             reservaAtual = reservaController.GetById(idReserva);
             SetCampos(reservaAtual);
+            btnFinalizar.Enabled = true;
         }
 
         private void SetCampos(Reserva reserva)
@@ -174,6 +176,18 @@ namespace ViewProject
         private void btnProcurar_Click(object sender, EventArgs e)
         {
             dgvReservas.DataSource = reservaController.GetReservaByNomeCli("%"+txtProcurar.Text+"%");
+        }
+
+        private void btnFinalizar_Click(object sender, EventArgs e)
+        {
+            if (reservaAtual != null)
+            {
+                reservaController.Finalizar((int)reservaAtual.Id, true);
+                MessageBox.Show("Reserva finalizada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearControls();
+                GetAll();
+                btnFinalizar.Enabled = false;
+            }
         }
     }
 }

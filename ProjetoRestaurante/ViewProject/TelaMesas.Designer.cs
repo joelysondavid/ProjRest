@@ -124,7 +124,7 @@
             this.txtDescricaoMesa.Multiline = true;
             this.txtDescricaoMesa.Name = "txtDescricaoMesa";
             this.txtDescricaoMesa.Size = new System.Drawing.Size(195, 103);
-            this.txtDescricaoMesa.TabIndex = 3;
+            this.txtDescricaoMesa.TabIndex = 1;
             // 
             // txtNumMesa
             // 
@@ -135,7 +135,7 @@
             this.txtNumMesa.Location = new System.Drawing.Point(80, 103);
             this.txtNumMesa.Name = "txtNumMesa";
             this.txtNumMesa.Size = new System.Drawing.Size(92, 15);
-            this.txtNumMesa.TabIndex = 2;
+            this.txtNumMesa.TabIndex = 0;
             // 
             // label2
             // 
@@ -208,6 +208,7 @@
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 30);
             this.btnExcluir.TabIndex = 3;
+            this.btnExcluir.TabStop = false;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -222,6 +223,7 @@
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 30);
             this.btnLimpar.TabIndex = 4;
+            this.btnLimpar.TabStop = false;
             this.btnLimpar.Text = "Limpar";
             this.btnLimpar.UseVisualStyleBackColor = false;
             this.btnLimpar.Click += new System.EventHandler(this.btnLimpar_Click);
@@ -236,6 +238,7 @@
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 30);
             this.btnVoltar.TabIndex = 5;
+            this.btnVoltar.TabStop = false;
             this.btnVoltar.Text = "Voltar";
             this.btnVoltar.UseVisualStyleBackColor = false;
             this.btnVoltar.Click += new System.EventHandler(this.btnVoltar_Click);

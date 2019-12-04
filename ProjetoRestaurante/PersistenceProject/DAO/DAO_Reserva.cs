@@ -85,7 +85,7 @@ namespace PersistenceProject.DAO
             }
             catch (Exception err)
             {
-                Console.WriteLine("Erro ao buscar todas as reservas!\nErro: " + err);
+                Console.WriteLine("Erro ao buscar reserva por Id!\nErro: " + err);
             }
             return reserva;
         }
@@ -94,7 +94,7 @@ namespace PersistenceProject.DAO
         // método repsonsavel por obter uma reserva através do nome
         public IList<Reserva> GetByNome(string nome)
         {
-            IList<Reserva> reservas = null; // cria uma variavel para armazenar a reserva obtida
+            IList<Reserva> reservas = new List<Reserva>(); // cria uma variavel para armazenar a reserva obtida
             try
             {
                 // comando que irá realizar select
@@ -157,10 +157,48 @@ namespace PersistenceProject.DAO
             }
             catch (Exception err)
             {
-                Console.WriteLine("Erro ao buscar todas as reservas!\nErro: " + err);
+                Console.WriteLine("Erro ao buscar todas pelo CPF!\nErro: " + err);
             }
             return reserva;
         }
+
+        public IList<Reserva> GetReservasByStatus(bool status)
+        {
+            IList<Reserva> reservas = new List<Reserva>(); // cria uma variavel para armazenar a reserva obtida
+            try
+            {
+                // comando que irá realizar select
+                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas WHERE Finalizada LIKE @Finalizada", conn);
+                cmd.Parameters.AddWithValue("@Finalizada", status); // passa o parametro recebido para sqlparam
+                conn.Open(); // abre a conexão
+                using (SqlDataReader reader = cmd.ExecuteReader()) // comando que irá executar o comando e passar tudo quefoi lido para variavel reader
+                {
+                    while (reader.Read()) // enquanto houver leitura
+                    {
+                        // nova instancia de reserva passando os dados recebidos na leitura
+                        reservas.Add(new Reserva
+                        {
+                            Id = reader.GetInt32(0),
+                            NomeCliente = reader.GetString(1),
+                            CpfCliente = reader.GetString(2),
+                            NumMesa = reader.GetString(3),
+                            ReservaInicio = reader.GetDateTime(4).ToString(),
+                            Finalizada = reader.GetBoolean(5)
+                        });
+                    }
+                }
+                conn.Close(); // apos terminar a leitura encerra a conexão
+            }
+            catch (Exception err)
+            {
+                Console.WriteLine($"Erro ao buscar todas as reservas {status} !\nErro: {err}");
+            }
+            return reservas;
+        }
+
+
+
+
         // GET: LastReserva
         // Responsavel por obter a ultima inserção
         public Reserva GetLast()
@@ -191,7 +229,7 @@ namespace PersistenceProject.DAO
             }
             catch (Exception err)
             {
-                Console.WriteLine("Erro ao buscar todas as reservas!\nErro: " + err);
+                Console.WriteLine("Erro ao buscar ultima reservas!\nErro: " + err);
             }
             return reserva;
         }
@@ -280,6 +318,36 @@ namespace PersistenceProject.DAO
                     cmd.ExecuteNonQuery(); // executa o comando de deleção;
                     conn.Close(); // encerra a conexão
                     daoMesa.UpdateStatus(reserva.NumMesa, true);
+                    deletado = true;
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Erro ao deletar Reserva!\nErro: " + e);
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Reserva id: {id} não encontrada!");
+            }
+            return deletado;
+        }
+        public bool Finalizar(int id, bool finalizada)
+        {
+            Reserva reserva = GetById(id);
+            bool deletado = false;
+            if (reserva != null)
+            {
+                try
+                {
+                    cmd = new SqlCommand("UPDATE Reservas SET Finalizada = @Finalizada WHERE Id = @Id", conn); // comand
+                    cmd.Parameters.AddWithValue("@Id", id); // referenciando o sqlparam
+                    cmd.Parameters.AddWithValue("@Finalizada", finalizada);
+                    conn.Open(); // abertura da conexão
+                    cmd.ExecuteNonQuery(); // executa o comando de deleção;
+                    conn.Close(); // encerra a conexão
+                    if(finalizada==true)
+                        daoMesa.UpdateStatus(reserva.NumMesa, true);
+
                     deletado = true;
                 }
                 catch (Exception e)

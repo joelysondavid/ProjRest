@@ -20,3 +20,5 @@ C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaPedidos.resources
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaReservas.resources
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaMesas.resources
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaPedidosFinalizados.resources
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaReservasFinalizadas.resources

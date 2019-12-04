@@ -63,7 +63,7 @@ namespace ViewProject
         private bool CamposValidos()
         {
             bool valido = false;
-            if (txtNome.Text != string.Empty && txtLogin.Text != string.Empty && txtSenha.Text != string.Empty && cbxTipo.SelectedIndex != -1)
+            if (!string.IsNullOrWhiteSpace(txtNome.Text) && !string.IsNullOrWhiteSpace(txtLogin.Text) && txtSenha.Text != string.Empty && cbxTipo.SelectedIndex != -1)
             {
                 if (txtNome.Text.Contains(" ") || Util.VerificaNome(txtNome.Text))
                     valido = true;

@@ -98,6 +98,49 @@ namespace PersistenceProject.DAO
             return pedidos;
         }
 
+        // método get all pedidos
+        public IList<Pedido> GetByStatus(string status)
+        {
+            IList<Pedido> pedidos = new List<Pedido>(); // trabalhar com uma list geral de pedidos estava dando erro
+            try
+            {
+                // query com comando para buscar todos os pedidos
+                cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, ValorTotal, DataPed, Status FROM Pedidos WHERE Status = @Status", conn);
+                cmd.Parameters.AddWithValue("@Status", status);
+                conn.Open(); // abre a conexão
+                using (SqlDataReader reader = cmd.ExecuteReader()) // executa o comando de leitura
+                {
+                    while (reader.Read())
+                    {
+                        pedidos.Add(new Pedido
+                        {
+                            Id = reader.GetInt32(0),
+                            NumMesa = reader.GetString(1),
+                            NomeCliente = reader.GetString(2),
+                            CpfCliente = reader.GetString(3),
+                            ValorTotal = reader.GetDecimal(4),
+                            DataPed = reader.GetDateTime(5).ToString(),
+                            Status = reader.GetString(6)
+                        });
+                    }
+                }
+                conn.Close(); // encerra a conexão
+
+                // após encerrar a conexão e obter todos os pedidos é necessário buscar também os itens destes pedidos
+                for (int i = 0; i < pedidos.Count; i++)
+                {
+                    // desta forma estaremos buscando todos os itens de cada pedido
+                    if (pedidos[i].ItensDePedido.Count > 0)
+                        pedidos[i].ItensDePedido = daoItensPed.GetByPed(pedidos[i].Id);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Erro ao buscar todos pedido {status}!\nErro: {e}.");
+            }
+            return pedidos;
+        }
+
         // método get ultimo pedido
         private Pedido GetLastPed()
         {

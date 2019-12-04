@@ -86,7 +86,7 @@
             this.txtNome.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtNome.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNome.ForeColor = System.Drawing.SystemColors.Control;
-            this.txtNome.Location = new System.Drawing.Point(61, 126);
+            this.txtNome.Location = new System.Drawing.Point(61, 128);
             this.txtNome.Name = "txtNome";
             this.txtNome.Size = new System.Drawing.Size(130, 15);
             this.txtNome.TabIndex = 0;

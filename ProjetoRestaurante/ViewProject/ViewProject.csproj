@@ -84,11 +84,23 @@
     <Compile Include="TelaPedidos.Designer.cs">
       <DependentUpon>TelaPedidos.cs</DependentUpon>
     </Compile>
+    <Compile Include="TelaPedidosFinalizados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaPedidosFinalizados.Designer.cs">
+      <DependentUpon>TelaPedidosFinalizados.cs</DependentUpon>
+    </Compile>
     <Compile Include="TelaReservas.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="TelaReservas.Designer.cs">
       <DependentUpon>TelaReservas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TelaReservasFinalizadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TelaReservasFinalizadas.Designer.cs">
+      <DependentUpon>TelaReservasFinalizadas.cs</DependentUpon>
     </Compile>
     <Compile Include="Util\Util.cs" />
     <EmbeddedResource Include="TelaGerenciamentoMenu.resx">
@@ -118,8 +130,14 @@
     <EmbeddedResource Include="TelaPedidos.resx">
       <DependentUpon>TelaPedidos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="TelaPedidosFinalizados.resx">
+      <DependentUpon>TelaPedidosFinalizados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TelaReservas.resx">
       <DependentUpon>TelaReservas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TelaReservasFinalizadas.resx">
+      <DependentUpon>TelaReservasFinalizadas.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
