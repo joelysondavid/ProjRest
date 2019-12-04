@@ -145,7 +145,7 @@
             this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "Nome: ";
-            this.toolTip1.SetToolTip(this.label1, "Obrigatório: Nome do usuário");
+            this.toolTip1.SetToolTip(this.label1, "Obrigatório: Nome do usuário deve conter no máx. 30 caracteres");
             // 
             // label2
             // 
@@ -157,7 +157,7 @@
             this.label2.Size = new System.Drawing.Size(46, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Login: ";
-            this.toolTip1.SetToolTip(this.label2, "Obrigatório: Login usuário");
+            this.toolTip1.SetToolTip(this.label2, "Obrigatório: Login usuário, deve conter no máx. 15 caracteres");
             // 
             // label3
             // 
@@ -169,7 +169,7 @@
             this.label3.Size = new System.Drawing.Size(49, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "Senha: ";
-            this.toolTip1.SetToolTip(this.label3, "Obrigatório: Senha usuário");
+            this.toolTip1.SetToolTip(this.label3, "Obrigatório: Senha usuário, deve conter no máximo 10 caracteres");
             // 
             // label4
             // 
