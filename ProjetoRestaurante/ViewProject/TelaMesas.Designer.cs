@@ -204,12 +204,12 @@
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.ForeColor = System.Drawing.Color.Black;
-            this.btnExcluir.Location = new System.Drawing.Point(316, 231);
+            this.btnExcluir.Location = new System.Drawing.Point(259, 231);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 30);
+            this.btnExcluir.Size = new System.Drawing.Size(132, 30);
             this.btnExcluir.TabIndex = 3;
             this.btnExcluir.TabStop = false;
-            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.Text = "Habilitar/Desabilitar";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -219,7 +219,7 @@
             this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpar.ForeColor = System.Drawing.Color.Black;
-            this.btnLimpar.Location = new System.Drawing.Point(235, 231);
+            this.btnLimpar.Location = new System.Drawing.Point(178, 231);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 30);
             this.btnLimpar.TabIndex = 4;
@@ -234,7 +234,7 @@
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnVoltar.ForeColor = System.Drawing.Color.Black;
-            this.btnVoltar.Location = new System.Drawing.Point(154, 231);
+            this.btnVoltar.Location = new System.Drawing.Point(97, 231);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 30);
             this.btnVoltar.TabIndex = 5;

@@ -78,7 +78,7 @@ namespace PersistenceProject.DAO
         public IList<Mesa> GetMesasDisponiveis()
         {
             IList<Mesa> mesasDisponiveis = new List<Mesa>();
-            command = new SqlCommand("SELECT M.* FROM Mesas AS M LEFT JOIN Reservas AS R ON M.Numero = R.NumMesa WHERE R.Finalizada='True' OR M.Disponivel='True'", conn);
+            command = new SqlCommand("SELECT M.* FROM Mesas AS M LEFT JOIN Reservas AS R ON M.Numero = R.NumMesa WHERE M.Disponivel='True'", conn);
             conn.Open(); // abre a conexão
             using (SqlDataReader reader = command.ExecuteReader())
             {

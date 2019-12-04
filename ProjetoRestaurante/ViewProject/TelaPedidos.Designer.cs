@@ -582,6 +582,7 @@
             this.txtQtd.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtQtd.Enabled = false;
             this.txtQtd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQtd.ForeColor = System.Drawing.SystemColors.Control;
             this.txtQtd.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
             this.txtQtd.Location = new System.Drawing.Point(120, 88);
             this.txtQtd.Mask = "00";

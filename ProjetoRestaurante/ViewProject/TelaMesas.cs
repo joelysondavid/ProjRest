@@ -66,17 +66,20 @@ namespace ViewProject
                 Mesa mes = mesaController.GetByNum(numM);
                 if (mes.NumMesa != null)
                 {
-                    if (mes.Disponivel == true)
+
+                    if (mes.Disponivel == false)
                     {
-                        mesaController.DeleteByNum(numM);
-                        MessageBox.Show("Mesa Deletada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        GetAll();
-                        Util.ClearTxt(panelMesas);
+                        mesaController.UpdateStatus(numM, true);
+                        MessageBox.Show($"Mesa {numM} habilitada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
-                    {
-                        MessageBox.Show("Esta solicitação não pode ser atendidada pois esta mesa está em uso!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    { 
+                        mesaController.UpdateStatus(numM, false);
+                        MessageBox.Show($"Mesa {numM} desabilitada com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
+
+                    GetAll();
+
 
                 }
                 else

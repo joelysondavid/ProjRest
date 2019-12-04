@@ -11,6 +11,8 @@ CREATE TABLE Usuario(
 	Tipo VARCHAR(15) NOT NULL CHECK(Tipo IN ('Cozinha', 'Atendimento', 'Administrador'))
 );
 
+select * from Usuario;
+
 GO
 -- check funciona como um enum a gente passa o campo que será do tipo ou atendimento ou cozinha no login do user
 INSERT INTO Usuario(Nome, CPF, Login, Senha, Tipo) VALUES ('User Teste', '123654', 'Admin', 'admin', 'Administrador');

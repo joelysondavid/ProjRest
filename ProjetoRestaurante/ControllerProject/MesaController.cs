@@ -38,5 +38,10 @@ namespace ControllerProject
         {
             return daoMesa.Save(mesa);
         }
+
+        public Mesa UpdateStatus(string num, bool status)
+        {
+            return daoMesa.UpdateStatus(num, status);
+        }
     }
 }
