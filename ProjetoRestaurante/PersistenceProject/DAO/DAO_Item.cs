@@ -47,7 +47,7 @@ namespace PersistenceProject.DAO
                             Detalhes = reader.GetString(2),
                             TempoPreparo = reader.GetInt32(3),
                             Preco = reader.GetDecimal(4),
-                            Disponivel=reader.GetBoolean(5),
+                            Disponivel = reader.GetBoolean(5),
                             URLImagem = reader.GetString(6)
                         });
                     }
@@ -82,7 +82,7 @@ namespace PersistenceProject.DAO
                             Detalhes = reader.GetString(2),
                             TempoPreparo = reader.GetInt32(3),
                             Preco = reader.GetDecimal(4),
-                            Disponivel=reader.GetBoolean(5),
+                            Disponivel = reader.GetBoolean(5),
                             URLImagem = reader.GetString(6)
                         };
                     }
@@ -96,34 +96,77 @@ namespace PersistenceProject.DAO
             return item;
         }
 
+        public IList<Item> GetByDisponibilidade(string descr,bool disponibilidade)
+        {
+            // lista dos itens 
+            IList<Item> items = new List<Item>();
+            try
+            {
+                cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, Disponivel, URLImagem FROM Cardapio WHERE Disponivel LIKE @Disponivel AND Descricao LIKE @Descricao", conn);
+                cmd.Parameters.AddWithValue("@Disponivel", disponibilidade); // sql param
+                cmd.Parameters.AddWithValue("@Descricao", descr);
+                conn.Open(); // abertura da conexao
+                using (SqlDataReader reader = cmd.ExecuteReader()) // executa um comando e passa para uma sqlreader
+                {
+                    // enquanto a query for executada ou seja enquanto eu tiver dados relacionados a minha busca
+                    while (reader.Read())
+                    {
+                        // adiciono um novo item na lista
+                        items.Add(new Item
+                        {
+                            Id = reader.GetInt32(0),
+                            Descricao = reader.GetString(1),
+                            Detalhes = reader.GetString(2),
+                            TempoPreparo = reader.GetInt32(3),
+                            Preco = reader.GetDecimal(4),
+                            Disponivel = reader.GetBoolean(5),
+                            URLImagem = reader.GetString(6)
+                        });
+                    }
+                }
+                conn.Close(); // encerra a conexao
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine($"Erro ao buscar pela disponibilidade {disponibilidade}\nErro: {e}");
+            }
+            return items; // retorna os itens
+        }
+
         // GET: ByDescr
         public IList<Item> GetByDescricao(string descricao)
         {
             // lista dos itens 
             IList<Item> items = new List<Item>();
-            // comando
-            cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, Disponivel, URLImagem FROM Cardapio WHERE Descricao LIKE @Descricao", conn);
-            cmd.Parameters.AddWithValue("@Descricao", descricao); // sql param
-            conn.Open(); // abertura da conexao
-            using (SqlDataReader reader = cmd.ExecuteReader()) // executa um comando e passa para uma sqlreader
-            {
-                // enquanto a query for executada ou seja enquanto eu tiver dados relacionados a minha busca
-                while (reader.Read())
+            try{
+
+
+                cmd = new SqlCommand("SELECT Id, Descricao, Detalhes, TempoPrep, Preco, Disponivel, URLImagem FROM Cardapio WHERE Descricao LIKE @Descricao", conn);
+                cmd.Parameters.AddWithValue("@Descricao", descricao); // sql param
+                conn.Open(); // abertura da conexao
+                using (SqlDataReader reader = cmd.ExecuteReader()) // executa um comando e passa para uma sqlreader
                 {
-                    // adiciono um novo item na lista
-                    items.Add(new Item
+                    // enquanto a query for executada ou seja enquanto eu tiver dados relacionados a minha busca
+                    while (reader.Read())
                     {
-                        Id = reader.GetInt32(0),
-                        Descricao = reader.GetString(1),
-                        Detalhes = reader.GetString(2),
-                        TempoPreparo = reader.GetInt32(3),
-                        Preco = reader.GetDecimal(4),
-                        Disponivel=reader.GetBoolean(5),
-                        URLImagem = reader.GetString(6)
-                    });
+                        // adiciono um novo item na lista
+                        items.Add(new Item
+                        {
+                            Id = reader.GetInt32(0),
+                            Descricao = reader.GetString(1),
+                            Detalhes = reader.GetString(2),
+                            TempoPreparo = reader.GetInt32(3),
+                            Preco = reader.GetDecimal(4),
+                            Disponivel = reader.GetBoolean(5),
+                            URLImagem = reader.GetString(6)
+                        });
+                    }
                 }
+                conn.Close(); // encerra a conexao
+            }catch(Exception e)
+            {
+                Console.WriteLine($"Erro ao buscar pela descrição {descricao}\nErro: {e}");
             }
-            conn.Close(); // encerra a conexao
             return items; // retorna os itens
         }
 
@@ -147,7 +190,7 @@ namespace PersistenceProject.DAO
                             Detalhes = reader.GetString(2),
                             TempoPreparo = reader.GetInt32(3),
                             Preco = reader.GetDecimal(4),
-                            Disponivel=reader.GetBoolean(5),
+                            Disponivel = reader.GetBoolean(5),
                             URLImagem = reader.GetString(6)
                         };
                     }
@@ -247,6 +290,26 @@ namespace PersistenceProject.DAO
                 }
             }
             return deletado;
+        }
+
+        public Item UpdateDisponibilidade(int id, bool disponivel)
+        {
+            try
+            {
+                // query
+                cmd = new SqlCommand("UPDATE Cardapio SET Disponivel=@Disponivel WHERE Id = @Id", conn);
+                // SqlParameters
+                cmd.Parameters.AddWithValue("@Id", id);
+                cmd.Parameters.AddWithValue("@Disponivel", disponivel);
+                conn.Open(); // abre a conexão
+                cmd.ExecuteNonQuery(); // executa o comando
+                conn.Close(); // encerra a conexão
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine("Erro ao atualizar item!\nErro: " + e);
+            }
+            return GetById(id);
         }
     }
 }

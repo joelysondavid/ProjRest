@@ -46,9 +46,9 @@ namespace ViewProject
                     Status = "Em andamento",
                 };
                 pedidoController.Save(pedido);
-                GetAll();
                 AlterControls(false);
                 ClearControls(panelPedido);
+                GetAll();
                 MessageBox.Show("Pedido inciado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
@@ -114,6 +114,12 @@ namespace ViewProject
         {
             if (pedidoAtual.Id != null)
             {
+                if (pedidoAtual.ItensDePedido.Count > 0)
+                {
+                    MessageBox.Show("Pedido não pode ser apagado pois já contém itens!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 if (DialogResult.Yes == MessageBox.Show("Deseja realmente excluir o pedido?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
                 {
                     int idPed = (int)pedidoAtual.Id;
@@ -122,7 +128,7 @@ namespace ViewProject
                     GetAll();
                     ClearControlsItem();
                     ClearControls(panelPedido);
-                    Console.WriteLine("Pedido apagado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Pedido apagado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }
@@ -168,7 +174,7 @@ namespace ViewProject
 
         private void btnProcurarItem_Click(object sender, EventArgs e)
         {
-            dgvItens.DataSource = itemController.GetItemsByDescr("%" + txtProcurarItem.Text + "%");
+            dgvItens.DataSource = itemController.GetItemByDisponibilidade("%" + txtProcurarItem.Text + "%", true);
         }
 
         private void btnCancelarItem_Click(object sender, EventArgs e)
@@ -185,8 +191,8 @@ namespace ViewProject
         private void GetAll()
         {
             dgvPedidos.ClearSelection();
-            dgvPedidos.DataSource = pedidoController.GetByStatus("Em andamento");
-            dgvItens.DataSource = itemController.GetAll();
+            dgvPedidos.DataSource = pedidoController.GetByStatus("%%","Em andamento");
+            dgvItens.DataSource = itemController.GetItemByDisponibilidade("%%",true);
             mesas = mesaController.GetMesasDisponiveis();
             cbxMesa.DataSource = mesas;
             if (pedidoAtual == null)
@@ -253,10 +259,7 @@ namespace ViewProject
         // limpar campos itens
         private void ClearControlsItem()
         {
-            txtIdPedido.Clear();
-            txtNomeItem.Clear();
-            txtQtd.Clear();
-            txtValorItens.Clear();
+            Util.ClearTxt(panelPedido);
             cbxStatus.SelectedIndex = -1;
             dgvItensPed.DataSource = null;
         }
@@ -264,7 +267,7 @@ namespace ViewProject
         {
             btnNovoItem.Enabled = chav;
             btnCancelarItem.Enabled = chav;
-            btnSalvar.Enabled = chav;
+            btnSalvarItem.Enabled = chav;
         }
 
         // Seta os campos
@@ -340,8 +343,8 @@ namespace ViewProject
                 // itensPed.Add(itemPed);
                 pedidoAtual.ItensDePedido.Add(itemPed); // adiciona o item a lista de itens de pedido
                 pedidoAtual = pedidoController.Save(pedidoAtual); // salva o item
-                ClearControlsItem(); // limpa os campos do panel item
                 txtIdPedido.Text = pedidoAtual.Id.ToString();
+                ClearControlsItem(); // limpa os campos do panel item
                 ControlsItem(false); // desabilita os campos do item
                 // ControlsBasicos(false); // desabilita o botao de adicionar e o botao de remover
                 CarregaItensPed(); // carrega os itens
@@ -400,7 +403,7 @@ namespace ViewProject
         }
         private void btnProcurar_Click(object sender, EventArgs e)
         {
-            dgvPedidos.DataSource = pedidoController.GetPedidoByNomeCli("%"+txtProcurar.Text+"%");
+            dgvPedidos.DataSource = pedidoController.GetByStatus("%"+txtProcurar.Text+"%", "Em andamento");
         }
     }
 }

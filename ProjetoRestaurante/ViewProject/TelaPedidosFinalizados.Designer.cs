@@ -34,7 +34,7 @@
             this.panelItensPedido = new System.Windows.Forms.Panel();
             this.dgvItensDePedidos = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblPedido = new System.Windows.Forms.Label();
             this.lblPedidos = new System.Windows.Forms.Label();
             this.panelPedidos.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPedidos)).BeginInit();
@@ -70,7 +70,7 @@
             this.btnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
             this.btnVoltar.Location = new System.Drawing.Point(26, 12);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(70, 30);
@@ -113,16 +113,16 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "Pedidos Finalizados";
             // 
-            // label2
+            // lblPedido
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.SystemColors.Control;
-            this.label2.Location = new System.Drawing.Point(217, 47);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(101, 31);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "Pedidos";
+            this.lblPedido.AutoSize = true;
+            this.lblPedido.Font = new System.Drawing.Font("Arial Narrow", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPedido.ForeColor = System.Drawing.SystemColors.Control;
+            this.lblPedido.Location = new System.Drawing.Point(178, 47);
+            this.lblPedido.Name = "lblPedido";
+            this.lblPedido.Size = new System.Drawing.Size(101, 31);
+            this.lblPedido.TabIndex = 8;
+            this.lblPedido.Text = "Pedidos";
             // 
             // lblPedidos
             // 
@@ -142,7 +142,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.ClientSize = new System.Drawing.Size(1212, 420);
             this.Controls.Add(this.lblPedidos);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblPedido);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.panelItensPedido);
             this.Controls.Add(this.panelPedidos);
@@ -168,7 +168,7 @@
         private System.Windows.Forms.Panel panelItensPedido;
         private System.Windows.Forms.DataGridView dgvItensDePedidos;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblPedido;
         private System.Windows.Forms.Label lblPedidos;
     }
 }

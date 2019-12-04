@@ -63,9 +63,9 @@ namespace ControllerProject
             daoPedido.DeleteById(idPed, numMesa);
         }
 
-        public IList<Pedido> GetByStatus(string status)
+        public IList<Pedido> GetByStatus(string nomeCli, string status)
         {
-            return daoPedido.GetByStatus(status);
+            return daoPedido.GetByStatus(nomeCli,status);
         }
     }
 }

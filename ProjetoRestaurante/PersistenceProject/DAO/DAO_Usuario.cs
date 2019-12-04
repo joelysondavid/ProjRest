@@ -144,7 +144,6 @@ namespace PersistenceProject.DAO
         private Usuario Atualizar(Usuario usr, string loginA, string senhaA)
         {
             Usuario usuario = null;
-            // 1° procurar pelo usuario
             try
             {
                 // essa query funcionara como se o objeto passado fosse um novo login e uam nova senha

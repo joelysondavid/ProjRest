@@ -25,6 +25,7 @@ namespace ViewProject
 
         private void btnCadastrar_Click(object sender, EventArgs e)
         {
+            Usuario usuario;
             if (CamposValidos())
             {
                 Usuario user = new Usuario
@@ -33,18 +34,26 @@ namespace ViewProject
                     Nome = txtNome.Text,
                     Cpf = txtCpf.Text,
                     Login = txtLogin.Text,
-                    Senha = txtSenha.Text,
+                    Senha = string.IsNullOrWhiteSpace(txtNovaSenha.Text) ? txtSenha.Text : txtNovaSenha.Text,
                     TipoUsr = cbxTipo.SelectedItem.ToString()
                 };
-                Usuario usuario;
                 if (userAtual != null)
                 {
-                    usuario = controller.Salvar(user, userAtual.Login, txtSenha.Text);
-                    if (txtNovaSenha.Text == string.Empty)
+                    if (controller.GetLogin(user.Login, txtSenha.Text) != null)
                     {
-                        MessageBox.Show("O campo de nova senha deve estar preenchido!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        usuario = controller.Salvar(user, userAtual.Login, txtSenha.Text);
+                        if (txtNovaSenha.Text == string.Empty)
+                        {
+                            MessageBox.Show("O campo de nova senha deve estar preenchido!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Senha antiga incompativel!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         return;
                     }
+
                 }
                 else
                     usuario = controller.Salvar(user, null, null);
@@ -52,8 +61,12 @@ namespace ViewProject
                 if (usuario != null)
                 {
                     MessageBox.Show("Usuario salvo com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    GetAll();
                     LimparCampos();
+                    GetAll();
+                }
+                else
+                {
+                    MessageBox.Show("Atenção o sistema não pode salvar o usuário, verifique se já não existe um usuário com mesmo login ou cpf!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
         }

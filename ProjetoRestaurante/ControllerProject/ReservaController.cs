@@ -19,9 +19,9 @@ namespace ControllerProject
         {
             return daoReserva.GetAll();
         }
-        public IList<Reserva> GetReservasByStatus(bool status)
+        public IList<Reserva> GetReservasByStatus(string nomeCli ,bool status)
         {
-            return daoReserva.GetReservasByStatus(status);
+            return daoReserva.GetReservasByStatus(nomeCli, status);
         }
         public IList<Reserva> GetReservaByNomeCli(string nome)
         {

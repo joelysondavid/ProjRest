@@ -31,7 +31,7 @@ namespace ViewProject
         private void GetAll()
         {
             dgvReservas.DataSource = null;
-            dgvReservas.DataSource = reservaController.GetReservasByStatus(false);
+            dgvReservas.DataSource = reservaController.GetReservasByStatus("%%",false);
             cbxMesa.DataSource = mesaController.GetMesasDisponiveis();
             cbxMesa.SelectedIndex = -1;
             string data = DateTime.Now.ToShortDateString();
@@ -175,7 +175,7 @@ namespace ViewProject
 
         private void btnProcurar_Click(object sender, EventArgs e)
         {
-            dgvReservas.DataSource = reservaController.GetReservaByNomeCli("%"+txtProcurar.Text+"%");
+            dgvReservas.DataSource = reservaController.GetReservasByStatus("%"+txtProcurar.Text+"%", false);
         }
 
         private void btnFinalizar_Click(object sender, EventArgs e)

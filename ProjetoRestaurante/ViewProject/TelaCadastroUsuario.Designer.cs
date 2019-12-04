@@ -128,7 +128,8 @@
             this.cbxTipo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.cbxTipo.Items.AddRange(new object[] {
             "Atendimento",
-            "Cozinha"});
+            "Cozinha",
+            "Administrador"});
             this.cbxTipo.Location = new System.Drawing.Point(62, 217);
             this.cbxTipo.Name = "cbxTipo";
             this.cbxTipo.Size = new System.Drawing.Size(130, 24);
@@ -144,6 +145,7 @@
             this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "Nome: ";
+            this.toolTip1.SetToolTip(this.label1, "Obrigatório: Nome do usuário");
             // 
             // label2
             // 
@@ -155,6 +157,7 @@
             this.label2.Size = new System.Drawing.Size(46, 16);
             this.label2.TabIndex = 6;
             this.label2.Text = "Login: ";
+            this.toolTip1.SetToolTip(this.label2, "Obrigatório: Login usuário");
             // 
             // label3
             // 
@@ -166,6 +169,7 @@
             this.label3.Size = new System.Drawing.Size(49, 16);
             this.label3.TabIndex = 7;
             this.label3.Text = "Senha: ";
+            this.toolTip1.SetToolTip(this.label3, "Obrigatório: Senha usuário");
             // 
             // label4
             // 
@@ -177,6 +181,7 @@
             this.label4.Size = new System.Drawing.Size(37, 16);
             this.label4.TabIndex = 8;
             this.label4.Text = "CPF: ";
+            this.toolTip1.SetToolTip(this.label4, "Opcional: CPF usuário");
             // 
             // label5
             // 
@@ -188,13 +193,14 @@
             this.label5.Size = new System.Drawing.Size(44, 16);
             this.label5.TabIndex = 9;
             this.label5.Text = "Setor: ";
+            this.toolTip1.SetToolTip(this.label5, "Obrigatório: Setor do usuário");
             // 
             // btnCadastrar
             // 
             this.btnCadastrar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnCadastrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCadastrar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastrar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnCadastrar.ForeColor = System.Drawing.Color.Black;
             this.btnCadastrar.Location = new System.Drawing.Point(379, 320);
             this.btnCadastrar.Name = "btnCadastrar";
             this.btnCadastrar.Size = new System.Drawing.Size(75, 30);
@@ -209,7 +215,7 @@
             this.btnSair.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnSair.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSair.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnSair.ForeColor = System.Drawing.Color.Black;
             this.btnSair.Location = new System.Drawing.Point(136, 320);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 30);
@@ -412,6 +418,7 @@
             this.lblNovaSenha.Size = new System.Drawing.Size(76, 16);
             this.lblNovaSenha.TabIndex = 11;
             this.lblNovaSenha.Text = "Nova Senha:";
+            this.toolTip1.SetToolTip(this.lblNovaSenha, "Obrigatório para atualização");
             this.lblNovaSenha.Visible = false;
             // 
             // txtNovaSenha
@@ -432,7 +439,7 @@
             this.btnLimpar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnLimpar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLimpar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnLimpar.ForeColor = System.Drawing.Color.Black;
             this.btnLimpar.Location = new System.Drawing.Point(217, 320);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(75, 30);
@@ -447,7 +454,7 @@
             this.btnExcluir.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnExcluir.ForeColor = System.Drawing.Color.Black;
             this.btnExcluir.Location = new System.Drawing.Point(298, 320);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 30);

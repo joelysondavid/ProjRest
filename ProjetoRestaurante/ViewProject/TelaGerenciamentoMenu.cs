@@ -34,20 +34,25 @@ namespace ViewProject.Itens
         {
             if (CamposValidos())
             {
-                if (DialogResult.Yes == MessageBox.Show("Deseja realmente deleletar o item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
+                if (DialogResult.Yes == MessageBox.Show("Deseja realmente indisponibilizar/disponibilizar o item?", "Atenção!", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation))
                 {
-                    int id = (int)itemSel.Id; // converto item por ser do tipo que pode ser vázio
-                    bool deletado = itemController.Delete(id); // chamo método para deletar itens
-                    if (deletado == true)
+                    Item item;
+                    if (itemSel.Disponivel == true)
+                        item = itemController.UpdateDisponibilidade((int)itemSel.Id, false); // chamo método para deletar itens
+                    else
+                        item = itemController.UpdateDisponibilidade((int)itemSel.Id, true); // chamo método para deletar itens
+
+                    if (item != null)
                     {
                         GetItens(); // atualizo a grid
                         MessageBox.Show("Item deletado com sucesso!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LimparCampos(); // limpa os campso
                         AlterControls(false); // seta os controles para false
                         btnExcluir.Enabled = false; // desabilita o botão excluir
-                    } else
+                    }
+                    else
                     {
-                        MessageBox.Show("Esse item não pode ser deletado, pois já esta sendo usado em outro item!", "Sucesso!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Erro ao desabilitar o item!", "Erro!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
             }
@@ -110,15 +115,24 @@ namespace ViewProject.Itens
             int inteiro = 0;
             decimal dec = 0.0m;
             // primeira if verifica se os campos obrigatórios das tabelas estão vazios
-            if (txtDescr.Text != string.Empty && txtPreco.Text != string.Empty && txtTempoPrep.Text != string.Empty)
+            if (!string.IsNullOrWhiteSpace(txtDescr.Text) && txtPreco.Text != string.Empty && txtTempoPrep.Text != string.Empty)
             {
                 // segunda if verifica se o txtPreco e txtTempo são dos tipos corretos
-                if (int.TryParse(txtTempoPrep.Text, out inteiro) && decimal.TryParse(txtPreco.Text, out dec))
-                    valido = true;
-
+                if (txtDescr.Text.Length <= 100 && txtDetalhes.Text.Length <= 100 && txtUrl.Text.Length <= 250)
+                {
+                    if (int.TryParse(txtTempoPrep.Text, out inteiro) && decimal.TryParse(txtPreco.Text, out dec))
+                    {
+                        int tempoPrep = Convert.ToInt32(txtTempoPrep.Text); decimal preco = Convert.ToDecimal(txtPreco.Text);
+                        if (tempoPrep >= 0 && preco >= 0)
+                            valido = true;
+                        else
+                            MessageBox.Show("Atenção os valores de tempo e preço do item não pode ser negativos!", "Atenção!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                        MessageBox.Show("Os campos tempo de preparo e preco devem estar nos formatos corretos!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
                 else
-                    MessageBox.Show("Os campos tempo de preparo e preco devem estar nos formatos corretos!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
+                    MessageBox.Show("Os campos descrição, detalhes e URL imagem contém limites, verifique passando o mouse em cima!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
                 MessageBox.Show("Os campos obrigatórios devem ser preenchidos!", "Aviso!", MessageBoxButtons.OK, MessageBoxIcon.Warning);

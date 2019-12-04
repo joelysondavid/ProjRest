@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaGerenciamentoMenu));
             this.panelGrid = new System.Windows.Forms.Panel();
             this.dgvItens = new System.Windows.Forms.DataGridView();
@@ -64,6 +65,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.ofdImagem = new System.Windows.Forms.OpenFileDialog();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.panelGrid.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvItens)).BeginInit();
             this.panelCardapio.SuspendLayout();
@@ -151,10 +153,10 @@
             this.btnProcurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnProcurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProcurar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcurar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnProcurar.Location = new System.Drawing.Point(122, 340);
+            this.btnProcurar.ForeColor = System.Drawing.Color.Black;
+            this.btnProcurar.Location = new System.Drawing.Point(122, 339);
             this.btnProcurar.Name = "btnProcurar";
-            this.btnProcurar.Size = new System.Drawing.Size(115, 30);
+            this.btnProcurar.Size = new System.Drawing.Size(75, 30);
             this.btnProcurar.TabIndex = 8;
             this.btnProcurar.TabStop = false;
             this.btnProcurar.Text = "Procurar";
@@ -172,6 +174,7 @@
             this.txtProcurar.Size = new System.Drawing.Size(101, 15);
             this.txtProcurar.TabIndex = 7;
             this.txtProcurar.TabStop = false;
+            this.toolTip1.SetToolTip(this.txtProcurar, "Procura pela descrição do item");
             // 
             // btnSalvar
             // 
@@ -179,7 +182,7 @@
             this.btnSalvar.Enabled = false;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnSalvar.ForeColor = System.Drawing.Color.Black;
             this.btnSalvar.Location = new System.Drawing.Point(515, 340);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 30);
@@ -194,13 +197,13 @@
             this.btnExcluir.Enabled = false;
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnExcluir.Location = new System.Drawing.Point(434, 340);
+            this.btnExcluir.ForeColor = System.Drawing.Color.Black;
+            this.btnExcluir.Location = new System.Drawing.Point(379, 340);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(75, 30);
+            this.btnExcluir.Size = new System.Drawing.Size(130, 30);
             this.btnExcluir.TabIndex = 5;
             this.btnExcluir.TabStop = false;
-            this.btnExcluir.Text = "Excluir";
+            this.btnExcluir.Text = "Habilitatar/Desabilitar";
             this.btnExcluir.UseVisualStyleBackColor = false;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
@@ -209,8 +212,8 @@
             this.btnNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNovo.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnNovo.Location = new System.Drawing.Point(353, 340);
+            this.btnNovo.ForeColor = System.Drawing.Color.Black;
+            this.btnNovo.Location = new System.Drawing.Point(298, 339);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(75, 30);
             this.btnNovo.TabIndex = 4;
@@ -224,8 +227,8 @@
             this.btnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.btnVoltar.Location = new System.Drawing.Point(272, 340);
+            this.btnVoltar.ForeColor = System.Drawing.Color.Black;
+            this.btnVoltar.Location = new System.Drawing.Point(217, 339);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(75, 30);
             this.btnVoltar.TabIndex = 3;
@@ -355,6 +358,7 @@
             this.txtUrl.Size = new System.Drawing.Size(145, 15);
             this.txtUrl.TabIndex = 4;
             this.txtUrl.TabStop = false;
+            this.toolTip1.SetToolTip(this.txtUrl, "Opcional: deve conter no máximo 250 caracteres.");
             // 
             // btnImagem
             // 
@@ -362,7 +366,7 @@
             this.btnImagem.Enabled = false;
             this.btnImagem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImagem.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImagem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnImagem.ForeColor = System.Drawing.Color.Black;
             this.btnImagem.Location = new System.Drawing.Point(475, 278);
             this.btnImagem.Name = "btnImagem";
             this.btnImagem.Size = new System.Drawing.Size(104, 33);
@@ -392,6 +396,7 @@
             this.txtDetalhes.Name = "txtDetalhes";
             this.txtDetalhes.Size = new System.Drawing.Size(173, 141);
             this.txtDetalhes.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.txtDetalhes, "Opicional: Detalhes do item, alguns ingredientes e etc, com até 100 caracteres.");
             // 
             // txtTempoPrep
             // 
@@ -439,6 +444,7 @@
             this.label5.Size = new System.Drawing.Size(59, 16);
             this.label5.TabIndex = 3;
             this.label5.Text = "Preço R$:";
+            this.toolTip1.SetToolTip(this.label5, "Obrigatório: Informe o preço do item em reais.");
             // 
             // label4
             // 
@@ -452,6 +458,7 @@
             this.label4.Size = new System.Drawing.Size(107, 16);
             this.label4.TabIndex = 2;
             this.label4.Text = "Tempo de Preparo:";
+            this.toolTip1.SetToolTip(this.label4, "Obrigatório: Informe o tempo de preparo do item.");
             // 
             // label3
             // 
@@ -474,6 +481,7 @@
             this.label2.Size = new System.Drawing.Size(64, 16);
             this.label2.TabIndex = 0;
             this.label2.Text = "Descrição:";
+            this.toolTip1.SetToolTip(this.label2, "Obrigatório: Informe o nome do produto ou descrição com até 100 caracteres.");
             // 
             // ofdImagem
             // 
@@ -548,5 +556,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

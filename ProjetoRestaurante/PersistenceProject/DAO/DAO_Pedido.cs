@@ -99,14 +99,15 @@ namespace PersistenceProject.DAO
         }
 
         // método get all pedidos
-        public IList<Pedido> GetByStatus(string status)
+        public IList<Pedido> GetByStatus(string nomeCli, string status)
         {
             IList<Pedido> pedidos = new List<Pedido>(); // trabalhar com uma list geral de pedidos estava dando erro
             try
             {
                 // query com comando para buscar todos os pedidos
-                cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, ValorTotal, DataPed, Status FROM Pedidos WHERE Status = @Status", conn);
+                cmd = new SqlCommand("SELECT Id, NumMesa, NomeCliente, CpfCliente, ValorTotal, DataPed, Status FROM Pedidos WHERE Status LIKE @Status AND NomeCliente LIKE @NomeCliente", conn);
                 cmd.Parameters.AddWithValue("@Status", status);
+                cmd.Parameters.AddWithValue("@NomeCliente", nomeCli);
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // executa o comando de leitura
                 {

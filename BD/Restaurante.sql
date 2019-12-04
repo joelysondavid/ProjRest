@@ -8,11 +8,12 @@ CREATE TABLE Usuario(
 	CPF VARCHAR(15),
 	Login VARCHAR(15) NOT NULL,
 	Senha VARCHAR(10) NOT NULL,
-	Tipo VARCHAR(15) NOT NULL CHECK(Tipo IN ('Cozinha', 'Atendimento'))
+	Tipo VARCHAR(15) NOT NULL CHECK(Tipo IN ('Cozinha', 'Atendimento', 'Administrador'))
 );
+
 GO
 -- check funciona como um enum a gente passa o campo que será do tipo ou atendimento ou cozinha no login do user
-INSERT INTO Usuario(Nome, CPF, Login, Senha, Tipo) VALUES ('User Teste', '123654', 'Admin', 'admin', 'Atendimento');
+INSERT INTO Usuario(Nome, CPF, Login, Senha, Tipo) VALUES ('User Teste', '123654', 'Admin', 'admin', 'Administrador');
 
 GO
 -- A tabela cardápio será usada para cadastro de produtos e devera ser constantemente atualizada pois esta tabela alimentará o menu de itens do sitema
@@ -29,6 +30,33 @@ GO
 SELECT * FROM Cardapio;
 -- delete from cardapio
 INSERT INTO Cardapio(Descricao, Detalhes, TempoPrep, Preco) VALUES('Teste', 'Detalhes', 15, 75.80);
+GO
+
+-- TABELA MESA Que será usada para gerenciamento de mesas e reservas de mesas
+CREATE TABLE Mesas(
+	Numero VARCHAR(5) PRIMARY KEY NOT NULL,
+	Descricao VARCHAR(200),
+	Disponivel BIT NOT NULL -- 0 OU 1  Equivalente ao boolean
+);
+/*alter table mesas
+alter column descricao varchar(200)*/
+GO
+SELECT * FROM Mesas;
+GO
+-- SELECT GETDATE();
+-- DELETE Mesas
+INSERT INTO MESAS VALUES 
+('G5A3', 'Teste', 1),
+('G5A1', 'Ao lado da janela',1),
+('G5A2', 'De frente ao Aquário',1),
+('B5A2', 'Ao da Janela',1),
+('B5A3', 'Próximo do palco',1);
+
+-- UPDATE Mesas SET Disponivel=1 WHERE Numero='G5A1'
+
+/*SELECT M.* FROM Mesas AS M LEFT JOIN Reservas AS R
+	ON M.Numero = R.NumMesa WHERE R.ReservaFim='True' OR M.Disponivel='True'*/
+
 GO
 -- SELECT Id, Descricao, Detalhes, TempoPrep, Preco, URLImagem FROM Cardapio WHERE Descricao LIKE '%%'
 -- select top 1 Id, Descricao from Cardapio order by Id desc;
@@ -69,31 +97,6 @@ GO
 
 SELECT * FROM ItensPedido ORDER BY id DESC;
 
-GO
--- TABELA MESA Que será usada para gerenciamento de mesas e reservas de mesas
-CREATE TABLE Mesas(
-	Numero VARCHAR(5) PRIMARY KEY NOT NULL,
-	Descricao VARCHAR(200),
-	Disponivel BIT NOT NULL -- 0 OU 1  Equivalente ao boolean
-);
-/*alter table mesas
-alter column descricao varchar(200)*/
-GO
-SELECT * FROM Mesas;
-GO
--- SELECT GETDATE();
--- DELETE Mesas
-INSERT INTO MESAS VALUES 
-('G5A3', 'Teste', 1),
-('G5A1', 'Ao lado da janela',1),
-('G5A2', 'De frente ao Aquário',1),
-('B5A2', 'De frente ao Aquário',1),
-('B5A3', 'De frente ao Aquário',1);
-
--- UPDATE Mesas SET Disponivel=1 WHERE Numero='G5A1'
-
-/*SELECT M.* FROM Mesas AS M LEFT JOIN Reservas AS R
-	ON M.Numero = R.NumMesa WHERE R.ReservaFim='True' OR M.Disponivel='True'*/
 
 GO
 CREATE TABLE Reservas(

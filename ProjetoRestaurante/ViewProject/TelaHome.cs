@@ -34,11 +34,6 @@ namespace ViewProject
         {
             new TelaGerenciamentoMenu().ShowDialog();
         }
-
-        private void cadastroToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new TelaCadastroUsuario().ShowDialog();
-        }
         private void mesasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TelaMesas().ShowDialog();
@@ -63,6 +58,10 @@ namespace ViewProject
         private void reservasFinalizadasToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TelaReservasFinalizadas().ShowDialog();
+        }
+        private void usuárioToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TelaCadastroUsuario().ShowDialog();
         }
     }
 }

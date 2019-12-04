@@ -1,4 +1,5 @@
 ﻿using ControllerProject;
+using ModelProject;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -29,7 +30,7 @@ namespace ViewProject
         private void GetAll()
         {
             dgvPedidos.DataSource = null;
-            dgvPedidos.DataSource = pedidoController.GetByStatus("Finalizado");
+            dgvPedidos.DataSource = pedidoController.GetByStatus("%%","Finalizado");
         }
 
         private void dgvPedidos_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -41,8 +42,10 @@ namespace ViewProject
                 return;
 
             int idPedido = (int)dgvPedidos.Rows[e.RowIndex].Cells[0].Value;
+            Pedido pedido = pedidoController.GetById(idPedido);
             dgvItensDePedidos.DataSource = pedidoController.GetAllItensPedido(idPedido);
             lblPedidos.Text = $"Itens do pedido id: {idPedido}";
+            lblPedido.Text = $"Pedido de total R$ {pedido.ValorTotal}";
         }
     }
 }

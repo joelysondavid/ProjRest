@@ -65,6 +65,7 @@
             this.btnNovoItem = new System.Windows.Forms.Button();
             this.btnCancelarItem = new System.Windows.Forms.Button();
             this.panelItemPedido = new System.Windows.Forms.Panel();
+            this.txtQtd = new System.Windows.Forms.MaskedTextBox();
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel23 = new System.Windows.Forms.Panel();
             this.panel20 = new System.Windows.Forms.Panel();
@@ -92,7 +93,6 @@
             this.panel3 = new System.Windows.Forms.Panel();
             this.dgvItensPed = new System.Windows.Forms.DataGridView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            this.txtQtd = new System.Windows.Forms.MaskedTextBox();
             this.panelPedidos.SuspendLayout();
             this.panel24.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -182,7 +182,7 @@
             this.btnProcurar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnProcurar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProcurar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcurar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnProcurar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnProcurar.Location = new System.Drawing.Point(144, 348);
             this.btnProcurar.Name = "btnProcurar";
             this.btnProcurar.Size = new System.Drawing.Size(70, 30);
@@ -203,6 +203,7 @@
             this.txtProcurar.Size = new System.Drawing.Size(121, 15);
             this.txtProcurar.TabIndex = 7;
             this.txtProcurar.TabStop = false;
+            this.toolTip1.SetToolTip(this.txtProcurar, "Busque pelo nome do cliente");
             // 
             // btnSalvar
             // 
@@ -210,7 +211,7 @@
             this.btnSalvar.Enabled = false;
             this.btnSalvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalvar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnSalvar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSalvar.Location = new System.Drawing.Point(515, 348);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(70, 30);
@@ -225,7 +226,7 @@
             this.btnExcluir.Enabled = false;
             this.btnExcluir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExcluir.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnExcluir.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnExcluir.Location = new System.Drawing.Point(434, 348);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(70, 30);
@@ -240,7 +241,7 @@
             this.btnNovo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnNovo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNovo.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnNovo.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnNovo.Location = new System.Drawing.Point(353, 348);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(70, 30);
@@ -255,7 +256,7 @@
             this.btnVoltar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(78)))), ((int)(((byte)(184)))), ((int)(((byte)(206)))));
             this.btnVoltar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnVoltar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVoltar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnVoltar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnVoltar.Location = new System.Drawing.Point(272, 348);
             this.btnVoltar.Name = "btnVoltar";
             this.btnVoltar.Size = new System.Drawing.Size(70, 30);
@@ -370,7 +371,7 @@
             this.label3.Size = new System.Drawing.Size(74, 16);
             this.label3.TabIndex = 6;
             this.label3.Text = "Cliente CPF:";
-            this.toolTip1.SetToolTip(this.label3, "Não obrigatório: CPF do Cliente");
+            this.toolTip1.SetToolTip(this.label3, "Opcional: CPF do Cliente");
             // 
             // label1
             // 
@@ -469,6 +470,7 @@
             this.panel1.Controls.Add(this.btnCancelarItem);
             this.panel1.Controls.Add(this.panelItemPedido);
             this.panel1.Controls.Add(this.panel3);
+            this.panel1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.panel1.Location = new System.Drawing.Point(697, 12);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(616, 639);
@@ -505,7 +507,7 @@
             this.btnAdicionar.Enabled = false;
             this.btnAdicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdicionar.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdicionar.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnAdicionar.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnAdicionar.Location = new System.Drawing.Point(516, 348);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(70, 30);
@@ -520,7 +522,7 @@
             this.btnNovoItem.Enabled = false;
             this.btnNovoItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNovoItem.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNovoItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnNovoItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnNovoItem.Location = new System.Drawing.Point(440, 348);
             this.btnNovoItem.Name = "btnNovoItem";
             this.btnNovoItem.Size = new System.Drawing.Size(70, 30);
@@ -536,7 +538,7 @@
             this.btnCancelarItem.Enabled = false;
             this.btnCancelarItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelarItem.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnCancelarItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnCancelarItem.Location = new System.Drawing.Point(359, 348);
             this.btnCancelarItem.Name = "btnCancelarItem";
             this.btnCancelarItem.Size = new System.Drawing.Size(70, 30);
@@ -572,6 +574,22 @@
             this.panelItemPedido.Name = "panelItemPedido";
             this.panelItemPedido.Size = new System.Drawing.Size(599, 256);
             this.panelItemPedido.TabIndex = 2;
+            // 
+            // txtQtd
+            // 
+            this.txtQtd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.txtQtd.BeepOnError = true;
+            this.txtQtd.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtQtd.Enabled = false;
+            this.txtQtd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtQtd.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
+            this.txtQtd.Location = new System.Drawing.Point(120, 88);
+            this.txtQtd.Mask = "00";
+            this.txtQtd.Name = "txtQtd";
+            this.txtQtd.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.txtQtd.Size = new System.Drawing.Size(120, 15);
+            this.txtQtd.TabIndex = 18;
+            this.txtQtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // panel22
             // 
@@ -704,6 +722,7 @@
             // 
             this.txtValorItens.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
             this.txtValorItens.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtValorItens.Enabled = false;
             this.txtValorItens.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtValorItens.ForeColor = System.Drawing.SystemColors.Control;
             this.txtValorItens.Location = new System.Drawing.Point(121, 185);
@@ -724,6 +743,7 @@
             this.txtProcurarItem.Size = new System.Drawing.Size(121, 15);
             this.txtProcurarItem.TabIndex = 7;
             this.txtProcurarItem.TabStop = false;
+            this.toolTip1.SetToolTip(this.txtProcurarItem, "Busque pela descrição do item");
             // 
             // btnProcurarItem
             // 
@@ -731,7 +751,7 @@
             this.btnProcurarItem.Enabled = false;
             this.btnProcurarItem.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProcurarItem.Font = new System.Drawing.Font("Arial Narrow", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnProcurarItem.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
+            this.btnProcurarItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnProcurarItem.Location = new System.Drawing.Point(353, 21);
             this.btnProcurarItem.Name = "btnProcurarItem";
             this.btnProcurarItem.Size = new System.Drawing.Size(70, 30);
@@ -775,6 +795,7 @@
             this.label5.Size = new System.Drawing.Size(73, 16);
             this.label5.TabIndex = 7;
             this.label5.Text = "Quantidade:";
+            this.toolTip1.SetToolTip(this.label5, "Obrigatório: Quantidade solicitada do item");
             // 
             // label6
             // 
@@ -855,21 +876,6 @@
             this.dgvItensPed.Size = new System.Drawing.Size(568, 198);
             this.dgvItensPed.TabIndex = 0;
             this.dgvItensPed.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvItensPed_CellClick);
-            // 
-            // txtQtd
-            // 
-            this.txtQtd.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(34)))), ((int)(((byte)(36)))), ((int)(((byte)(49)))));
-            this.txtQtd.BeepOnError = true;
-            this.txtQtd.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtQtd.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtQtd.InsertKeyMode = System.Windows.Forms.InsertKeyMode.Insert;
-            this.txtQtd.Location = new System.Drawing.Point(120, 88);
-            this.txtQtd.Mask = "00";
-            this.txtQtd.Name = "txtQtd";
-            this.txtQtd.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtQtd.Size = new System.Drawing.Size(120, 15);
-            this.txtQtd.TabIndex = 18;
-            this.txtQtd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // TelaPedidos
             // 

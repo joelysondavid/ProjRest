@@ -29,7 +29,7 @@ namespace ViewProject
         private void GetAll()
         {
             dgvReservas.DataSource = null;
-            dgvReservas.DataSource = reservaController.GetReservasByStatus(true);
+            dgvReservas.DataSource = reservaController.GetReservasByStatus("%%",true);
         }
     }
 }

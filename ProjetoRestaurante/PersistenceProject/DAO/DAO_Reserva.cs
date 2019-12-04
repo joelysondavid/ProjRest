@@ -162,14 +162,15 @@ namespace PersistenceProject.DAO
             return reserva;
         }
 
-        public IList<Reserva> GetReservasByStatus(bool status)
+        public IList<Reserva> GetReservasByStatus(string nomeCli, bool status)
         {
             IList<Reserva> reservas = new List<Reserva>(); // cria uma variavel para armazenar a reserva obtida
             try
             {
                 // comando que irá realizar select
-                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas WHERE Finalizada LIKE @Finalizada", conn);
+                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas WHERE Finalizada LIKE @Finalizada AND NomeCliente LIKE @NomeCliente", conn);
                 cmd.Parameters.AddWithValue("@Finalizada", status); // passa o parametro recebido para sqlparam
+                cmd.Parameters.AddWithValue("@NomeCliente", nomeCli);
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // comando que irá executar o comando e passar tudo quefoi lido para variavel reader
                 {

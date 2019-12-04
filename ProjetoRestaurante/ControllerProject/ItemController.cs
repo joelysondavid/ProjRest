@@ -41,5 +41,13 @@ namespace ControllerProject
         {
             return daoItem.GetByDescricao(descri);
         }
+        public IList<Item> GetItemByDisponibilidade(string descr, bool disponibilidade)
+        {
+            return daoItem.GetByDisponibilidade(descr,disponibilidade);
+        }
+        public Item UpdateDisponibilidade(int id, bool disponibilidade)
+        {
+            return daoItem.UpdateDisponibilidade(id, disponibilidade);
+        }
     }
 }
