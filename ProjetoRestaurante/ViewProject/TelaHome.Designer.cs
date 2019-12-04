@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TelaHome));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cadastroDePedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,7 +68,7 @@
             // cadastroDePedidosToolStripMenuItem
             // 
             this.cadastroDePedidosToolStripMenuItem.Name = "cadastroDePedidosToolStripMenuItem";
-            this.cadastroDePedidosToolStripMenuItem.Size = new System.Drawing.Size(180, 24);
+            this.cadastroDePedidosToolStripMenuItem.Size = new System.Drawing.Size(133, 24);
             this.cadastroDePedidosToolStripMenuItem.Text = "Pedidos";
             this.cadastroDePedidosToolStripMenuItem.Click += new System.EventHandler(this.cadastroDePedidosToolStripMenuItem_Click);
             // 
@@ -131,6 +132,7 @@
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.menuStrip1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "TelaHome";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

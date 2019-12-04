@@ -92,13 +92,13 @@ namespace PersistenceProject.DAO
 
         // GET: ReservaByNome
         // método repsonsavel por obter uma reserva através do nome
-        public Reserva GetByNome(string nome)
+        public IList<Reserva> GetByNome(string nome)
         {
-            Reserva reserva = null; // cria uma variavel para armazenar a reserva obtida
+            IList<Reserva> reservas = null; // cria uma variavel para armazenar a reserva obtida
             try
             {
                 // comando que irá realizar select
-                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas WHERE NomeCliente = @NomeCliente", conn);
+                cmd = new SqlCommand("SELECT Id, NomeCliente, CpfCliente, NumMesa, ReservaInicio, Finalizada FROM Reservas WHERE NomeCliente LIKE @NomeCliente", conn);
                 cmd.Parameters.AddWithValue("@NomeCliente", nome); // passa o parametro recebido para sqlparam
                 conn.Open(); // abre a conexão
                 using (SqlDataReader reader = cmd.ExecuteReader()) // comando que irá executar o comando e passar tudo quefoi lido para variavel reader
@@ -106,7 +106,7 @@ namespace PersistenceProject.DAO
                     while (reader.Read()) // enquanto houver leitura
                     {
                         // nova instancia de reserva passando os dados recebidos na leitura
-                        reserva = new Reserva
+                        reservas.Add(new Reserva
                         {
                             Id = reader.GetInt32(0),
                             NomeCliente = reader.GetString(1),
@@ -114,16 +114,16 @@ namespace PersistenceProject.DAO
                             NumMesa = reader.GetString(3),
                             ReservaInicio = reader.GetDateTime(4).ToString(),
                             Finalizada = reader.GetBoolean(5)
-                        };
+                        });
                     }
                 }
                 conn.Close(); // apos terminar a leitura encerra a conexão
             }
             catch (Exception err)
             {
-                Console.WriteLine("Erro ao buscar todas as reservas!\nErro: " + err);
+                Console.WriteLine("Erro ao buscar todas as reservas do cliente!\nErro: " + err);
             }
-            return reserva;
+            return reservas;
         }
 
         // GET: ReservaByCpf

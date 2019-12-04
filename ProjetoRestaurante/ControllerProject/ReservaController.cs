@@ -19,7 +19,10 @@ namespace ControllerProject
         {
             return daoReserva.GetAll();
         }
-
+        public IList<Reserva> GetReservaByNomeCli(string nome)
+        {
+            return daoReserva.GetByNome(nome);
+        }
         public Reserva GetById(int id)
         {
             return daoReserva.GetById(id);
