@@ -103,6 +103,7 @@ namespace ViewProject.Itens
         {
             LimparCampos(); // primeiro limpa os campos
             AlterControls(true); // dpois habilita os campos
+            txtDescr.Focus();
             btnExcluir.Enabled = false; // desabilita botao excluir
         }
 

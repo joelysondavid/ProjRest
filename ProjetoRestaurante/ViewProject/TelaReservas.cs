@@ -105,6 +105,7 @@ namespace ViewProject
         private void btnLimpar_Click(object sender, EventArgs e)
         {
             ClearControls();
+            mtbHora.Focus();
             GetAll();
         }
 

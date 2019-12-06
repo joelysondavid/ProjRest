@@ -22,3 +22,6 @@ C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaMesas.resources
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaPedidosFinalizados.resources
 C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaReservasFinalizadas.resources
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\obj\Debug\ViewProject.TelaWelcome.resources
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\CircularProgressBar.dll
+C:\Users\Joelyson David\Documents\Works\ProjRest\ProjetoRestaurante\ViewProject\bin\Debug\WinFormAnimation.dll

@@ -24,9 +24,7 @@ namespace ViewProject
             if (user != null)
             {
                 this.Hide(); // esconde a tela de login
-                TelaHome home = new TelaHome(); // instancia a tela home
-                MessageBox.Show("Login realizado com sucesso!");
-                home.Show(); // abre a tela home
+                new TelaWelcome(user).ShowDialog();
             } else
             {
                 MessageBox.Show("Falha ao realizar login!");

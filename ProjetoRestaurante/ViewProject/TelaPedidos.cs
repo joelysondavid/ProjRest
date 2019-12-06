@@ -68,6 +68,7 @@ namespace ViewProject
             ControlsBasicos(false); // caso os botoes dos itens estejam habilitadas ele desabilita
             ClearControls(panelPedido); // chama o metodo para limpar os campos
             pedidoAtual = null;
+            cbxMesa.Focus();
             btnFinalizar.Enabled = false;
         }
 
@@ -315,6 +316,7 @@ namespace ViewProject
             txtNomeItem.Text = itemAtual.Descricao;
 
             ControlsItem(true);
+            txtQtd.Focus();
             btnAdicionar.Enabled = true;
         }
 
